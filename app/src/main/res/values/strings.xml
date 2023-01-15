@@ -101,6 +101,7 @@
     <string name="label_initial_amount">Initial Amount</string>
     <string name="label_received_mmia">Entries</string>
     <string name="label_issued_mmia">Issues</string>
+    <string name="label_losses">Losses</string>
     <string name="label_adjustment">Adjustments</string>
     <string name="button_AL">AL</string>
     <string name="button_inventory">Inventory</string>
@@ -234,6 +235,7 @@
     <string name="title_add_new_drug">Add new product</string>
     <string name="hint_signature">Enter your initials</string>
     <string name="hint_product_deactivated">This product has been deactivated and is not available to reorder</string>
+    <string name="hint_others_movement_reason">Other movement reason</string>
 
     <!--MMIABaseInfo-->
     <string name="label_new_patients">New</string>
@@ -249,6 +251,7 @@
     <string name="ISSUE">Issues</string>
     <string name="NEGATIVE_ADJUST">Negative Adjustments</string>
     <string name="POSITIVE_ADJUST">Positive Adjustments</string>
+    <string name="LOSSES">Losses</string>
 
     <!-- Reason/Origin/Destination select dialog-->
     <string-array name="movement_type_items_array">
@@ -384,6 +387,7 @@
     <string name="loading_inventory_list_failed">Inventory loading failed, please try again later</string>
 
     <!--Select Unpack Kit Numbers-->
+    <string name="label_unpack_movement_reason">Origin of movement</string>
     <string name="label_select_unpack_num">How many %1$s would you like to unpack?</string>
     <string name="title_select_unpack_num">Select number of kits to unpack</string>
     <string name="msg_select_unpack_num_warning">Please Select a number of kits to unpack</string>
@@ -423,11 +427,18 @@
     <string name="app_name_in_training">SIGLUS TREINO II</string>
 
     <!--Incomplete Requisition Banner-->
-    <string name="via_and_mmia_requisition_alert">Your VIA and MMIA requisitions have not been completed</string>
+
+    <string name="via_and_mmia_requisition_alert"></string>
+    <string name="via_requisition_alert"></string>
+    <string name="mmia_requisition_alert"></string>
+    <string name="via_and_ptv_requisition_alert"></string>
+    <string name="ptv_requisition_alert"></string>
+
+    <!--string name="via_and_mmia_requisition_alert">Your VIA and MMIA requisitions have not been completed</string>
     <string name="via_requisition_alert">Your VIA requisition has not been completed</string>
     <string name="mmia_requisition_alert">Your MMIA has not been completed</string>
     <string name="via_and_ptv_requisition_alert">Your VIA and PTV requisitions  have not been completed</string>
-    <string name="ptv_requisition_alert">Your PTV has not been completed</string>
+    <string name="ptv_requisition_alert">Your PTV has not been completed</string-->
 
     <string name="missed_requisition_time_range">%1$s to %2$s</string>
 
@@ -476,6 +487,7 @@
     <string name="msg_remove_new_lot"><![CDATA[Remove the newly created lot <b>%1$s</b> which is expiring in %2$s from <b>%3$s</b>]]></string>
     <string name="msg_no_lot_for_issue">No existing lot for you to issue or do negative adjustment</string>
     <string name="error_lot_already_exists">The lot already exists, please add a new one.</string>
+    <string name="label_no_expiration_date">No expiration date</string>
 
     <string name="msg_draft_saved">Draft saved successfully</string>
     <string name="alert_soonest_expire">Your movement includes a batch that is not the first to expire</string>
@@ -570,6 +582,13 @@
     <string name="inactive_status">your status is inactive.</string>
     <string name="inactive">inactive</string>
     <string name="ifLeave">Are you sure you want to leave?</string>
+
+    <string name="lmis_abbott_M2000">LMIS ABBOTT M2000</string>
+    <string name="lmis_abbott_alinity_m">LMIS ABBOTT ALINITY M</string>
+    <string name="lmis_roche_cobas_6800">LMIS ROCHE COBAS 6800</string>
+    <string name="lmis_roche_capctm_96">LMIS ROCHE CAPCTM 96</string>
+    <string name="lmis_hologic_panter">LMIS HOLOGIC PANTER</string>
+    <string name="lmis_biosecurity"> LMIS BIOSECURITY MATERIAL</string>
 
     <string-array name="movement_date_items_array">
         <item>Last 7 days</item>

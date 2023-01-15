@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="reason_data">
-        <item>RECEIVE|DISTRICT_DDM|Distrito (DDM)</item>
-        <item>RECEIVE|PROVINCE_DPM|Província (DPM)</item>
+        <item>RECEIVE|QUIMOFAR|Quimofar</item>
+        <item>RECEIVE|HOSPITEC|Hospitec</item>
+        <item>RECEIVE|THL|THL</item>
+        <item>RECEIVE|OTHERS|Outros</item>
 
-        <item>ISSUE|PUB_PHARMACY|Farmácia Pública</item>
-        <item>ISSUE|MATERNITY|Maternidade-SMI</item>
-        <item>ISSUE|GENERAL_WARD|Enfermaria</item>
-        <item>ISSUE|ACC_EMERGENCY|Banco de Socorro-BIS</item>
-        <item>ISSUE|MOBILE_UNIT|Brigada móvel</item>
-        <item>ISSUE|LABORATORY|Laboratório</item>
-        <item>ISSUE|UATS|UATS</item>
-        <item>ISSUE|PNCTL|PNCTL</item>
-        <item>ISSUE|PAV|PAV</item>
-        <item>ISSUE|DENTAL_WARD|Estomatologia</item>
-        <item>ISSUE|UNPACK_KIT|Desembalar Kit</item>
+
+        <item>ISSUE|UNPACK_KIT|Unpack kit</item>
+        <item>ISSUE|ABBOTT_M2000|Abbott M2000</item>
+        <item>ISSUE|ABBOTT_ALINITY_M|Abbott Alinity M</item>
+        <item>ISSUE|ROCHE_COBAS_6800|Roche Cobas 6800</item>
+        <item>ISSUE|ROCHE_CAPCTM|Roche CAPCTM</item>
+        <item>ISSUE|HOLOGIC_PANTER|Hologic Panter</item>
+        <item>ISSUE|POSC_MPIMA|POC mPIMA</item>
+
 
         <item>NEGATIVE_ADJUST|EXPIRED_RETURN_TO_SUPPLIER|Devolução de Expirados Quarentena (ou Depósito fornecedor)</item>
         <item>NEGATIVE_ADJUST|DAMAGED|Danificados no Depósito</item>
         <item>NEGATIVE_ADJUST|LOANS_DEPOSIT|Empréstimo (de todos os Níveis) que dão saída do Depósito</item>
         <item>NEGATIVE_ADJUST|INVENTORY_NEGATIVE|Correção do Inventário, no caso de excesso de stock (stock é superior ao existente na ficha)</item>
         <item>NEGATIVE_ADJUST|PROD_DEFECTIVE|Saída para Quarentena no Caso de Problemas relativos as Qualidade</item>
-        <item>NEGATIVE_ADJUST|RETURN_TO_DDM|Devolução para o depósito fornecedor</item>
+
 
         <item>POSITIVE_ADJUST|CUSTOMER_RETURN|Devolução dos seus dependentes (US e Depósitos Beneficiários)</item>
         <item>POSITIVE_ADJUST|EXPIRED_RETURN_FROM_CUSTOMER|Devolução de Expirados (US e Depósitos Beneficiários)</item>
@@ -33,5 +33,7 @@
         <!-- Do not change -->
         <item>PHYSICAL_INVENTORY|INVENTORY|Inventario</item>
 
+        <item>LOSSES|DAMAGED|Estragado</item>
+        <item>LOSSES|BROKEN|Quebrado</item>
     </string-array>
 </resources>

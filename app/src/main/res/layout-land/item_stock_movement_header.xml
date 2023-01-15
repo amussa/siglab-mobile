@@ -69,6 +69,15 @@
             android:text="@string/label_issued_mmia"/>
 
         <TextView
+            android:id="@+id/et_losses"
+            android:minWidth="@dimen/stock_movement_item_common_width"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/ItemMovement.CellText"
+            android:text="@string/label_losses"/>
+
+        <TextView
             android:id="@+id/tx_stock_on_hand"
             android:minWidth="@dimen/stock_movement_item_common_width"
             android:layout_width="0dp"

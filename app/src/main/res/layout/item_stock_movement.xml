@@ -48,6 +48,12 @@
         android:layout_width="@dimen/stock_movement_item_common_width"
         android:layout_height="wrap_content" />
 
+    <EditText
+        android:id="@+id/et_losses"
+        style="@style/ItemMovement.SheetText.Edit"
+        android:layout_width="@dimen/stock_movement_item_common_width"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/tx_stock_on_hand"
         style="@style/ItemMovement.SheetText"

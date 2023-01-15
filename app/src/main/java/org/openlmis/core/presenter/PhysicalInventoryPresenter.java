@@ -175,13 +175,13 @@ public class PhysicalInventoryPresenter extends InventoryPresenter {
             @Override
             public LotMovementViewModel apply(LotOnHand lotOnHand) {
                 return new LotMovementViewModel(lotOnHand.getLot().getLotNumber(),
-                        DateUtil.formatDate(lotOnHand.getLot().getExpirationDate(), DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR),
+                        DateUtil.formatDate(lotOnHand.getLot().getExpirationDate(), DateUtil.DEFAULT_DATE_FORMAT),
                         lotOnHand.getQuantityOnHand().toString(), MovementReasonManager.MovementType.RECEIVE);
             }
         }).toSortedList(new Comparator<LotMovementViewModel>() {
             @Override
             public int compare(LotMovementViewModel lot1, LotMovementViewModel lot2) {
-                return DateUtil.parseString(lot1.getExpiryDate(), DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR).compareTo(DateUtil.parseString(lot2.getExpiryDate(), DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR));
+                return DateUtil.parseString(lot1.getExpiryDate(), DateUtil.DEFAULT_DATE_FORMAT).compareTo(DateUtil.parseString(lot2.getExpiryDate(), DateUtil.DEFAULT_DATE_FORMAT));
             }
         });
         inventoryViewModel.setExistingLotMovementViewModelList(lotMovementViewModels);

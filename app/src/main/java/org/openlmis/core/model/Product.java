@@ -44,6 +44,8 @@ public class Product extends BaseModel implements Comparable<Product>, Serializa
     public static final String MEDICINE_TYPE_SOLUTION = "Solution";
     public static final String MEDICINE_TYPE_OTHER = "Other";
 
+    public static final String DIAGNOSTICO_PRECOCE_INFANTIL = "LMIS ABBOTT M2000";
+
     //DEPRECATED, DO NOT USE
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
      Program program;

@@ -227,6 +227,8 @@
     <string name="title_add_new_drug">Adicionar novo produto</string>
     <string name="hint_signature">Insira as iniciais do seu nome</string>
     <string name="hint_product_deactivated">Este produto está desactivado e não está disponível para reordenar</string>
+    <string name="hint_others_movement_reason">Outro Motivo</string>
+
     <!--MMIABaseInfo-->
     <string name="label_new_patients">Novos</string>
     <string name="label_sustaining">Manutenção</string>
@@ -240,6 +242,7 @@
     <string name="ISSUE">Saídas</string>
     <string name="NEGATIVE_ADJUST">Ajustes Negativos</string>
     <string name="POSITIVE_ADJUST">Ajustes Positivos</string>
+    <string name="LOSSES">Perdas</string>
     <!--Reason/Origin/Destination select dialog-->
     <string-array name="movement_type_items_array">
         <item>Entradas</item>
@@ -359,6 +362,7 @@
     <string name="msg_select_period_warning">Por favor seleccione um inventário para fechar o período</string>
     <string name="loading_inventory_list_failed">Carregamento do inventário falhou, por favor tente novamente.</string>
     <!--Select Unpack Kit Numbers-->
+    <string name="label_unpack_movement_reason">Origem do movimento</string>
     <string name="label_select_unpack_num">Quantos %1$s gostaria de desembalar?</string>
     <string name="title_select_unpack_num">Seleccione número de kits por desembalar</string>
     <string name="msg_select_unpack_num_warning">Por favor, Escolha um número de kits para desembalar</string>
@@ -383,13 +387,22 @@
     <string name="msg_emergency_requisition_cant_edit">Esta informação não é utilizada ao criar uma requisição de emergência</string>
     <string name="document_number">Número do documento</string>
     <!--App Name In Different Environment-->
+
     <!--Incomplete Requisition Banner-->
+
     <string name="missed_requisition_time_range">%1$s para %2$s</string>
+    <string name="via_and_mmia_requisition_alert"></string>
+    <string name="via_requisition_alert"></string>
+    <string name="mmia_requisition_alert"></string>
+    <string name="via_and_ptv_requisition_alert"></string>
+    <string name="ptv_requisition_alert"></string>
+
+    <!--string name="missed_requisition_time_range">%1$s para %2$s</string>
     <string name="via_and_mmia_requisition_alert">Suas Requisições Balancete e seus MMIAs não foram concluídos</string>
     <string name="via_requisition_alert">Sua Requisição Balancete de não foi concluída</string>
     <string name="mmia_requisition_alert">Seu MMIA para nãode de não foi concluída</string>
     <string name="via_and_ptv_requisition_alert">Suas Requisições Balancete e seus PTV não foram concluídos</string>
-    <string name="ptv_requisition_alert">Seu PTV para nãode de não foi concluída</string>
+    <string name="ptv_requisition_alert">Seu PTV para nãode de não foi concluída</string-->
 
     <!--Add products to requisition form-->
     <string name="label_add_new_drugs_to_via">Adicionar produtos</string>
@@ -431,6 +444,7 @@
     <string name="msg_remove_new_lot"><![CDATA[Remover lote recém-criado<b>%1$s</b> que vai expirar em %2$s de <b>%3$s</b>]]></string>
     <string name="msg_no_lot_for_issue">Nenhum lote existente para que você possa dar saída ou fazer ajuste negativo</string>
     <string name="error_lot_already_exists">O lote já existe, por favor, adicione um novo.</string>
+    <string name="label_no_expiration_date">Sem data de expiração</string>
     <string name="msg_draft_saved">Rascunho gravado com sucesso</string>
     <string name="alert_soonest_expire">Seu movimento inclui um lote que não é o primeiro a expirar</string>
     <string name="msg_export_data_success">Os dados foram exportados e gravados com sucesso para <![CDATA[<b>%1$s</b>]]></string>
@@ -518,6 +532,13 @@
     <string name="inactive_status">seu status está inativo</string>
     <string name="inactive">inativo</string>
     <string name="ifLeave">Tem certeza que deseja encerrar sem guardar seu trabalho? Se você clicar "SIM", o rascunho será APAGADO?</string>
+
+    <string name="lmis_abbott_M2000">LMIS ABBOTT M2000</string>
+    <string name="lmis_abbott_alinity_m">LMIS ABBOTT ALINITY M</string>
+    <string name="lmis_roche_cobas_6800">LMIS ROCHE COBAS 6800</string>
+    <string name="lmis_roche_capctm_96">LMIS ROCHE CAPCTM 96</string>
+    <string name="lmis_hologic_panter">LMIS HOLOGIC PANTER</string>
+    <string name="lmis_biosecurity">LMIS MATERIAL DE BIOSEGURANÇA</string>
 
     <string-array name="movement_date_items_array">
         <item>Últimos 7 dias</item>

@@ -185,6 +185,7 @@ public class NewStockMovementActivity extends BaseActivity implements NewStockMo
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             movementDetailsView.setMovementReasonText(presenter.getMovementReasonDescriptionList()[position]);
             presenter.getViewModel().setReason(presenter.getMovementReasons().get(position));
+            movementDetailsView.setOtherMovementReasonVisibility();
             reasonsDialog.dismiss();
         }
     }

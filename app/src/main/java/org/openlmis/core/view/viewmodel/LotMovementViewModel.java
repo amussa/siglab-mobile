@@ -60,7 +60,7 @@ public class LotMovementViewModel implements Serializable {
         Lot lot = new Lot();
         lot.setProduct(product);
         lot.setLotNumber(lotNumber);
-        lot.setExpirationDate(DateUtil.getActualMaximumDate(DateUtil.parseString(expiryDate, DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR)));
+        lot.setExpirationDate(DateUtil.parseString(expiryDate, DateUtil.DEFAULT_DATE_FORMAT));
         lotMovementItem.setLot(lot);
 
         lotMovementItem.setMovementQuantity(Long.parseLong(quantity));
@@ -78,7 +78,7 @@ public class LotMovementViewModel implements Serializable {
         Lot lot = new Lot();
         lot.setProduct(product);
         lot.setLotNumber(lotNumber);
-        lot.setExpirationDate(DateUtil.getActualMaximumDate(DateUtil.parseString(expiryDate, DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR)));
+        lot.setExpirationDate(DateUtil.parseString(expiryDate, DateUtil.DEFAULT_DATE_FORMAT));
         lotMovementItem.setLot(lot);
         lotMovementItem.setStockOnHand(currentStockOnHand);
         lotMovementItem.setMovementQuantity(currentStockOnHand - previousStockOnHand);
@@ -108,7 +108,7 @@ public class LotMovementViewModel implements Serializable {
 
     public static String generateLotNumberForProductWithoutLot(String productCode, String expiryDate) {
         try {
-            return "SEM-LOTE-" + productCode.toUpperCase() + "-" + DateUtil.convertDate(expiryDate, DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR, DateUtil.DATE_DIGIT_FORMAT_ONLY_MONTH_AND_YEAR);
+            return "SEM-LOTE-" + productCode.toUpperCase() + "-" + DateUtil.convertDate(expiryDate, DateUtil.DEFAULT_DATE_FORMAT, DateUtil.DEFAULT_DATE_FORMAT);
         } catch (ParseException e) {
             new LMISException(e).reportToFabric();
         }

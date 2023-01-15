@@ -60,6 +60,10 @@ public final class MovementReasonManager {
     public static final String DONATION = "DONATION";
     public static final String DDM = "DISTRICT_DDM";
     public static final String RETURN_TO_DDM = "RETURN_TO_DDM";
+    public static final String ABBOTT = "ABBOTT";
+    public static final String ROCHE = "ROCHE";
+    public static final String BIOMERIEUX = "BIOMERIEUX";
+    public static final String OTHERS = "OTHERS";
 
     Context context;
     public static final String RES_DIVIDER = "[|]";
@@ -104,11 +108,13 @@ public final class MovementReasonManager {
         MovementType.RECEIVE.description = getResourceByLocal(locale).getString(R.string.RECEIVE);
         MovementType.POSITIVE_ADJUST.description = getResourceByLocal(locale).getString(R.string.POSITIVE_ADJUST);
         MovementType.NEGATIVE_ADJUST.description = getResourceByLocal(locale).getString(R.string.NEGATIVE_ADJUST);
+        MovementType.LOSSES.description = getResourceByLocal(locale).getString(R.string.LOSSES);
 
         typeArrayList.add(MovementType.ISSUE);
         typeArrayList.add(MovementType.RECEIVE);
         typeArrayList.add(MovementType.NEGATIVE_ADJUST);
         typeArrayList.add(MovementType.POSITIVE_ADJUST);
+        typeArrayList.add(MovementType.LOSSES);
 
         typeCache.put(locale.getLanguage(), typeArrayList);
 
@@ -206,7 +212,8 @@ public final class MovementReasonManager {
         ISSUE("ISSUE"),
         POSITIVE_ADJUST("POSITIVE_ADJUST"),
         NEGATIVE_ADJUST("NEGATIVE_ADJUST"),
-        PHYSICAL_INVENTORY("PHYSICAL_INVENTORY");
+        PHYSICAL_INVENTORY("PHYSICAL_INVENTORY"),
+        LOSSES("LOSSES");
 
         private final String value;
 
@@ -252,10 +259,16 @@ public final class MovementReasonManager {
         }
 
         protected boolean canBeDisplayOnMovementMenu(){
-            return !(code.startsWith(DEFAULT_PREFIX)
-                    || code.equalsIgnoreCase(INVENTORY)
-                    || MovementReasonManager.UNPACK_KIT.equals(code)
-                    || MovementReasonManager.DONATION.equals(code));
+            return
+            !(
+                code.startsWith(DEFAULT_PREFIX)
+                || code.equalsIgnoreCase(INVENTORY)
+                || MovementReasonManager.UNPACK_KIT.equals(code)
+                || MovementReasonManager.DONATION.equals(code)
+                || code.equals(ABBOTT)
+                || code.equals(ROCHE)
+                || code.equals(BIOMERIEUX)
+            );
 
         }
 

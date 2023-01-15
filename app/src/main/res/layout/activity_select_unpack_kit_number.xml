@@ -7,12 +7,67 @@
     android:padding="@dimen/padding_medium">
 
     <TextView
+        android:id="@+id/tv_origin_of_movement"
+        style="@style/Text.Black.Normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/label_movement_detail" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/ly_movement_reason"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:padding="@dimen/padding_normal">
+
+                    <EditText
+                        android:id="@+id/et_movement_reason"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:drawableLeft="@drawable/ic_movement_origin"
+                        android:drawablePadding="5dp"
+                        android:inputType="text"
+                        android:focusableInTouchMode="false"
+                        android:hint="@string/label_unpack_movement_reason" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/ly_other_movement_reason"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/margin_normal"
+                    android:padding="@dimen/padding_normal"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/et_other_movement_reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="5dp"
+                        android:inputType="text"
+                        android:hint="@string/hint_others_movement_reason" />
+                </android.support.design.widget.TextInputLayout>
+
+
+
+    </LinearLayout>
+
+    <TextView
         android:id="@+id/tv_select_unpack_kit_number"
         style="@style/Text.Black.Normal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/label_select_unpack_num" />
+        android:text="@string/label_select_unpack_num"
+        android:layout_marginTop="32dp"/>
 
     <GridView
         android:id="@+id/vg_unpack_num_container"

@@ -49,6 +49,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         >
+
                         <Button
                             android:id="@+id/btn_inventory"
                             style="@style/Homepage.Button"
@@ -126,10 +127,54 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_marginTop="10dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:background="@color/color_teal"
                         android:onClick="onClickKitStockCard"
                         android:text="@string/label_kits_stock_cards" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <Button
+                                android:id="@+id/btn_rapid_test"
+                                style="@style/Homepage.Button"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="@dimen/margin_small"
+                                android:background="@color/color_material_blue_gray"
+                                android:onClick="onClickRapidTestHistory"
+                                android:text="@string/title_rapid_test" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:visibility="gone">
+
+                            <Button
+                                android:id="@+id/btn_patient_data"
+                                style="@style/Homepage.Button"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:background="@color/color_pink"
+                                android:onClick="onClickPatientDataReport"
+                                android:text="@string/title_patient_data_report" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -143,18 +188,59 @@
                             android:layout_weight="1">
 
                             <Button
-                                android:id="@+id/btn_rapid_test"
+                                android:id="@+id/btn_lmis_abbott_m2000"
                                 style="@style/Homepage.Button"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="10dp"
-                                android:background="@color/color_material_blue_gray"
-                                android:onClick="onClickRapidTestHistory"
-                                android:text="@string/title_rapid_test"
-                                android:layout_marginRight="@dimen/margin_small"/>
-
+                                android:layout_marginRight="@dimen/margin_small"
+                                android:background="@color/color_accent"
+                                android:onClick="onClickLmisAbbotM2000History"
+                                android:text="@string/lmis_abbott_M2000"
+                                android:textSize="@dimen/font_size_regular" />
                         </RelativeLayout>
 
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+                            <Button
+                                android:id="@+id/btn_lmis_abbott_alinity_m"
+                                style="@style/Homepage.Button"
+                                android:textSize="@dimen/font_size_regular"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:background="@color/color_amber_dark"
+                                android:onClick="onClickLmisAbbottAlinityMHistory"
+                                android:text="@string/lmis_abbott_alinity_m" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+                            <Button
+                                android:id="@+id/btn_lmis_roche_cobas_6800"
+                                style="@style/Homepage.Button"
+                                android:textSize="@dimen/font_size_regular"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="@dimen/margin_small"
+                                android:background="@color/color_blue_dark"
+                                android:onClick="onClickLmisRocheCobas6800History"
+                                android:text="@string/lmis_roche_cobas_6800" />
+                        </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -162,19 +248,63 @@
                             android:layout_weight="1">
 
                             <Button
-                                android:id="@+id/btn_patient_data"
+                                android:id="@+id/btn_lmis_roche_capctm_96"
                                 style="@style/Homepage.Button"
+                                android:textSize="@dimen/font_size_regular"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="10dp"
                                 android:layout_weight="1"
-                                android:background="@color/color_pink"
-                                android:onClick="onClickPatientDataReport"
-                                android:text="@string/title_patient_data_report" />
+                                android:background="@color/color_teal_dark"
+                                android:onClick="onClickLmisRocheCapctm96History"
+                                android:text="@string/lmis_roche_capctm_96" />
+                        </RelativeLayout>
+                    </LinearLayout>
 
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="1">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <Button
+                                android:id="@+id/btn_lmis_hologic_panter"
+                                style="@style/Homepage.Button"
+                                android:textSize="@dimen/font_size_regular"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="@dimen/margin_small"
+                                android:background="@color/color_purple_dark"
+                                android:onClick="onClickLmisHologicPanterHistory"
+                                android:text="@string/lmis_hologic_panter" />
                         </RelativeLayout>
 
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+                            <Button
+                                android:id="@+id/btn_lmis_biosecurity"
+                                style="@style/Homepage.Button"
+                                android:textSize="@dimen/font_size_regular"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:background="@color/color_red_dark"
+                                android:onClick="onClickLmisBiosecurityHistory"
+                                android:text="@string/lmis_biosecurity" />
+                        </RelativeLayout>
                     </LinearLayout>
+
 
                 </LinearLayout>
 

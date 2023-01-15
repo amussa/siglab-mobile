@@ -121,7 +121,8 @@ public class MMIARnrForm extends LinearLayout {
         itemFormList = rnrFormItemList;
 
         // Adult View
-        addViewByMedicineType(filterRnrFormItem(itemFormList, Product.MEDICINE_TYPE_ADULT));
+        //addViewByMedicineType(filterRnrFormItem(itemFormList, Product.MEDICINE_TYPE_ADULT));
+        addViewByMedicineType(filterRnrFormItem(itemFormList, Product.DIAGNOSTICO_PRECOCE_INFANTIL));
         addDividerView(Product.MEDICINE_TYPE_ADULT);
         addDividerView(Product.MEDICINE_TYPE_ADULT);
 
@@ -174,6 +175,7 @@ public class MMIARnrForm extends LinearLayout {
         return from(rnrFormItemList).filter(new Predicate<RnrFormItem>() {
             @Override
             public boolean apply(RnrFormItem rnrFormItem) {
+                boolean equals = category.equals(rnrFormItem.getCategory());
                 return category.equals(rnrFormItem.getCategory());
             }
         }).toList();

@@ -26,6 +26,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openlmis.core.manager.MovementReasonManager;
 import org.openlmis.core.utils.DateUtil;
 import org.openlmis.core.utils.ListUtil;
@@ -64,6 +65,9 @@ public class StockMovementItem extends BaseModel {
     String reason;
 
     @DatabaseField
+    String otherReason;
+
+    @DatabaseField
     MovementReasonManager.MovementType movementType;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
@@ -80,13 +84,13 @@ public class StockMovementItem extends BaseModel {
     String expireDates;
 
     @DatabaseField(canBeNull = false, dataType = DataType.DATE_STRING, format = DateUtil.DB_DATE_FORMAT)
-    private java.util.Date movementDate;
+    private Date movementDate;
 
     @DatabaseField
     private boolean synced = false;
 
     @DatabaseField(canBeNull = false, dataType = DataType.DATE_STRING, format = DateUtil.DATE_TIME_FORMAT)
-    private java.util.Date createdTime;
+    private Date createdTime;
 
     @ForeignCollectionField()
     private ForeignCollection<LotMovementItem> foreignLotMovementItems;
@@ -158,7 +162,7 @@ public class StockMovementItem extends BaseModel {
             }
             setMovementQuantity(movementQuantity);
 
-            if (movementType.equals(MovementReasonManager.MovementType.ISSUE) || movementType.equals(MovementReasonManager.MovementType.NEGATIVE_ADJUST)) {
+            if (movementType.equals(MovementReasonManager.MovementType.ISSUE) || movementType.equals(MovementReasonManager.MovementType.NEGATIVE_ADJUST) || movementType.equals(MovementReasonManager.MovementType.LOSSES)) {
                 setStockOnHand(getStockOnHand() - movementQuantity);
             } else {
                 setStockOnHand(getStockOnHand() + movementQuantity);
@@ -190,4 +194,17 @@ public class StockMovementItem extends BaseModel {
         setLotMovementItemListWrapper(existingLotMovementItemList);
         setNewAddedLotMovementItemListWrapper(newAddedLotMovementItemList);
     }
+
+    public static String buildReasonDescription(MovementReasonManager.MovementReason reason, String otherReason) {
+        if (reason != null) {
+            if (reason.getCode().equals(MovementReasonManager.OTHERS)) {
+                if (StringUtils.isNotBlank(otherReason)) {
+                    return reason.getDescription() + " - " + otherReason;
+                }
+            }
+            return reason.getDescription();
+        }
+        return StringUtils.EMPTY;
+    }
+
 }

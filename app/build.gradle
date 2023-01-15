@@ -14,7 +14,6 @@ hockeyapp {
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
 
     defaultConfig {
         multiDexEnabled true
@@ -61,12 +60,17 @@ android {
     }
 
     productFlavors {
+        lab {
+            applicationId 'org.openlmis.core.lab'
+
+        }
         local {
             applicationId 'org.openlmis.core.local'
         }
         dev {
             applicationId 'org.openlmis.core.dev'
         }
+
         qa {
             applicationId 'org.openlmis.core.qa'
             buildConfigField "boolean", "MONITOR_DEVICE_ID", "false"

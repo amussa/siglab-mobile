@@ -68,7 +68,7 @@ public class LotInfoGroup extends org.apmem.tools.layouts.FlowLayout {
     private ViewGroup addLotInfoView(LotOnHand lotOnHand) {
         String lotOnHandQuantity = "" + lotOnHand.getQuantityOnHand();
         String lotInfo = lotOnHand.getLot().getLotNumber() + " - "
-                + DateUtil.formatDate(lotOnHand.getLot().getExpirationDate(), DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR)
+                + DateUtil.formatDate(lotOnHand.getLot().getExpirationDate(), DateUtil.DEFAULT_DATE_FORMAT)
                 + " - "
                 + lotOnHandQuantity;
 

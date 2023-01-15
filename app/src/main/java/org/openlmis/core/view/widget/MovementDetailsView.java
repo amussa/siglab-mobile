@@ -3,6 +3,7 @@ package org.openlmis.core.view.widget;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.support.design.widget.TextInputLayout;
@@ -20,6 +21,7 @@ import org.openlmis.core.view.listener.MovementDateListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Objects;
 
 import roboguice.RoboGuice;
 import roboguice.inject.InjectView;
@@ -46,6 +48,12 @@ public class MovementDetailsView extends LinearLayout {
 
     @InjectView(R.id.ly_movement_reason)
     TextInputLayout lyMovementReason;
+
+    @InjectView(R.id.ly_others_movement_reason)
+    TextInputLayout lyOthersMovementReason;
+
+    @InjectView(R.id.et_others_movement_reason)
+    EditText etOthersMovementReason;
 
     @InjectView(R.id.et_requested_quantity)
     EditText etRequestedQuantity;
@@ -99,6 +107,7 @@ public class MovementDetailsView extends LinearLayout {
 
         setMovementDateClickListener();
         setSignatureListener();
+        setOtherMovementReasonVisibility();
     }
 
     private void setSignatureListener() {
@@ -164,6 +173,7 @@ public class MovementDetailsView extends LinearLayout {
         quantityMap.put(presenter.getMovementType(), etMovementQuantity.getText().toString());
         presenter.getViewModel().setTypeQuantityMap(quantityMap);
         presenter.getViewModel().setSignature(etMovementSignature.getText().toString());
+        presenter.getViewModel().setOtherReason(etOthersMovementReason.getText().toString());
     }
 
     public void clearTextInputLayoutError() {
@@ -215,6 +225,7 @@ public class MovementDetailsView extends LinearLayout {
         boolean isValid = validateSignature();
         isValid = validateQuantity() && isValid;
         isValid = validateMovementReason() && isValid;
+        isValid = validateMovementOtherReason() && isValid;
         isValid = validateMovementDate() && isValid;
         return isValid;
     }
@@ -254,6 +265,20 @@ public class MovementDetailsView extends LinearLayout {
         return true;
     }
 
+    private boolean validateMovementOtherReason() {
+        if (!presenter.getViewModel().validateMovementOtherReason()) {
+            showMovementOtherReasonEmptyError();
+            return false;
+        }
+        return true;
+    }
+
+    private void showMovementOtherReasonEmptyError() {
+        lyOthersMovementReason.setError(getResources().getString(R.string.msg_empty_movement_reason));
+        etOthersMovementReason.getBackground().setColorFilter(getResources().getColor(R.color.color_red), PorterDuff.Mode.SRC_ATOP);
+        requestFocus(etOthersMovementReason);
+    }
+
     public boolean validateSignature() {
         if (StringUtils.isBlank(etMovementSignature.getText())) {
             showSignatureError(getContext().getString(R.string.msg_empty_signature));
@@ -266,4 +291,25 @@ public class MovementDetailsView extends LinearLayout {
         }
         return true;
     }
+
+    public void setOtherMovementReasonVisibility() {
+        if (presenter.getViewModel().getReason() == null) {
+            return;
+        }
+
+        if (presenter.getViewModel().getReason().getCode().equals(MovementReasonManager.OTHERS)) {
+            enableOthersMovementReason();
+        } else {
+            disableOthersMovementReason();
+        }
+    }
+
+    public void enableOthersMovementReason() {
+        lyOthersMovementReason.setVisibility(View.VISIBLE);
+    }
+
+    public void disableOthersMovementReason() {
+        lyOthersMovementReason.setVisibility(View.GONE);
+    }
+
 }

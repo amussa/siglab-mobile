@@ -135,7 +135,7 @@ public class PhysicalInventoryViewModel extends InventoryViewModel {
                     LotMovementViewModel newLotMovementViewModel = new LotMovementViewModel();
                     newLotMovementViewModel.setQuantity(formatQuantity(draftLotItem.getQuantity()));
                     newLotMovementViewModel.setLotNumber(draftLotItem.getLotNumber());
-                    newLotMovementViewModel.setExpiryDate(DateUtil.formatDate(draftLotItem.getExpirationDate(), DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR));
+                    newLotMovementViewModel.setExpiryDate(DateUtil.formatDate(draftLotItem.getExpirationDate(), DateUtil.DEFAULT_DATE_FORMAT));
                     getNewLotMovementViewModelList().add(newLotMovementViewModel);
                 }
             } else {

@@ -78,6 +78,9 @@ public class StockMovementViewHolder extends BaseViewHolder {
     @InjectView(R.id.et_issued)
     EditText etIssued;
 
+    @InjectView(R.id.et_losses)
+    EditText etLosses;
+
     @InjectView(R.id.et_requested)
     EditText etRequested;
 
@@ -96,6 +99,7 @@ public class StockMovementViewHolder extends BaseViewHolder {
         etNegativeAdjustment.setFilters(filters);
         etPositiveAdjustment.setFilters(filters);
         etIssued.setFilters(filters);
+        etLosses.setFilters(filters);
         etRequested.setFilters(filters);
 
         initStockViewMap();
@@ -121,11 +125,13 @@ public class StockMovementViewHolder extends BaseViewHolder {
         etNegativeAdjustment.setText(model.getNegativeAdjustment());
         etPositiveAdjustment.setText(model.getPositiveAdjustment());
         etIssued.setText(model.getIssued());
+        etLosses.setText(model.getLosses());
         etRequested.setText(model.getRequested());
         txStockExistence.setText(model.getStockExistence());
         txSignature.setText(model.getSignature());
         if (model.getReason() != null) {
-            txReason.setText(model.getReason().getDescription());
+            //txReason.setText(model.getReason().getDescription());
+            txReason.setText(StockMovementItem.buildReasonDescription(model.getReason(), model.getOtherReason()));
         } else {
             txReason.setText(StringUtils.EMPTY);
         }
@@ -194,6 +200,7 @@ public class StockMovementViewHolder extends BaseViewHolder {
         etPositiveAdjustment.removeTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etPositiveAdjustment, model, currentStockOnHand));
 
         etIssued.removeTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etIssued, model, currentStockOnHand));
+        etLosses.removeTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etIssued, model, currentStockOnHand));
         etRequested.removeTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etRequested, model, currentStockOnHand));
 
         etDocumentNo.removeTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etDocumentNo, model, currentStockOnHand));
@@ -239,6 +246,7 @@ public class StockMovementViewHolder extends BaseViewHolder {
         etNegativeAdjustment.addTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etNegativeAdjustment, model, currentStockOnHand));
         etPositiveAdjustment.addTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etPositiveAdjustment, model, currentStockOnHand));
         etIssued.addTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etIssued, model, currentStockOnHand));
+        etLosses.addTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etLosses, model, currentStockOnHand));
         etDocumentNo.addTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etDocumentNo, model, currentStockOnHand));
         etRequested.addTextChangedListener(new StockMovementViewHolderEditTextWatcher(this, etRequested, model, currentStockOnHand));
     }
@@ -265,6 +273,7 @@ public class StockMovementViewHolder extends BaseViewHolder {
     private void hideUnderline() {
         etDocumentNo.setBackground(null);
         etIssued.setBackground(null);
+        etLosses.setBackground(null);
         etRequested.setBackground(null);
         etNegativeAdjustment.setBackground(null);
         etPositiveAdjustment.setBackground(null);
@@ -277,6 +286,7 @@ public class StockMovementViewHolder extends BaseViewHolder {
         etNegativeAdjustment.setEnabled(false);
         etPositiveAdjustment.setEnabled(false);
         etIssued.setEnabled(false);
+        etLosses.setEnabled(false);
         etRequested.setEnabled(false);
         txMovementDate.setEnabled(false);
         txReason.setEnabled(false);

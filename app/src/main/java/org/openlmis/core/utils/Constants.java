@@ -22,6 +22,9 @@ import org.openlmis.core.LMISApp;
 import org.openlmis.core.R;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public final class Constants {
@@ -77,6 +80,12 @@ public final class Constants {
     public static final String RAPID_REPORT = "TEST_KIT";
     public static final String AL_REPORT = "MALARIA";
     public static final String PTV_REPORT = "PTV";
+    public static final String LMIS_ABBOTT_M2000 = "LMIS_ABBOTT_M2000";
+    public static final String LMIS_ABBOTT_ALINITY_M = "LMIS_ABBOTT_ALINITY_M";
+    public static final String LMIS_ROCHE_COBAS_6800 = "LMIS_ROCHE_COBAS_6800";
+    public static final String LMIS_ROCHE_CAPCTM_96 = "LMIS_ROCHE_CAPCTM_96";
+    public static final String LMIS_HOLOGIC_PANTER = "LMIS_HOLOGIC_PANTER";
+    public static final String LMIS_BIOSECURITY_MATERIAL = "LMIS_BIOSECURITY_MATERIAL";
 
     public static final String PTV_REGIME_CHILD = "PTV Crianças";
     public static final String PTV_REGIME_ADULT = "PTV Mulheres";
@@ -109,6 +118,8 @@ public final class Constants {
     public static final String PARAM_MOVEMENT_TYPE = "movementType";
     public static final String PARAM_LOT_DETAILS = "lotDetails";
     public static final String PARAM_MSG_CONFIRM_GENERATE_LOT_NUMBER = "confirmGenerateLotNumberMessage";
+    public static final String PARAM_KIT_MOVEMENT_REASON = "kitMovementReason";
+    public static final String PARAM_KIT_OTHER_MOVEMENT_REASON = "kitOtherMovementReason";
 
     // Request Params
     public static final int REQUEST_FROM_STOCK_LIST_PAGE = 100;
@@ -140,6 +151,8 @@ public final class Constants {
     public static final String REQUISITIONS = "Requisitions";
     public static final String FINAL_STOCK = "Final Stock";
     public static final String TOTAL = "Total";
+
+    public static final Calendar NO_EXPIRY_DATE = new GregorianCalendar(2100, 11, 31);
 
     private Constants() {
 

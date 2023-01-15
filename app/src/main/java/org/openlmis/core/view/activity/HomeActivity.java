@@ -102,6 +102,24 @@ public class HomeActivity extends BaseActivity {
     @InjectView(R.id.btn_al)
     Button btnALReport;
 
+    @InjectView(R.id.btn_lmis_abbott_m2000)
+    Button btnLmisAbbottM2000;
+
+    @InjectView(R.id.btn_lmis_abbott_alinity_m)
+    Button btnLmisAbbottAlinityM;
+
+    @InjectView(R.id.btn_lmis_roche_cobas_6800)
+    Button btnLmisRocheCobas6800;
+
+    @InjectView(R.id.btn_lmis_roche_capctm_96)
+    Button btnLmisRocheCapctm96;
+
+    @InjectView(R.id.btn_lmis_hologic_panter)
+    Button btnLmisHologicPanter;
+
+    @InjectView(R.id.btn_lmis_biosecurity)
+    Button btnLmisBiosecurity;
+
     @InjectView(R.id.rl_al)
     RelativeLayout viewAl;
 
@@ -210,11 +228,19 @@ public class HomeActivity extends BaseActivity {
 
     private void updateButtonConfigView() {
        List reportTypes = sharedPreferenceMgr.getReportTypesData();
-       List<Pair<String, Button>> buttonConfigs= Arrays.asList(new Pair<>(Constants.VIA_REPORT, btnVIAList),
+       List<Pair<String, Button>> buttonConfigs= Arrays.asList(
+               new Pair<>(Constants.VIA_REPORT, btnVIAList),
                new Pair<>(Constants.MMIA_REPORT, btnMMIAList),
                new Pair<>(Constants.AL_REPORT, btnALReport),
                new Pair<>(Constants.PTV_REPORT, btnPTVReport),
-               new Pair<>(Constants.RAPID_REPORT,btnRapidTestReport));
+               new Pair<>(Constants.RAPID_REPORT,btnRapidTestReport),
+               new Pair<>(Constants.LMIS_ABBOTT_M2000, btnLmisAbbottM2000),
+               new Pair<>(Constants.LMIS_ABBOTT_ALINITY_M, btnLmisAbbottAlinityM),
+               new Pair<>(Constants.LMIS_ROCHE_COBAS_6800, btnLmisRocheCobas6800),
+               new Pair<>(Constants.LMIS_ROCHE_CAPCTM_96, btnLmisRocheCapctm96),
+               new Pair<>(Constants.LMIS_HOLOGIC_PANTER, btnLmisHologicPanter),
+               new Pair<>(Constants.LMIS_BIOSECURITY_MATERIAL, btnLmisBiosecurity)
+       );
        for (Pair<String, Button> buttonConfig: buttonConfigs) {
            ReportTypeForm reportType = getReportType(buttonConfig.first, reportTypes);
            Button button = buttonConfig.second;
@@ -232,6 +258,7 @@ public class HomeActivity extends BaseActivity {
                btnMMIAList.setVisibility(View.GONE);
            }
        }
+
     }
 
     private ReportTypeForm getReportType(String code,  List<ReportTypeForm> reportTypes) {
@@ -289,6 +316,36 @@ public class HomeActivity extends BaseActivity {
     public void onClickPtvStockCard(View view) {
         startActivity(RnRFormListActivity.getIntentToMe(this, Constants.Program.PTV_PROGRAM));
         TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectPTV, Constants.PTV_PROGRAM_CODE);
+    }
+
+    public void onClickLmisAbbotM2000History(View view) {
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+    }
+
+    public void onClickLmisAbbottAlinityMHistory(View view) {
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+    }
+
+    public void onClickLmisRocheCobas6800History(View view) {
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+    }
+
+    public void onClickLmisRocheCapctm96History(View view) {
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+    }
+
+    public void onClickLmisHologicPanterHistory(View view) {
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+    }
+
+    public void onClickLmisBiosecurityHistory(View view) {
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
     }
 
     @Override

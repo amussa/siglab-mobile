@@ -1,5 +1,7 @@
 package org.openlmis.core.view.widget;
 
+import static org.openlmis.core.utils.Constants.NO_EXPIRY_DATE;
+
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.res.Resources;
@@ -11,8 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
@@ -23,6 +28,7 @@ import org.openlmis.core.utils.DateUtil;
 import org.openlmis.core.view.fragment.BaseDialogFragment;
 import org.openlmis.core.view.fragment.ConfirmGenerateLotNumberDialogFragment;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -61,6 +67,12 @@ public class AddLotDialogFragment extends BaseDialogFragment {
     @Getter
     private String expiryDate;
 
+    @InjectView(R.id.cb_not_allowed)
+    CheckBox notAllowed;
+
+    @InjectView(R.id.touchArea_checkbox)
+    LinearLayout taCheckbox;
+
     @Setter
     private SingleClickButtonListener listener;
     private AddLotWithoutNumberListener addLotWithoutNumberListener;
@@ -74,7 +86,7 @@ public class AddLotDialogFragment extends BaseDialogFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        hideDay();
+        //hideDay();
         if (getArguments() != null) {
             String drugNameFromArgs = getArguments().getString(Constants.PARAM_STOCK_NAME);
             if (drugNameFromArgs != null) {
@@ -84,7 +96,32 @@ public class AddLotDialogFragment extends BaseDialogFragment {
         }
         btnCancel.setOnClickListener(listener);
         btnComplete.setOnClickListener(listener);
+        setNotAvailableCheckboxListener();
         this.setCancelable(false);
+    }
+
+    private void setNotAvailableCheckboxListener() {
+        taCheckbox.setOnClickListener(new SingleClickButtonListener() {
+            @Override
+            public void onSingleClick(View v) {
+                notAllowed.setChecked(!notAllowed.isChecked());
+            }
+        });
+        notAllowed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    datePicker.setEnabled(false);
+                    datePicker.setVisibility(View.GONE);
+                    datePicker.updateDate(NO_EXPIRY_DATE.get(Calendar.YEAR), NO_EXPIRY_DATE.get(Calendar.MONTH), NO_EXPIRY_DATE.get(Calendar.DAY_OF_MONTH));
+                } else {
+                    datePicker.setEnabled(true);
+                    datePicker.setVisibility(View.VISIBLE);
+                    Calendar now = new GregorianCalendar();
+                    datePicker.updateDate(now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
+                }
+            }
+        });
     }
 
     @Override
@@ -121,8 +158,8 @@ public class AddLotDialogFragment extends BaseDialogFragment {
 
     public boolean validate() {
         clearErrorMessage();
-        Date enteredDate = DateUtil.getActualMaximumDate(new GregorianCalendar(datePicker.getYear(), datePicker.getMonth(), 1).getTime());
-        expiryDate = DateUtil.formatDate(enteredDate, DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR);
+        Date enteredDate = new GregorianCalendar(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth()).getTime();
+        expiryDate = DateUtil.formatDate(enteredDate, DateUtil.DEFAULT_DATE_FORMAT);
 
         if (StringUtils.isBlank(etLotNumber.getText().toString())) {
             showConfirmNoLotNumberDialog();

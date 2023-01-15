@@ -78,7 +78,7 @@ public class UnpackKitPresenter extends Presenter {
         }).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io());
     }
 
-    public Observable saveUnpackProductsObservable(final int kitUnpackQuantity, final String documentNumber, final String signature) {
+    public Observable saveUnpackProductsObservable(final int kitUnpackQuantity, final String documentNumber, final String signature, String kitMovementReason, String kitOtherMovementReason) {
         return Observable.create(new Observable.OnSubscribe<Void>() {
             @Override
             public void call(final Subscriber<? super Void> subscriber) {
@@ -93,7 +93,7 @@ public class UnpackKitPresenter extends Presenter {
                         @Override
                         public StockCard apply(InventoryViewModel inventoryViewModel) {
                             try {
-                                return createStockCardForProductWithLot(inventoryViewModel, documentNumber, signature);
+                                return createStockCardForProductWithLot(inventoryViewModel, documentNumber, signature, kitMovementReason, kitOtherMovementReason);
                             } catch (LMISException e) {
                                 subscriber.onError(e);
                             }
@@ -140,7 +140,19 @@ public class UnpackKitPresenter extends Presenter {
     }
 
     @NonNull
-    protected StockCard createStockCardForProductWithLot(InventoryViewModel inventoryViewModel, String documentNumber, String signature) throws LMISException {
+    private StockMovementItem createUnpackMovementItemAndLotMovement(StockCard stockCard, String documentNumber, String signature, List<LotMovementViewModel> lotMovementViewModelList, String kitMovementReason, String kitOtherMovementReason) {
+        StockMovementItem unpackMovementItem = new StockMovementItem(stockCard);
+        unpackMovementItem.setReason(kitMovementReason);
+        unpackMovementItem.setOtherReason(kitOtherMovementReason);
+        unpackMovementItem.setMovementType(MovementReasonManager.MovementType.RECEIVE);
+        unpackMovementItem.setDocumentNumber(documentNumber);
+        unpackMovementItem.setSignature(signature);
+        unpackMovementItem.populateLotQuantitiesAndCalculateNewSOH(lotMovementViewModelList, unpackMovementItem.getMovementType());
+        return unpackMovementItem;
+    }
+
+    @NonNull
+    protected StockCard createStockCardForProductWithLot(InventoryViewModel inventoryViewModel, String documentNumber, String signature, String kitMovementReason, String kitOtherMovementReason) throws LMISException {
         List<StockMovementItem> stockMovementItems = new ArrayList<>();
 
         StockCard stockCard = stockRepository.queryStockCardByProductId(inventoryViewModel.getProductId());
@@ -162,24 +174,13 @@ public class UnpackKitPresenter extends Presenter {
         }).toList());
         totalLotMovementViewModelList.addAll(inventoryViewModel.getNewLotMovementViewModelList());
 
-        stockMovementItems.add(createUnpackMovementItemAndLotMovement(stockCard, documentNumber, signature, totalLotMovementViewModelList));
+        stockMovementItems.add(createUnpackMovementItemAndLotMovement(stockCard, documentNumber, signature, totalLotMovementViewModelList, kitMovementReason, kitOtherMovementReason));
 
         stockCard.setStockOnHand(stockMovementItems.get(stockMovementItems.size() - 1).getStockOnHand());
 
         stockCard.setStockMovementItemsWrapper(stockMovementItems);
 
         return stockCard;
-    }
-
-    @NonNull
-    private StockMovementItem createUnpackMovementItemAndLotMovement(StockCard stockCard, String documentNumber, String signature, List<LotMovementViewModel> lotMovementViewModelList) {
-        StockMovementItem unpackMovementItem = new StockMovementItem(stockCard);
-        unpackMovementItem.setReason(MovementReasonManager.DDM);
-        unpackMovementItem.setMovementType(MovementReasonManager.MovementType.RECEIVE);
-        unpackMovementItem.setDocumentNumber(documentNumber);
-        unpackMovementItem.setSignature(signature);
-        unpackMovementItem.populateLotQuantitiesAndCalculateNewSOH(lotMovementViewModelList, unpackMovementItem.getMovementType());
-        return unpackMovementItem;
     }
 
     private void setExistingLotViewModels(InventoryViewModel inventoryViewModel) throws LMISException {
@@ -189,13 +190,13 @@ public class UnpackKitPresenter extends Presenter {
                 @Override
                 public LotMovementViewModel apply(LotOnHand lotOnHand) {
                     return new LotMovementViewModel(lotOnHand.getLot().getLotNumber(),
-                            DateUtil.formatDate(lotOnHand.getLot().getExpirationDate(), DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR),
+                            DateUtil.formatDate(lotOnHand.getLot().getExpirationDate(), DateUtil.DEFAULT_DATE_FORMAT),
                             lotOnHand.getQuantityOnHand().toString(), MovementReasonManager.MovementType.RECEIVE);
                 }
             }).toSortedList(new Comparator<LotMovementViewModel>() {
                 @Override
                 public int compare(LotMovementViewModel lot1, LotMovementViewModel lot2) {
-                    return DateUtil.parseString(lot1.getExpiryDate(), DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR).compareTo(DateUtil.parseString(lot2.getExpiryDate(), DateUtil.DATE_FORMAT_ONLY_MONTH_AND_YEAR));
+                    return DateUtil.parseString(lot1.getExpiryDate(), DateUtil.DEFAULT_DATE_FORMAT).compareTo(DateUtil.parseString(lot2.getExpiryDate(), DateUtil.DEFAULT_DATE_FORMAT));
                 }
             });
             inventoryViewModel.setExistingLotMovementViewModelList(lotMovementViewModels);

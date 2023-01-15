@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import org.openlmis.core.LMISApp;
 import org.openlmis.core.R;
+import org.openlmis.core.utils.Constants;
+import org.openlmis.core.utils.DateUtil;
 import org.openlmis.core.utils.SingleTextWatcher;
 import org.openlmis.core.view.activity.BaseActivity;
 import org.openlmis.core.view.activity.InitialInventoryActivity;
@@ -22,6 +24,8 @@ import org.openlmis.core.view.activity.UnpackKitActivity;
 import org.openlmis.core.view.adapter.LotMovementAdapter;
 import org.openlmis.core.view.fragment.SimpleDialogFragment;
 import org.openlmis.core.view.viewmodel.LotMovementViewModel;
+
+import java.util.Date;
 
 import roboguice.inject.InjectView;
 
@@ -77,7 +81,14 @@ public class LotMovementViewHolder extends BaseViewHolder {
     }
 
     private void populateLotInfo(LotMovementViewModel viewModel) {
-        etLotInfo.setText(viewModel.getLotNumber() + " - " + viewModel.getExpiryDate());
+        String expiration;
+        Date expiryDate = DateUtil.parseString(viewModel.getExpiryDate(), DateUtil.DEFAULT_DATE_FORMAT);
+        if (expiryDate.equals(Constants.NO_EXPIRY_DATE.getTime())) {
+            expiration = LMISApp.getInstance().getString(R.string.label_no_expiration_date);
+        } else {
+            expiration = viewModel.getExpiryDate();
+        }
+        etLotInfo.setText(viewModel.getLotNumber() + " - " + expiration);
         etLotInfo.setKeyListener(null);
         etLotInfo.setOnKeyListener(null);
         etLotInfo.setBackground(null);

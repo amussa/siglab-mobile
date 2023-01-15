@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.openlmis.core.R;
 import org.openlmis.core.googleAnalytics.ScreenName;
+import org.openlmis.core.manager.MovementReasonManager;
 import org.openlmis.core.presenter.UnpackKitPresenter;
 import org.openlmis.core.utils.Constants;
 import org.openlmis.core.utils.InjectPresenter;
@@ -50,10 +51,11 @@ public class UnpackKitActivity extends BaseActivity {
     @InjectPresenter(UnpackKitPresenter.class)
     private UnpackKitPresenter presenter;
 
-    private String kitCode;
-
-    protected UnpackKitAdapter mAdapter;
     private int kitNum;
+    private String kitCode;
+    private String kitMovementReason;
+    private String kitOtherMovementReason;
+    protected UnpackKitAdapter mAdapter;
 
     @Override
     protected int getThemeRes() {
@@ -70,8 +72,10 @@ public class UnpackKitActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        kitCode = intent.getStringExtra(Constants.PARAM_KIT_CODE);
         kitNum = intent.getIntExtra(Constants.PARAM_KIT_NUM, 0);
+        kitCode = intent.getStringExtra(Constants.PARAM_KIT_CODE);
+        kitMovementReason = intent.getStringExtra(Constants.PARAM_KIT_MOVEMENT_REASON);
+        kitOtherMovementReason = intent.getStringExtra(Constants.PARAM_KIT_OTHER_MOVEMENT_REASON);
 
         String kitName = intent.getStringExtra(Constants.PARAM_KIT_NAME);
         tvTotalKit.setText(getString(R.string.kit_number, kitNum, kitName));
@@ -135,7 +139,7 @@ public class UnpackKitActivity extends BaseActivity {
         @Override
         public void onSign(String sign) {
             loading();
-            Subscription subscription = presenter.saveUnpackProductsObservable(kitNum, etDocumentNumber.getText().toString(), sign).subscribe(saveKitSubscriber);
+            Subscription subscription = presenter.saveUnpackProductsObservable(kitNum, etDocumentNumber.getText().toString(), sign, kitMovementReason, kitOtherMovementReason).subscribe(saveKitSubscriber);
             subscriptions.add(subscription);
         }
     };
@@ -162,11 +166,13 @@ public class UnpackKitActivity extends BaseActivity {
         tvTotal.setText(getString(R.string.label_total, total));
     }
 
-    public static Intent getIntentToMe(Context context, String code, int num, String kitName) {
+    public static Intent getIntentToMe(Context context, String code, int num, String kitName, MovementReasonManager.MovementReason movementReason, String otherMovementReason) {
         Intent intent = new Intent(context, UnpackKitActivity.class);
         intent.putExtra(Constants.PARAM_KIT_CODE, code);
         intent.putExtra(Constants.PARAM_KIT_NUM, num);
         intent.putExtra(Constants.PARAM_KIT_NAME, kitName);
+        intent.putExtra(Constants.PARAM_KIT_MOVEMENT_REASON, movementReason.getCode());
+        intent.putExtra(Constants.PARAM_KIT_OTHER_MOVEMENT_REASON, otherMovementReason);
         return intent;
     }
 

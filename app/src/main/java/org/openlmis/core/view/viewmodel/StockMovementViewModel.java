@@ -40,6 +40,7 @@ import lombok.NoArgsConstructor;
 public class StockMovementViewModel extends BaseStockMovementViewModel {
 
     MovementReasonManager.MovementReason reason;
+    String otherReason;
 
     String movementDate;
     String documentNo;
@@ -72,6 +73,7 @@ public class StockMovementViewModel extends BaseStockMovementViewModel {
         } catch (MovementReasonNotFoundException e) {
             throw new RuntimeException("MovementReason Cannot be find " + e.getMessage());
         }
+        otherReason = item.getOtherReason();
 
         typeQuantityMap.put(item.getMovementType(), String.valueOf(item.getMovementQuantity()));
     }
@@ -108,11 +110,22 @@ public class StockMovementViewModel extends BaseStockMovementViewModel {
         typeQuantityMap.put(MovementReasonManager.MovementType.POSITIVE_ADJUST, positiveAdjustment);
     }
 
+    public String getLosses() {
+        return typeQuantityMap.get(MovementReasonManager.MovementType.LOSSES);
+    }
+
+    public String setLosses(String losses) {
+        return typeQuantityMap.put(MovementReasonManager.MovementType.LOSSES, losses);
+    }
+
     public StockMovementItem convertViewToModel(StockCard stockCard) {
         StockMovementItem stockMovementItem = new StockMovementItem();
         stockMovementItem.setStockOnHand(Long.parseLong(getStockExistence()));
 
         stockMovementItem.setReason(reason.getCode());
+        if (reason.getCode().equals(MovementReasonManager.OTHERS)) {
+           stockMovementItem.setOtherReason(otherReason);
+        }
         stockMovementItem.setDocumentNumber(getDocumentNo());
         stockMovementItem.setMovementType(reason.getMovementType());
 
@@ -239,4 +252,14 @@ public class StockMovementViewModel extends BaseStockMovementViewModel {
     public boolean validateMovementReason() {
         return reason != null;
     }
+
+    public boolean validateMovementOtherReason() {
+        if (reason != null) {
+            if (reason.getCode().equals(MovementReasonManager.OTHERS)) {
+                return StringUtils.isNotBlank(otherReason);
+            }
+        }
+        return true;
+    }
+
 }

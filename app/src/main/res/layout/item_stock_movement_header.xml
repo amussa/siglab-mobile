@@ -60,6 +60,13 @@
             android:text="@string/label_issued_mmia" />
 
         <TextView
+            android:id="@+id/et_losses"
+            style="@style/ItemMovement.SheetText"
+            android:layout_width="@dimen/stock_movement_item_common_width"
+            android:layout_height="wrap_content"
+            android:text="@string/label_losses" />
+
+        <TextView
             android:id="@+id/tx_stock_on_hand"
             style="@style/ItemMovement.SheetText"
             android:layout_width="@dimen/stock_movement_item_common_width"
