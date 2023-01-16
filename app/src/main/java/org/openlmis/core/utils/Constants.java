@@ -23,19 +23,26 @@ import org.openlmis.core.R;
 
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 public final class Constants {
+
+    public static Program currentLmisProgram;
 
     public enum Program {
         MMIA_PROGRAM(MMIA_PROGRAM_CODE, R.string.mmia_list, MMIA_REPORT),
         VIA_PROGRAM(VIA_PROGRAM_CODE, R.string.requisition_list, VIA_REPORT),
         AL_PROGRAM(AL_PROGRAM_CODE, R.string.label_al_name, AL_REPORT),
         PTV_PROGRAM(PTV_PROGRAM_CODE, R.string.label_ptv_name, PTV_REPORT),
-        RAPID_TEST_PROGRAM(TEST_KIT_PROGRAM_CODE, R.string.title_rapid_test_reports, RAPID_REPORT);
-
+        RAPID_TEST_PROGRAM(TEST_KIT_PROGRAM_CODE, R.string.title_rapid_test_reports, RAPID_REPORT),
+        LMIS_ABBOTT_M2000_PROGRAM(LMIS_ABBOTT_M2000_PROGRAM_CODE, R.string.lmis_abbott_M2000, LMIS_ABBOTT_M2000_REPORT),
+        LMIS_ABBOTT_ALINITY_M_PROGRAM(LMIS_ABBOTT_ALINITY_M_PROGRAM_CODE, R.string.lmis_abbott_alinity_m, LMIS_ABBOTT_ALINITY_M_REPORT),
+        LMIS_ROCHE_COBAS_6800_PROGRAM(LMIS_ROCHE_COBAS_6800_PROGRAM_CODE, R.string.lmis_roche_cobas_6800, LMIS_ROCHE_COBAS_6800_REPORT),
+        LMIS_ROCHE_CAPCTM_96_PROGRAM(LMIS_ROCHE_CAPCTM_96_PROGRAM_CODE, R.string.lmis_roche_capctm_96, LMIS_ROCHE_CAPCTM_96_REPORT),
+        LMIS_HOLOGIC_PANTER_PROGRAM(LMIS_HOLOGIC_PANTER_PROGRAM_CODE, R.string.lmis_hologic_panter, LMIS_HOLOGIC_PANTER_REPORT),
+        LMIS_BIOSECURITY_MATERIAL_PROGRAM(LMIS_BIOSECURITY_MATERIAL_PROGRAM_CODE, R.string.lmis_biosecurity_material, LMIS_BIOSECURITY_MATERIAL_REPORT)
+        ;
 
         private String code;
         private String reportType;
@@ -67,6 +74,12 @@ public final class Constants {
     public static final String AL_PROGRAM_CODE = "MALARIA";
     public static final String PTV_PROGRAM_CODE = "PTV";
     public static final String TEST_KIT_PROGRAM_CODE = "TEST_KIT";
+    public static final String LMIS_ABBOTT_M2000_PROGRAM_CODE = "LMIS_ABBOTT_M2000";
+    public static final String LMIS_ABBOTT_ALINITY_M_PROGRAM_CODE = "LMIS_ABBOTT_ALINITY_M";
+    public static final String LMIS_ROCHE_COBAS_6800_PROGRAM_CODE = "LMIS_ROCHE_COBAS_6800";
+    public static final String LMIS_ROCHE_CAPCTM_96_PROGRAM_CODE = "LMIS_ROCHE_CAPCTM_96";
+    public static final String LMIS_HOLOGIC_PANTER_PROGRAM_CODE = "LMIS_HOLOGIC_PANTER";
+    public static final String LMIS_BIOSECURITY_MATERIAL_PROGRAM_CODE = "LMIS_BIOSECURITY_MATERIAL";
 
     public static final List<Constants.Program> PROGRAMES = Arrays.asList(Constants.Program.VIA_PROGRAM,
                     Constants.Program.MMIA_PROGRAM,
@@ -80,12 +93,12 @@ public final class Constants {
     public static final String RAPID_REPORT = "TEST_KIT";
     public static final String AL_REPORT = "MALARIA";
     public static final String PTV_REPORT = "PTV";
-    public static final String LMIS_ABBOTT_M2000 = "LMIS_ABBOTT_M2000";
-    public static final String LMIS_ABBOTT_ALINITY_M = "LMIS_ABBOTT_ALINITY_M";
-    public static final String LMIS_ROCHE_COBAS_6800 = "LMIS_ROCHE_COBAS_6800";
-    public static final String LMIS_ROCHE_CAPCTM_96 = "LMIS_ROCHE_CAPCTM_96";
-    public static final String LMIS_HOLOGIC_PANTER = "LMIS_HOLOGIC_PANTER";
-    public static final String LMIS_BIOSECURITY_MATERIAL = "LMIS_BIOSECURITY_MATERIAL";
+    public static final String LMIS_ABBOTT_M2000_REPORT = "LMIS_ABBOTT_M2000";
+    public static final String LMIS_ABBOTT_ALINITY_M_REPORT = "LMIS_ABBOTT_ALINITY_M";
+    public static final String LMIS_ROCHE_COBAS_6800_REPORT = "LMIS_ROCHE_COBAS_6800";
+    public static final String LMIS_ROCHE_CAPCTM_96_REPORT = "LMIS_ROCHE_CAPCTM_96";
+    public static final String LMIS_HOLOGIC_PANTER_REPORT = "LMIS_HOLOGIC_PANTER";
+    public static final String LMIS_BIOSECURITY_MATERIAL_REPORT = "LMIS_BIOSECURITY_MATERIAL";
 
     public static final String PTV_REGIME_CHILD = "PTV Crianças";
     public static final String PTV_REGIME_ADULT = "PTV Mulheres";

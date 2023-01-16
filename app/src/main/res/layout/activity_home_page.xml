@@ -301,7 +301,7 @@
                                 android:layout_weight="1"
                                 android:background="@color/color_red_dark"
                                 android:onClick="onClickLmisBiosecurityHistory"
-                                android:text="@string/lmis_biosecurity" />
+                                android:text="@string/lmis_biosecurity_material" />
                         </RelativeLayout>
                     </LinearLayout>
 

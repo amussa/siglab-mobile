@@ -4,6 +4,8 @@
         <item>RECEIVE|QUIMOFAR|Quimofar</item>
         <item>RECEIVE|HOSPITEC|Hospitec</item>
         <item>RECEIVE|THL|THL</item>
+        <item>RECEIVE|DISTRICT_DDM|District(DDM)</item>
+        <item>RECEIVE|PROVINCE_DPM|Province(DPM)</item>
         <item>RECEIVE|OTHERS|Others</item>
 
 

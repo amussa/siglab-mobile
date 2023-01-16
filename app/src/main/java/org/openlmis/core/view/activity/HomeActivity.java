@@ -234,12 +234,12 @@ public class HomeActivity extends BaseActivity {
                new Pair<>(Constants.AL_REPORT, btnALReport),
                new Pair<>(Constants.PTV_REPORT, btnPTVReport),
                new Pair<>(Constants.RAPID_REPORT,btnRapidTestReport),
-               new Pair<>(Constants.LMIS_ABBOTT_M2000, btnLmisAbbottM2000),
-               new Pair<>(Constants.LMIS_ABBOTT_ALINITY_M, btnLmisAbbottAlinityM),
-               new Pair<>(Constants.LMIS_ROCHE_COBAS_6800, btnLmisRocheCobas6800),
-               new Pair<>(Constants.LMIS_ROCHE_CAPCTM_96, btnLmisRocheCapctm96),
-               new Pair<>(Constants.LMIS_HOLOGIC_PANTER, btnLmisHologicPanter),
-               new Pair<>(Constants.LMIS_BIOSECURITY_MATERIAL, btnLmisBiosecurity)
+               new Pair<>(Constants.LMIS_ABBOTT_M2000_REPORT, btnLmisAbbottM2000),
+               new Pair<>(Constants.LMIS_ABBOTT_ALINITY_M_REPORT, btnLmisAbbottAlinityM),
+               new Pair<>(Constants.LMIS_ROCHE_COBAS_6800_REPORT, btnLmisRocheCobas6800),
+               new Pair<>(Constants.LMIS_ROCHE_CAPCTM_96_REPORT, btnLmisRocheCapctm96),
+               new Pair<>(Constants.LMIS_HOLOGIC_PANTER_REPORT, btnLmisHologicPanter),
+               new Pair<>(Constants.LMIS_BIOSECURITY_MATERIAL_REPORT, btnLmisBiosecurity)
        );
        for (Pair<String, Button> buttonConfig: buttonConfigs) {
            ReportTypeForm reportType = getReportType(buttonConfig.first, reportTypes);
@@ -319,33 +319,39 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void onClickLmisAbbotM2000History(View view) {
-        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
-        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+        Constants.currentLmisProgram = Constants.Program.LMIS_ABBOTT_M2000_PROGRAM;
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_ABBOTT_M2000_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisAbbottM2000, Constants.LMIS_ABBOTT_M2000_PROGRAM_CODE);
     }
 
     public void onClickLmisAbbottAlinityMHistory(View view) {
-        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
-        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+        Constants.currentLmisProgram = Constants.Program.LMIS_ABBOTT_ALINITY_M_PROGRAM;
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_ABBOTT_ALINITY_M_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisAbbottAlinityM, Constants.LMIS_ABBOTT_ALINITY_M_PROGRAM_CODE);
     }
 
     public void onClickLmisRocheCobas6800History(View view) {
-        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
-        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+        Constants.currentLmisProgram = Constants.Program.LMIS_ROCHE_COBAS_6800_PROGRAM;
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_ROCHE_COBAS_6800_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisRocheCobas6800, Constants.LMIS_ROCHE_COBAS_6800_PROGRAM_CODE);
     }
 
     public void onClickLmisRocheCapctm96History(View view) {
-        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
-        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+        Constants.currentLmisProgram = Constants.Program.LMIS_ROCHE_CAPCTM_96_PROGRAM;
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_ROCHE_CAPCTM_96_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisRocheCapctm96, Constants.LMIS_ROCHE_CAPCTM_96_PROGRAM_CODE);
     }
 
     public void onClickLmisHologicPanterHistory(View view) {
-        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
-        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+        Constants.currentLmisProgram = Constants.Program.LMIS_HOLOGIC_PANTER_PROGRAM;
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_HOLOGIC_PANTER_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisHologicPanter, Constants.LMIS_HOLOGIC_PANTER_PROGRAM_CODE);
     }
 
     public void onClickLmisBiosecurityHistory(View view) {
-        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.MMIA_PROGRAM));
-        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectMMIA, Constants.MMIA_PROGRAM_CODE);
+        Constants.currentLmisProgram = Constants.Program.LMIS_BIOSECURITY_MATERIAL_PROGRAM;
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_BIOSECURITY_MATERIAL_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisBiosecurityMaterial, Constants.LMIS_BIOSECURITY_MATERIAL_PROGRAM_CODE);
     }
 
     @Override

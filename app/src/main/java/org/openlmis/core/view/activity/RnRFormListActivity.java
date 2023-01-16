@@ -216,7 +216,25 @@ public class RnRFormListActivity extends BaseReportListActivity {
                 break;
             case PTV_PROGRAM:
                 intent = PTVRequisitionActivity.getIntentToMe(this, rnrFormId);
-
+                break;
+            case LMIS_ABBOTT_M2000_PROGRAM:
+                intent = LMISAbbottM2000RequisitionActivity.getIntentToMe(this, rnrFormId);
+                break;
+            case LMIS_ABBOTT_ALINITY_M_PROGRAM:
+                intent = LMISAbbottAlinityMRequisitionActivity.getIntentToMe(this, rnrFormId);
+                break;
+            case LMIS_ROCHE_COBAS_6800_PROGRAM:
+                intent = LMISRocheCobas6800RequisitionActivity.getIntentToMe(this, rnrFormId);
+                break;
+            case LMIS_ROCHE_CAPCTM_96_PROGRAM:
+                intent = LMISRocheCapctm96RequisitionActivity.getIntentToMe(this, rnrFormId);
+                break;
+            case LMIS_HOLOGIC_PANTER_PROGRAM:
+                intent = LMISHologicPanterRequisitionActivity.getIntentToMe(this, rnrFormId);
+                break;
+            case LMIS_BIOSECURITY_MATERIAL_PROGRAM:
+                intent = LMISBiosecurityMaterialRequisitionActivity.getIntentToMe(this, rnrFormId);
+                break;
         }
         startActivityForResult(intent, Constants.REQUEST_FROM_RNR_LIST_PAGE);
     }
@@ -235,6 +253,25 @@ public class RnRFormListActivity extends BaseReportListActivity {
                 break;
             case PTV_PROGRAM:
                 intent = PTVRequisitionActivity.getIntentToMe(this, periodEndDate);
+                break;
+            case LMIS_ABBOTT_M2000_PROGRAM:
+                intent = createLMISAbbottM2000RequisitionIntent(periodEndDate);
+                break;
+            case LMIS_ABBOTT_ALINITY_M_PROGRAM:
+                intent = createLMISAbbottAlinityMRequisitionIntent(periodEndDate);
+                break;
+            case LMIS_ROCHE_COBAS_6800_PROGRAM:
+                intent = createLMISRocheCobas6800RequisitionIntent(periodEndDate);
+                break;
+            case LMIS_ROCHE_CAPCTM_96_PROGRAM:
+                intent = createLMISRocheCapctm96RequisitionIntent(periodEndDate);
+                break;
+            case LMIS_HOLOGIC_PANTER_PROGRAM:
+                intent = createLMISHologicPanterRequisitionIntent(periodEndDate);
+                break;
+            case LMIS_BIOSECURITY_MATERIAL_PROGRAM:
+                intent = createLMISBiosecurityMaterialRequisitionIntent(periodEndDate);
+                break;
         }
         startActivityForResult(intent, Constants.REQUEST_FROM_RNR_LIST_PAGE);
     }
@@ -242,6 +279,36 @@ public class RnRFormListActivity extends BaseReportListActivity {
     private Intent createMMIARequisitionIntent(Date periodEndDate) {
         RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
         return MMIARequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
+    }
+
+    private Intent createLMISAbbottM2000RequisitionIntent(Date periodEndDate) {
+        RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
+        return LMISAbbottM2000RequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
+    }
+
+    private Intent createLMISAbbottAlinityMRequisitionIntent(Date periodEndDate) {
+        RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
+        return LMISAbbottAlinityMRequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
+    }
+
+    private Intent createLMISRocheCobas6800RequisitionIntent(Date periodEndDate) {
+        RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
+        return LMISRocheCobas6800RequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
+    }
+
+    private Intent createLMISRocheCapctm96RequisitionIntent(Date periodEndDate) {
+        RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
+        return LMISRocheCapctm96RequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
+    }
+
+    private Intent createLMISHologicPanterRequisitionIntent(Date periodEndDate) {
+        RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
+        return LMISHologicPanterRequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
+    }
+
+    private Intent createLMISBiosecurityMaterialRequisitionIntent(Date periodEndDate) {
+        RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
+        return LMISBiosecurityMaterialRequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
     }
 
 

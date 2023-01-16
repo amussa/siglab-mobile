@@ -74,7 +74,7 @@ public class MMIARepository extends RnrFormRepository {
     @Inject
     public MMIARepository(Context context) {
         super(context);
-        programCode = Constants.MMIA_PROGRAM_CODE;
+        programCode = Constants.currentLmisProgram.getCode();
     }
 
     @Override
@@ -179,7 +179,7 @@ public class MMIARepository extends RnrFormRepository {
     protected ArrayList<RnrFormItem> fillAllMMIAProducts(RnRForm form, List<RnrFormItem> rnrFormItems) throws LMISException {
         List<Product> products;
 
-        List<String> programCodes = programRepository.queryProgramCodesByProgramCodeOrParentCode(Constants.MMIA_PROGRAM_CODE);
+        List<String> programCodes = programRepository.queryProgramCodesByProgramCodeOrParentCode(programCode);
         List<Long> productIds = productProgramRepository.queryActiveProductIdsByProgramsWithKits(programCodes, false);
         products = productRepository.queryProductsByProductIds(productIds);
 

@@ -35,6 +35,7 @@ import org.openlmis.core.R;
 import org.openlmis.core.exceptions.LMISException;
 import org.openlmis.core.model.Product;
 import org.openlmis.core.model.RnrFormItem;
+import org.openlmis.core.utils.Constants;
 import org.openlmis.core.utils.DateUtil;
 import org.openlmis.core.utils.SimpleTextWatcher;
 import org.openlmis.core.utils.ViewUtil;
@@ -121,21 +122,20 @@ public class MMIARnrForm extends LinearLayout {
         itemFormList = rnrFormItemList;
 
         // Adult View
-        //addViewByMedicineType(filterRnrFormItem(itemFormList, Product.MEDICINE_TYPE_ADULT));
-        addViewByMedicineType(filterRnrFormItem(itemFormList, Product.DIAGNOSTICO_PRECOCE_INFANTIL));
-        addDividerView(Product.MEDICINE_TYPE_ADULT);
-        addDividerView(Product.MEDICINE_TYPE_ADULT);
-
-        // Children View
-        addViewByMedicineType(filterRnrFormItem(itemFormList, Product.MEDICINE_TYPE_CHILDREN));
-        addDividerView(Product.MEDICINE_TYPE_CHILDREN);
-
-        // Solution View
-        addViewByMedicineType(filterRnrFormItem(itemFormList, Product.MEDICINE_TYPE_SOLUTION));
-        addDividerView(Product.MEDICINE_TYPE_SOLUTION);
-
-        //fill others type items
-        fillOtherTypeItem();
+        addViewByMedicineType(filterRnrFormItem(itemFormList, Constants.currentLmisProgram.getCode()));
+//        addDividerView(Product.MEDICINE_TYPE_ADULT);
+//        addDividerView(Product.MEDICINE_TYPE_ADULT);
+//
+//        // Children View
+//        addViewByMedicineType(filterRnrFormItem(itemFormList, Product.MEDICINE_TYPE_CHILDREN));
+//        addDividerView(Product.MEDICINE_TYPE_CHILDREN);
+//
+//        // Solution View
+//        addViewByMedicineType(filterRnrFormItem(itemFormList, Product.MEDICINE_TYPE_SOLUTION));
+//        addDividerView(Product.MEDICINE_TYPE_SOLUTION);
+//
+//        //fill others type items
+//        fillOtherTypeItem();
 
     }
 

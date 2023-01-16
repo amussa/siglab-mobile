@@ -98,6 +98,36 @@
             android:label="@string/label_mmia_title"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:name=".view.activity.LMISAbbottM2000RequisitionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/label_lmis_abbott_m2000_title"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.activity.LMISAbbottAlinityMRequisitionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/label_lmis_abbott_alinity_m_title"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.activity.LMISRocheCobas6800RequisitionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/label_lmis_roche_cobas_6800_title"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.activity.LMISRocheCapctm96RequisitionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/label_roche_capctm_96_title"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.activity.LMISHologicPanterRequisitionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/label_hologic_panter_title"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.activity.LMISBiosecurityMaterialRequisitionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/label_biosecurity_material_title"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name=".view.activity.ALRequisitionActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/label_AL_title"

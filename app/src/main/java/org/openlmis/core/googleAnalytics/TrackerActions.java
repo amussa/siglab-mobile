@@ -20,7 +20,14 @@ public enum TrackerActions {
     NetworkConnected("Network Connected"),
     NetworkDisconnected("Network Disconnected"),
     SwitchPowerOn("Tablet Power On"),
-    SwitchPowerOff("Tablet Power Off");
+    SwitchPowerOff("Tablet Power Off"),
+    SelectLmisAbbottM2000("Select LMIS Abbott M2000"),
+    SelectLmisAbbottAlinityM("Select LMIS Abbott Alinity M"),
+    SelectLmisRocheCobas6800("Select LMIS Roche Cobas 6800"),
+    SelectLmisRocheCapctm96("Select LMIS Roche CAPCTM 96"),
+    SelectLmisHologicPanter("Select LMIS Hologic Panter"),
+    SelectLmisBiosecurityMaterial("Select LMIS Biosecurity Material")
+    ;
 
     private final String trackerAction;
 
