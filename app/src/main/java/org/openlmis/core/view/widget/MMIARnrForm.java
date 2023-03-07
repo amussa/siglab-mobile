@@ -103,7 +103,6 @@ public class MMIARnrForm extends LinearLayout {
         leftHeaderView = addLeftHeaderView();
         rightHeaderView = addRightHeaderView();
         setItemSize(leftHeaderView, rightHeaderView);
-
         setMarginForFreezeHeader();
     }
 
@@ -249,9 +248,8 @@ public class MMIARnrForm extends LinearLayout {
             Product product = item.getProduct();
             tvPrimaryName.setText(product.getPrimaryName());
             setLeftViewColor(medicineType, view);
-            leftViewGroup.addView(view);
         }
-
+        leftViewGroup.addView(view);
         return view;
     }
 
@@ -289,7 +287,6 @@ public class MMIARnrForm extends LinearLayout {
 
         if (isHeaderView) {
             setHeaderView(inflate, tvIssuedUnit, tvInitialAmount, tvReceived, etIssued, etAdjustment, etInventory, tvValidate);
-
         } else {
             tvIssuedUnit.setText(item.getProduct().getStrength());
             boolean isArchived = item.getProduct().isArchived();
@@ -298,8 +295,6 @@ public class MMIARnrForm extends LinearLayout {
             editTexts.add(configEditText(item, etIssued, getValue(isArchived, item.getIssued())));
             editTexts.add(configEditText(item, etAdjustment, getValue(isArchived, item.getAdjustment())));
             editTexts.add(configEditText(item, etInventory, getValue(isArchived, item.getInventory())));
-            rightViewGroup.addView(inflate);
-
             try {
                 if (!(TextUtils.isEmpty(item.getValidate()) || isArchived)) {
                     tvValidate.setText(DateUtil.convertDate(item.getValidate(), "dd/MM/yyyy", "MMM yyyy"));
@@ -308,6 +303,7 @@ public class MMIARnrForm extends LinearLayout {
                 new LMISException(e).reportToFabric();
             }
         }
+        rightViewGroup.addView(inflate);
         return inflate;
     }
 
