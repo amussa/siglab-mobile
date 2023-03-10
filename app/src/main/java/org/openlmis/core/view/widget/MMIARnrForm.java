@@ -121,8 +121,9 @@ public class MMIARnrForm extends LinearLayout {
         itemFormList = rnrFormItemList;
 
         // Adult View
+        addDividerView("Categoria 01");
         addViewByMedicineType(filterRnrFormItem(itemFormList, Constants.currentLmisProgram.getCode()));
-//        addDividerView(Product.MEDICINE_TYPE_ADULT);
+        addDividerView(Product.MEDICINE_TYPE_ADULT);
 //        addDividerView(Product.MEDICINE_TYPE_ADULT);
 //
 //        // Children View
@@ -197,6 +198,8 @@ public class MMIARnrForm extends LinearLayout {
         leftViewGroup.addView(leftView);
         setLeftViewColor(medicineType, leftView);
         ViewGroup rightView = inflateRightView();
+        TextView tvPrimaryName = (TextView) leftView.findViewById(R.id.tv_primary_name);
+        tvPrimaryName.setText(medicineType);
 
         rightViewGroup.addView(rightView);
         setItemSize(leftView, rightView);

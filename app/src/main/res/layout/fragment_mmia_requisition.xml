@@ -32,40 +32,6 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:orientation="vertical">
-
-                    <org.openlmis.core.view.widget.MMIARegimeList
-                        android:id="@+id/regime_list"
-                        style="@style/MMIA.RegimeList"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <LinearLayout
-                        style="@style/MMIA.RegimeTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            style="@style/MMIA.RegimeTotalLabel"
-                            android:layout_width="80dp"
-                            android:layout_height="match_parent"
-                            android:labelFor="@+id/tv_regime_total"
-                            android:minHeight="30dp"
-                            android:text="@string/total" />
-
-                        <TextView
-                            android:id="@+id/tv_regime_total"
-                            style="@style/MMIA.RegimeTotalText"
-                            android:layout_width="@dimen/mmia_spread_item_common_width"
-                            android:layout_height="match_parent"
-                            android:minHeight="30dp" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_weight="2"
                     android:orientation="vertical">
@@ -74,7 +40,7 @@
                         style="@style/MMIA.SpreadHeader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/label_mmia_speed_info_header" />
+                        android:text="@string/label_lmis_speed_info_header" />
 
                     <org.openlmis.core.view.widget.MMIAInfoList
                         android:id="@+id/mmia_info_list"

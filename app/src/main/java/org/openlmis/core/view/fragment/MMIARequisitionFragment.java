@@ -19,7 +19,6 @@ package org.openlmis.core.view.fragment;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
@@ -34,7 +33,6 @@ import android.widget.TextView;
 
 import org.openlmis.core.R;
 import org.openlmis.core.manager.SharedPreferenceMgr;
-import org.openlmis.core.model.Regimen;
 import org.openlmis.core.model.RnRForm;
 import org.openlmis.core.presenter.BaseReportPresenter;
 import org.openlmis.core.presenter.MMIARequisitionPresenter;
@@ -44,7 +42,6 @@ import org.openlmis.core.utils.SimpleTextWatcher;
 import org.openlmis.core.utils.ToastUtil;
 import org.openlmis.core.utils.ViewUtil;
 import org.openlmis.core.view.widget.MMIAInfoList;
-import org.openlmis.core.view.widget.MMIARegimeList;
 import org.openlmis.core.view.widget.MMIARnrForm;
 import org.openlmis.core.view.widget.RnrFormHorizontalScrollView;
 import org.openlmis.core.view.widget.SingleClickButtonListener;
@@ -61,14 +58,8 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
     @InjectView(R.id.rnr_form_list)
     protected MMIARnrForm rnrFormList;
 
-    @InjectView(R.id.regime_list)
-    protected MMIARegimeList regimeListView;
-
     @InjectView(R.id.mmia_info_list)
     protected MMIAInfoList mmiaInfoListView;
-
-    @InjectView(R.id.tv_regime_total)
-    protected TextView tvRegimeTotal;
 
     @InjectView(R.id.et_comment)
     protected TextView etComment;
@@ -152,25 +143,10 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
         }
         disableFreezeHeaderScroll();
         initActionBarHeight();
-        setRegimenListener();
     }
 
     private boolean isHistoryForm() {
         return formId != 0;
-    }
-
-    private void setRegimenListener() {
-        regimeListView.setRegimeListener(new MMIARegimeList.MMIARegimeListener() {
-            @Override
-            public void loading() {
-                MMIARequisitionFragment.this.loading();
-            }
-
-            @Override
-            public void loaded() {
-                MMIARequisitionFragment.this.loaded();
-            }
-        });
     }
 
     private void disableFreezeHeaderScroll() {
@@ -186,10 +162,9 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
     public void refreshRequisitionForm(RnRForm form) {
         scrollView.setVisibility(View.VISIBLE);
         rnrFormList.initView(form.getRnrFormItemListWrapper());
-        regimeListView.initView(tvRegimeTotal, presenter);
         mmiaInfoListView.initView(form.getBaseInfoItemListWrapper());
         InflateFreezeHeaderView();
-        getActivity().setTitle(getString(R.string.label_mmia_title, DateUtil.formatDateWithoutYear(form.getPeriodBegin()), DateUtil.formatDateWithoutYear(form.getPeriodEnd())));
+        getActivity().setTitle(getString(R.string.label_lmis_title, DateUtil.formatDateWithoutYear(form.getPeriodBegin()), DateUtil.formatDateWithoutYear(form.getPeriodEnd())));
         etComment.setText(form.getComments());
         highlightTotalDifference();
         bindListeners();
@@ -213,7 +188,6 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
 
     protected void bindListeners() {
         etComment.addTextChangedListener(commentTextWatcher);
-        tvRegimeTotal.addTextChangedListener(totalTextWatcher);
 
         actionPanelView.setListener(getOnCompleteListener(), getOnSaveListener());
         scrollView.setOnTouchListener(new View.OnTouchListener() {
@@ -234,7 +208,7 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
             @Override
             public void onSingleClick(View v) {
                 loading();
-                Subscription subscription = presenter.getSaveFormObservable(rnrFormList.itemFormList, regimeListView.getDataList(), mmiaInfoListView.getDataList(), etComment.getText().toString())
+                Subscription subscription = presenter.getSaveFormObservable(rnrFormList.itemFormList, mmiaInfoListView.getDataList(), etComment.getText().toString())
                         .subscribe(getOnSavedSubscriber());
                 subscriptions.add(subscription);
             }
@@ -268,8 +242,8 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
         return new SingleClickButtonListener() {
             @Override
             public void onSingleClick(View v) {
-                if (rnrFormList.isCompleted() && regimeListView.isCompleted() && mmiaInfoListView.isCompleted()) {
-                    presenter.setViewModels(rnrFormList.itemFormList, regimeListView.getDataList(), mmiaInfoListView.getDataList(), etComment.getText().toString());
+                if (rnrFormList.isCompleted() && mmiaInfoListView.isCompleted()) {
+                    presenter.setViewModels(rnrFormList.itemFormList, mmiaInfoListView.getDataList(), etComment.getText().toString());
                     if (!presenter.validateFormPeriod()) {
                         ToastUtil.show(R.string.msg_requisition_not_unique);
                     } else {
@@ -340,13 +314,12 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
     };
 
     private void highlightTotalDifference() {
-            regimeListView.deHighLightTotal();
             mmiaInfoListView.deHighLightTotal();
             tvMismatch.setVisibility(View.INVISIBLE);
     }
 
     private boolean hasEmptyColumn() {
-        return regimeListView.hasEmptyField() || mmiaInfoListView.hasEmptyField();
+        return mmiaInfoListView.hasEmptyField();
     }
 
     @Override
@@ -399,11 +372,4 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
         return getString(R.string.msg_requisition_signature_message_notify_mmia);
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_FOR_CUSTOM_REGIME) {
-            regimeListView.addCustomRegimenItem((Regimen) data.getSerializableExtra(Constants.PARAM_CUSTOM_REGIMEN));
-        }
-    }
 }
