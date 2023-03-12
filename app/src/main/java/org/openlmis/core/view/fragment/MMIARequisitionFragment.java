@@ -41,6 +41,7 @@ import org.openlmis.core.utils.DateUtil;
 import org.openlmis.core.utils.SimpleTextWatcher;
 import org.openlmis.core.utils.ToastUtil;
 import org.openlmis.core.utils.ViewUtil;
+import org.openlmis.core.view.widget.LMISInfoList;
 import org.openlmis.core.view.widget.MMIAInfoList;
 import org.openlmis.core.view.widget.MMIARnrForm;
 import org.openlmis.core.view.widget.RnrFormHorizontalScrollView;
@@ -58,8 +59,8 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
     @InjectView(R.id.rnr_form_list)
     protected MMIARnrForm rnrFormList;
 
-    @InjectView(R.id.mmia_info_list)
-    protected MMIAInfoList mmiaInfoListView;
+    @InjectView(R.id.lmis_info_list)
+    protected LMISInfoList mmiaInfoListView;
 
     @InjectView(R.id.et_comment)
     protected TextView etComment;

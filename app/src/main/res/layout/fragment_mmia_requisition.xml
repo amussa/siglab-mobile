@@ -42,8 +42,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/label_lmis_speed_info_header" />
 
-                    <org.openlmis.core.view.widget.MMIAInfoList
-                        android:id="@+id/mmia_info_list"
+                    <org.openlmis.core.view.widget.LMISInfoList
+                        android:id="@+id/lmis_info_list"
                         style="@style/MMIA.RegimeList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />

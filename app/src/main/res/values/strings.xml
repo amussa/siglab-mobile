@@ -595,6 +595,15 @@
     <string name="label_roche_capctm_96_title">LMIS ROCHE CAPCTM 96 - %1$s to %2$s</string>
     <string name="label_hologic_panter_title">LMIS HOLOGIC PANTER - %1$s to %2$s</string>
     <string name="label_biosecurity_material_title">LMIS BIOSECURITY MATERIAL - %1$s to %2$s</string>
+    <string name="select_equipment">Select equipment</string>
+    <string name="equipment_serial">Serial number</string>
+    <string name="label_patients_tested">Nr. of patients tested during the month</string>
+    <string name="label_tests_performed">Nr. of tests performed by the equipment during the month</string>
+    <string name="label_days_equipment_worked">Nr. of days the equipment worked</string>
+    <string name="label_days_equipment_out_of_order">Nr. of days the equipment has been out of order</string>
+    <string name="label_date_last_preventive_maintenance">Date of last preventive maintenance</string>
+    <string name="label_date_next_preventive_maintenance">Date of next preventive maintenance</string>
+    <string name="label_remaining_hours">Nr. of remaining hours</string>
 
     <string-array name="movement_date_items_array">
         <item>Last 7 days</item>

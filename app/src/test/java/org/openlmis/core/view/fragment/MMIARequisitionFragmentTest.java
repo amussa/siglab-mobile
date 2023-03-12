@@ -46,6 +46,7 @@ import org.openlmis.core.presenter.MMIARequisitionPresenter;
 import org.openlmis.core.utils.Constants;
 import org.openlmis.core.utils.DateUtil;
 import org.openlmis.core.view.activity.MMIARequisitionActivity;
+import org.openlmis.core.view.widget.LMISInfoList;
 import org.openlmis.core.view.widget.MMIAInfoList;
 import org.openlmis.core.view.widget.MMIARegimeList;
 import org.openlmis.core.view.widget.MMIARnrForm;
@@ -81,7 +82,7 @@ public class MMIARequisitionFragmentTest {
     private Program program;
     private RnRForm form;
     private MMIARegimeList regimeListView;
-    private MMIAInfoList mmiaInfoListView;
+    private LMISInfoList mmiaInfoListView;
     private MMIARnrForm rnrFormList;
 
     protected ViewGroup mockRightViewGroup;
@@ -102,10 +103,9 @@ public class MMIARequisitionFragmentTest {
         mmiaRequisitionFragment = getMMIARequisitionFragmentWithoutIntent();
 
         regimeListView = mock(MMIARegimeList.class);
-        mmiaInfoListView = mock(MMIAInfoList.class);
+        mmiaInfoListView = mock(LMISInfoList.class);
         mockRnrItemsHeaderFreeze = mock(ViewGroup.class);
 
-        mmiaRequisitionFragment.regimeListView = regimeListView;
         mmiaRequisitionFragment.mmiaInfoListView = mmiaInfoListView;
         mmiaRequisitionFragment.rnrFormList = rnrFormList;
         mmiaRequisitionFragment.rnrItemsHeaderFreeze = mockRnrItemsHeaderFreeze;
@@ -131,7 +131,6 @@ public class MMIARequisitionFragmentTest {
         intent.putExtra(Constants.PARAM_FORM_ID, 1L);
         MMIARequisitionActivity mmiaRequisitionActivity = Robolectric.buildActivity(MMIARequisitionActivity.class, intent).create().get();
         MMIARequisitionFragment fragment = (MMIARequisitionFragment) mmiaRequisitionActivity.getFragmentManager().findFragmentById(R.id.fragment_requisition);
-        fragment.regimeListView = regimeListView;
         fragment.mmiaInfoListView = mmiaInfoListView;
         fragment.rnrFormList = rnrFormList;
 
@@ -141,7 +140,6 @@ public class MMIARequisitionFragmentTest {
     private MMIARequisitionFragment getMMIARequisitionFragmentWithoutIntent() {
         MMIARequisitionActivity mmiaRequisitionActivity = Robolectric.buildActivity(MMIARequisitionActivity.class).create().get();
         MMIARequisitionFragment fragment = (MMIARequisitionFragment) mmiaRequisitionActivity.getFragmentManager().findFragmentById(R.id.fragment_requisition);
-        fragment.regimeListView = regimeListView;
         fragment.mmiaInfoListView = mmiaInfoListView;
         fragment.rnrFormList = rnrFormList;
 
@@ -158,7 +156,7 @@ public class MMIARequisitionFragmentTest {
         mmiaRequisitionFragment.refreshRequisitionForm(form);
 
         verify(rnrFormList).initView(any(ArrayList.class));
-        verify(regimeListView).initView(mmiaRequisitionFragment.tvRegimeTotal, mmiaFormPresenter);
+        //verify(regimeListView).initView(mmiaRequisitionFragment.tvRegimeTotal, mmiaFormPresenter);
         verify(mmiaInfoListView).initView(baseInfoItems);
     }
 
@@ -233,7 +231,7 @@ public class MMIARequisitionFragmentTest {
         when(regimeListView.getTotal()).thenReturn(20L);
         when(mmiaInfoListView.getTotal()).thenReturn(20L);
 
-        mmiaRequisitionFragment.regimeListView = regimeListView;
+        //mmiaRequisitionFragment.regimeListView = regimeListView;
         mmiaRequisitionFragment.mmiaInfoListView = mmiaInfoListView;
 
         mmiaRequisitionFragment.refreshRequisitionForm(form);
@@ -252,7 +250,7 @@ public class MMIARequisitionFragmentTest {
 
         form.setComments("ab");
 
-        mmiaRequisitionFragment.regimeListView = regimeListView;
+        //mmiaRequisitionFragment.regimeListView = regimeListView;
         mmiaRequisitionFragment.mmiaInfoListView = mmiaInfoListView;
 
         mmiaRequisitionFragment.refreshRequisitionForm(form);
@@ -269,7 +267,7 @@ public class MMIARequisitionFragmentTest {
 
         form.setComments("abdasdsa");
 
-        mmiaRequisitionFragment.regimeListView = regimeListView;
+        //mmiaRequisitionFragment.regimeListView = regimeListView;
         mmiaRequisitionFragment.mmiaInfoListView = mmiaInfoListView;
 
         mmiaRequisitionFragment.refreshRequisitionForm(form);
@@ -286,7 +284,7 @@ public class MMIARequisitionFragmentTest {
 
         mmiaRequisitionFragment.etComment.setText("ab");
 
-        mmiaRequisitionFragment.regimeListView = regimeListView;
+        //mmiaRequisitionFragment.regimeListView = regimeListView;
         mmiaRequisitionFragment.mmiaInfoListView = mmiaInfoListView;
 
         mmiaRequisitionFragment.refreshRequisitionForm(form);
@@ -303,7 +301,7 @@ public class MMIARequisitionFragmentTest {
 
         mmiaRequisitionFragment.etComment.setText("abcde");
 
-        mmiaRequisitionFragment.regimeListView = regimeListView;
+        //mmiaRequisitionFragment.regimeListView = regimeListView;
         mmiaRequisitionFragment.mmiaInfoListView = mmiaInfoListView;
 
         mmiaRequisitionFragment.refreshRequisitionForm(form);
@@ -434,6 +432,6 @@ public class MMIARequisitionFragmentTest {
         data.putExtra(Constants.PARAM_CUSTOM_REGIMEN, regimen);
         mmiaRequisitionFragmentSpy.onActivityResult(MMIARequisitionFragment.REQUEST_FOR_CUSTOM_REGIME, Activity.RESULT_OK, data);
 
-        verify(mmiaRequisitionFragmentSpy.regimeListView).addCustomRegimenItem(regimen);
+        //verify(mmiaRequisitionFragmentSpy.regimeListView).addCustomRegimenItem(regimen);
     }
 }

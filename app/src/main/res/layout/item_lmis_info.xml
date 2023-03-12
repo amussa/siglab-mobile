@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ItemMMIA.Container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/ItemLMIS.Label"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:labelFor="@+id/et_value"
+        tools:text="hello world" />
+
+    <EditText
+        android:id="@id/et_value"
+        style="@style/ItemMMIA.EditText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_weight="1" />
+
+    <EditText
+        android:id="@+id/et_value_2"
+        style="@style/ItemMMIA.EditText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_weight="1" />
+
+    <EditText
+        android:id="@+id/et_value_3"
+        style="@style/ItemMMIA.EditText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_weight="1" />
+
+</LinearLayout>

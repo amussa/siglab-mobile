@@ -10,4 +10,12 @@
         <item>Total Patients</item>
         <item>Total de pacientes em TARV na US</item>
     </string-array>
+    <string-array name="equipment_names">
+        <item>@string/select_equipment</item>
+        <item>Abbott M2000</item>
+        <item>Abbott Alinity M</item>
+        <item>Roche Cobas 6800</item>
+        <item>Roche CAPCTM</item>
+        <item>Hologic Panter</item>
+    </string-array>
 </resources>

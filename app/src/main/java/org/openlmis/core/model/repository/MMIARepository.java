@@ -47,20 +47,42 @@ import roboguice.inject.InjectResource;
 
 public class MMIARepository extends RnrFormRepository {
 
-    @InjectResource(R.string.label_new_patients)
-    public String ATTR_NEW_PATIENTS;
-    @InjectResource(R.string.label_sustaining)
-    public String ATTR_SUSTAINING;
-    @InjectResource(R.string.label_alteration)
-    public String ATTR_ALTERATION;
-    @InjectResource(R.string.label_total_month_dispense)
-    public String ATTR_TOTAL_MONTH_DISPENSE;
-    @InjectResource(R.string.label_total_patients)
-    public String ATTR_TOTAL_PATIENTS;
-    @InjectResource(R.string.label_ptv)
-    public String ATTR_PTV;
-    @InjectResource(R.string.label_ppe)
-    public String ATTR_PPE;
+//    @InjectResource(R.string.label_new_patients)
+//    public String ATTR_NEW_PATIENTS;
+//    @InjectResource(R.string.label_sustaining)
+//    public String ATTR_SUSTAINING;
+//    @InjectResource(R.string.label_alteration)
+//    public String ATTR_ALTERATION;
+//    @InjectResource(R.string.label_total_month_dispense)
+//    public String ATTR_TOTAL_MONTH_DISPENSE;
+//    @InjectResource(R.string.label_total_patients)
+//    public String ATTR_TOTAL_PATIENTS;
+//    @InjectResource(R.string.label_ptv)
+//    public String ATTR_PTV;
+//    @InjectResource(R.string.label_ppe)
+//    public String ATTR_PPE;
+
+    @InjectResource(R.string.label_patients_tested)
+    public String ATTR_PATIENTS_TESTED;
+
+    @InjectResource(R.string.label_tests_performed)
+    public String ATTR_TESTS_PERFORMED;
+
+    @InjectResource(R.string.label_days_equipment_worked)
+    public String ATTR_DAYS_EQUIPMENT_WORKED;
+
+    @InjectResource(R.string.label_days_equipment_out_of_order)
+    public String ATTR_DAYS_EQUIPMENT_OUT_OF_ORDER;
+
+    @InjectResource(R.string.label_date_last_preventive_maintenance)
+    public String ATTR_DATE_LAST_PREVENTIVE_MAINTENANCE;
+
+    @InjectResource(R.string.label_date_next_preventive_maintenance)
+    public String ATTR_DATE_NEXT_PREVENTIVE_MAINTENANCE;
+
+    @InjectResource(R.string.label_remaining_hours)
+    public String ATTR_REMAINING_HOURS;
+
 
     @Inject
     ProgramRepository programRepository;
@@ -92,13 +114,13 @@ public class MMIARepository extends RnrFormRepository {
     @Override
     protected List<BaseInfoItem> generateBaseInfoItems(final RnRForm form) {
         ArrayList<String> attrs = new ArrayList<>();
-        attrs.add(ATTR_NEW_PATIENTS);
-        attrs.add(ATTR_SUSTAINING);
-        attrs.add(ATTR_ALTERATION);
-        attrs.add(ATTR_PTV);
-        attrs.add(ATTR_PPE);
-        attrs.add(ATTR_TOTAL_MONTH_DISPENSE);
-        attrs.add(ATTR_TOTAL_PATIENTS);
+        attrs.add(ATTR_PATIENTS_TESTED);
+        attrs.add(ATTR_TESTS_PERFORMED);
+        attrs.add(ATTR_DAYS_EQUIPMENT_WORKED);
+        attrs.add(ATTR_DAYS_EQUIPMENT_OUT_OF_ORDER);
+        attrs.add(ATTR_DATE_LAST_PREVENTIVE_MAINTENANCE);
+        attrs.add(ATTR_DATE_NEXT_PREVENTIVE_MAINTENANCE);
+        attrs.add(ATTR_REMAINING_HOURS);
 
         return FluentIterable.from(attrs).transform(new Function<String, BaseInfoItem>() {
             @Override
@@ -110,9 +132,9 @@ public class MMIARepository extends RnrFormRepository {
 
     public long getTotalPatients(RnRForm form) {
         for (BaseInfoItem item : form.getBaseInfoItemListWrapper()) {
-            if (ATTR_TOTAL_PATIENTS.equals(item.getName())) {
-                return Long.parseLong(item.getValue());
-            }
+//            if (ATTR_TOTAL_PATIENTS.equals(item.getName())) {
+//                return Long.parseLong(item.getValue());
+//            }
         }
         return 0L;
     }
