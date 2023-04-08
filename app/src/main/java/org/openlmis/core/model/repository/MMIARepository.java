@@ -160,7 +160,8 @@ public class MMIARepository extends RnrFormRepository {
 
     protected RnrFormItem createMMIARnrFormItemByPeriod(StockCard stockCard, Date startDate, Date endDate) throws LMISException {
         RnrFormItem rnrFormItem = new RnrFormItem();
-        List<StockMovementItem> stockMovementItems = stockMovementRepository.queryStockItemsByCreatedDate(stockCard.getId(), startDate, endDate);
+        //List<StockMovementItem> stockMovementItems = stockMovementRepository.queryStockItemsByCreatedDate(stockCard.getId(), startDate, endDate);
+        List<StockMovementItem> stockMovementItems = stockMovementRepository.queryStockMovementsByMovementDate(stockCard.getId(), startDate, endDate);
 
         if (stockMovementItems.isEmpty()) {
             this.initMMiARnrFormItemWithoutMovement(rnrFormItem, lastRnrInventory(stockCard));
@@ -183,13 +184,25 @@ public class MMIARepository extends RnrFormRepository {
 
     private void assignMMIATotalValues(RnrFormItem rnrFormItem, List<StockMovementItem> stockMovementItems) {
         long totalReceived = 0;
-
+        long totalIssued = 0;
+        long adjustment = 0;
+        long inventory = 0;
         for (StockMovementItem item : stockMovementItems) {
             if (MovementReasonManager.MovementType.RECEIVE == item.getMovementType()) {
                 totalReceived += item.getMovementQuantity();
+            } else if (MovementReasonManager.MovementType.ISSUE == item.getMovementType()) {
+                totalIssued += item.getMovementQuantity();
+            } else if (MovementReasonManager.MovementType.POSITIVE_ADJUST == item.getMovementType()) {
+                adjustment += item.getMovementQuantity();
+            } else if (MovementReasonManager.MovementType.NEGATIVE_ADJUST == item.getMovementType()) {
+                adjustment -= item.getMovementQuantity();
             }
+            inventory = item.getStockOnHand();
         }
         rnrFormItem.setReceived(totalReceived);
+        rnrFormItem.setIssued(totalIssued);
+        rnrFormItem.setAdjustment(adjustment);
+        rnrFormItem.setInventory(inventory);
     }
 
     private void initMMiARnrFormItemWithoutMovement(RnrFormItem rnrFormItem, long lastRnrInventory) throws LMISException {

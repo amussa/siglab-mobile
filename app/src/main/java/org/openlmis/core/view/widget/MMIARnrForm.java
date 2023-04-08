@@ -43,7 +43,9 @@ import org.roboguice.shaded.goole.common.base.Predicate;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import lombok.Getter;
 
@@ -120,10 +122,24 @@ public class MMIARnrForm extends LinearLayout {
     private void addItemView(List<RnrFormItem> rnrFormItemList) {
         itemFormList = rnrFormItemList;
 
+//        Set<String> categorias = new HashSet<>();
+//        for (RnrFormItem item : itemFormList) {
+//            categorias.add(item.getCategory());
+//        }
+//        for (String categoria : categorias) {
+//            addDividerView(categoria);
+//            for (RnrFormItem item : itemFormList) {
+//                if (item.getCategory().equals(categoria)) {
+//                    addViewByMedicineType(filterRnrFormItem(itemFormList, Constants.currentLmisProgram.getCode()));
+//                }
+//            }
+//        }
+
+
         // Adult View
-        addDividerView("Categoria 01");
+        //addDividerView("Categoria 01");
         addViewByMedicineType(filterRnrFormItem(itemFormList, Constants.currentLmisProgram.getCode()));
-        addDividerView(Product.MEDICINE_TYPE_ADULT);
+        //addDividerView(Product.MEDICINE_TYPE_ADULT);
 //        addDividerView(Product.MEDICINE_TYPE_ADULT);
 //
 //        // Children View
@@ -182,6 +198,9 @@ public class MMIARnrForm extends LinearLayout {
     }
 
     private void addViewByMedicineType(List<RnrFormItem> categoriedFormItems) {
+        if (categoriedFormItems.size() > 0) {
+            addDividerView(categoriedFormItems.get(0).getCategory());
+        }
         for (RnrFormItem item : categoriedFormItems) {
             addRnrFormItemView(item.getCategory(), item);
         }
@@ -295,9 +314,9 @@ public class MMIARnrForm extends LinearLayout {
             boolean isArchived = item.getProduct().isArchived();
             tvInitialAmount.setText(String.valueOf(isArchived ? 0 : item.getInitialAmount()));
             tvReceived.setText(String.valueOf(isArchived ? 0 : item.getReceived()));
-            editTexts.add(configEditText(item, etIssued, getValue(isArchived, item.getIssued())));
-            editTexts.add(configEditText(item, etAdjustment, getValue(isArchived, item.getAdjustment())));
-            editTexts.add(configEditText(item, etInventory, getValue(isArchived, item.getInventory())));
+            editTexts.add(configEditText(item, etIssued, getValue(isArchived, item.getIssued()==null?0L:item.getIssued() )));
+            editTexts.add(configEditText(item, etAdjustment, getValue(isArchived, item.getAdjustment()==null?0L:item.getAdjustment() )));
+            editTexts.add(configEditText(item, etInventory, getValue(isArchived, item.getInventory()==null?0L:item.getInventory() )));
             try {
                 if (!(TextUtils.isEmpty(item.getValidate()) || isArchived)) {
                     tvValidate.setText(DateUtil.convertDate(item.getValidate(), "dd/MM/yyyy", "MMM yyyy"));

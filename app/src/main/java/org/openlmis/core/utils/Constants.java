@@ -81,11 +81,19 @@ public final class Constants {
     public static final String LMIS_HOLOGIC_PANTER_PROGRAM_CODE = "LMIS_HOLOGIC_PANTER";
     public static final String LMIS_BIOSECURITY_MATERIAL_PROGRAM_CODE = "LMIS_BIOSECURITY_MATERIAL";
 
-    public static final List<Constants.Program> PROGRAMES = Arrays.asList(Constants.Program.VIA_PROGRAM,
-                    Constants.Program.MMIA_PROGRAM,
-                    Constants.Program.AL_PROGRAM,
-                    Constants.Program.PTV_PROGRAM,
-                    Constants.Program.RAPID_TEST_PROGRAM);
+    public static final List<Constants.Program> PROGRAMES = Arrays.asList(
+            Constants.Program.VIA_PROGRAM,
+            Constants.Program.MMIA_PROGRAM,
+            Constants.Program.AL_PROGRAM,
+            Constants.Program.PTV_PROGRAM,
+            Constants.Program.RAPID_TEST_PROGRAM,
+            Constants.Program.LMIS_ABBOTT_M2000_PROGRAM,
+            Constants.Program.LMIS_ABBOTT_ALINITY_M_PROGRAM,
+            Constants.Program.LMIS_ROCHE_COBAS_6800_PROGRAM,
+            Constants.Program.LMIS_ROCHE_CAPCTM_96_PROGRAM,
+            Constants.Program.LMIS_HOLOGIC_PANTER_PROGRAM,
+            Constants.Program.LMIS_BIOSECURITY_MATERIAL_PROGRAM
+    );
 
      //Don't change these reportTypes codes!!!
     public static final String MMIA_REPORT = "MMIA";

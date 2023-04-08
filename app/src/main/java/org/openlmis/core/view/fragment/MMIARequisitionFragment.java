@@ -164,19 +164,22 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
         scrollView.setVisibility(View.VISIBLE);
         rnrFormList.initView(form.getRnrFormItemListWrapper());
         mmiaInfoListView.initView(form.getBaseInfoItemListWrapper());
+        //mmiaInfoListView.initView(form.getBaseInfoItemListWrapper());
         InflateFreezeHeaderView();
         getActivity().setTitle(getString(R.string.label_lmis_title, DateUtil.formatDateWithoutYear(form.getPeriodBegin()), DateUtil.formatDateWithoutYear(form.getPeriodEnd())));
         etComment.setText(form.getComments());
-        highlightTotalDifference();
+        //highlightTotalDifference();
         bindListeners();
     }
 
     private void InflateFreezeHeaderView() {
         final View leftHeaderView = rnrFormList.getLeftHeaderView();
-        rnrItemsHeaderFreezeLeft.addView(leftHeaderView);
+        // java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child's parent first.
+        // rnrItemsHeaderFreezeLeft.addView(leftHeaderView);
 
         final ViewGroup rightHeaderView = rnrFormList.getRightHeaderView();
-        rnrItemsHeaderFreezeRight.addView(rightHeaderView);
+        // java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child's parent first.
+        // rnrItemsHeaderFreezeRight.addView(rightHeaderView);
 
         rnrFormList.post(new Runnable() {
             @Override

@@ -383,7 +383,7 @@ public class RnrFormRepository {
         List<RnrFormItem> rnrFormItemListWrapper = rnRForms.get(rnRForms.size() - 2).getRnrFormItemListWrapper();
         for (RnrFormItem item : rnrFormItemListWrapper) {
             if (item.getProduct().getId() == product.getId()) {
-                return item.getInventory();
+                return item.getInventory()==null?0L:item.getInventory();
             }
         }
         return 0;
