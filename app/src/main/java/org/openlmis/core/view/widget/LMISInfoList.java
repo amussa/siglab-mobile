@@ -105,8 +105,6 @@ public class LMISInfoList extends LinearLayout {
         View view = layoutInflater.inflate(R.layout.item_lmis_info, this, false);
         TextView tvName = (TextView) view.findViewById(R.id.tv_name);
         EditText etValue = (EditText) view.findViewById(R.id.et_value);
-        EditText etValue2 = (EditText) view.findViewById(R.id.et_value_2);
-        EditText etValue3 = (EditText) view.findViewById(R.id.et_value_3);
 
         InputFilter[] inputFilters = new InputFilter[1];
         inputFilters[0] = new InputFilter.LengthFilter(12);
@@ -115,16 +113,6 @@ public class LMISInfoList extends LinearLayout {
             etValue.setText("DPI");
             etValue.setEnabled(false);
             etValue.setGravity(Gravity.CENTER);
-
-            etValue2.setFilters(inputFilters);
-            etValue2.setText("CV (DBS/PSC)");
-            etValue2.setEnabled(false);
-            etValue2.setGravity(Gravity.CENTER);
-
-            etValue3.setFilters(inputFilters);
-            etValue3.setText("CV (Plasma)");
-            etValue3.setEnabled(false);
-            etValue3.setGravity(Gravity.CENTER);
 
             view.setBackgroundResource(R.color.color_mmia_info_name);
         } else {

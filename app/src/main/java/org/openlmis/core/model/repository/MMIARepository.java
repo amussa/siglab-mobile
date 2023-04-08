@@ -47,20 +47,21 @@ import roboguice.inject.InjectResource;
 
 public class MMIARepository extends RnrFormRepository {
 
-//    @InjectResource(R.string.label_new_patients)
-//    public String ATTR_NEW_PATIENTS;
-//    @InjectResource(R.string.label_sustaining)
-//    public String ATTR_SUSTAINING;
-//    @InjectResource(R.string.label_alteration)
-//    public String ATTR_ALTERATION;
-//    @InjectResource(R.string.label_total_month_dispense)
-//    public String ATTR_TOTAL_MONTH_DISPENSE;
-//    @InjectResource(R.string.label_total_patients)
-//    public String ATTR_TOTAL_PATIENTS;
-//    @InjectResource(R.string.label_ptv)
-//    public String ATTR_PTV;
-//    @InjectResource(R.string.label_ppe)
-//    public String ATTR_PPE;
+    @InjectResource(R.string.label_new_patients)
+    public String ATTR_NEW_PATIENTS;
+    @InjectResource(R.string.label_sustaining)
+    public String ATTR_SUSTAINING;
+    @InjectResource(R.string.label_alteration)
+    public String ATTR_ALTERATION;
+    @InjectResource(R.string.label_total_month_dispense)
+    public String ATTR_TOTAL_MONTH_DISPENSE;
+    @InjectResource(R.string.label_total_patients)
+    public String ATTR_TOTAL_PATIENTS;
+    @InjectResource(R.string.label_ptv)
+    public String ATTR_PTV;
+    @InjectResource(R.string.label_ppe)
+    public String ATTR_PPE;
+
 
     @InjectResource(R.string.label_patients_tested)
     public String ATTR_PATIENTS_TESTED;

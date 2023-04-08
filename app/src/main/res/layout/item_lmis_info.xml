@@ -23,22 +23,4 @@
         android:gravity="center"
         android:layout_weight="1" />
 
-    <EditText
-        android:id="@+id/et_value_2"
-        style="@style/ItemMMIA.EditText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:textSize="12sp"
-        android:gravity="center"
-        android:layout_weight="1" />
-
-    <EditText
-        android:id="@+id/et_value_3"
-        style="@style/ItemMMIA.EditText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:textSize="12sp"
-        android:gravity="center"
-        android:layout_weight="1" />
-
 </LinearLayout>

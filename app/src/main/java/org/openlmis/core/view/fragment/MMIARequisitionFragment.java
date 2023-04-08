@@ -163,8 +163,8 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
     public void refreshRequisitionForm(RnRForm form) {
         scrollView.setVisibility(View.VISIBLE);
         rnrFormList.initView(form.getRnrFormItemListWrapper());
+        // 1st equipment
         mmiaInfoListView.initView(form.getBaseInfoItemListWrapper());
-        //mmiaInfoListView.initView(form.getBaseInfoItemListWrapper());
         InflateFreezeHeaderView();
         getActivity().setTitle(getString(R.string.label_lmis_title, DateUtil.formatDateWithoutYear(form.getPeriodBegin()), DateUtil.formatDateWithoutYear(form.getPeriodEnd())));
         etComment.setText(form.getComments());
