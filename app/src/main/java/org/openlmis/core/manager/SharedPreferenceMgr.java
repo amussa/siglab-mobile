@@ -29,6 +29,7 @@ import com.google.inject.Singleton;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.openlmis.core.LMISApp;
+import org.openlmis.core.model.FacilityEquipment;
 import org.openlmis.core.model.ReportTypeForm;
 import org.openlmis.core.model.repository.RnrFormRepository;
 import org.openlmis.core.model.repository.StockRepository;
@@ -42,6 +43,7 @@ import roboguice.RoboGuice;
 
 @Singleton
 public class SharedPreferenceMgr {
+
 
     private static SharedPreferenceMgr self;
     public static final String MY_PREFERENCE = "LMISPreference";
@@ -73,6 +75,7 @@ public class SharedPreferenceMgr {
     public static final String LATEST_SYNCED_DOWN_REPORT_TYPE = "syncedReport";
     public static final String MONTH_OFFSET_DEFINED_OLD_DATA = "month_offset_that_defined_old_data";
     public static final String KEY_STOCK_CARD_LAST_YEAR_SYNC_ERROR = "stock_card_last_year_sync_error";
+    public static final String FACILITY_EQUIPMENTS = "FACILITY_EQUIPMENTS";
     final int MONTH_OFFSET = 13;
     protected StockRepository stockRepository;
 
@@ -143,7 +146,6 @@ public class SharedPreferenceMgr {
     public void setReportTypesData(List<ReportTypeForm> reportTypeFormList) {
         Gson gson = new Gson();
         String json = gson.toJson(reportTypeFormList);
-
         sharedPreferences.edit().putString(SharedPreferenceMgr.LATEST_SYNCED_DOWN_REPORT_TYPE, json).apply();
     }
 
@@ -155,7 +157,22 @@ public class SharedPreferenceMgr {
             return gson.fromJson(json, type);
         }
         return null;
+    }
 
+    public void setFacilityEquipment(List<FacilityEquipment> facilityEquipments) {
+        Gson gson = new Gson();
+        String json = gson.toJson(facilityEquipments);
+        sharedPreferences.edit().putString(FACILITY_EQUIPMENTS, json).apply();
+    }
+
+    public List<FacilityEquipment> getFacilityEquipments() {
+        String json = sharedPreferences.getString(FACILITY_EQUIPMENTS, null);
+        if (json != null) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<FacilityEquipment>>(){}.getType();
+            return gson.fromJson(json, type);
+        }
+        return null;
     }
 
     public boolean isNeedsInventory() {
@@ -306,4 +323,5 @@ public class SharedPreferenceMgr {
     public boolean isStockCardLastYearSyncError() {
         return sharedPreferences.getBoolean(SharedPreferenceMgr.KEY_STOCK_CARD_LAST_YEAR_SYNC_ERROR, false);
     }
+
 }

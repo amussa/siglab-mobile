@@ -63,4 +63,11 @@ public class BaseInfoItem extends BaseModel {
         this.type = type;
         this.rnRForm = form;
     }
+
+    public BaseInfoItem(String name, String value, TYPE type, RnRForm form) {
+        this.name = name;
+        this.type = type;
+        this.rnRForm = form;
+        this.value = value;
+    }
 }

@@ -30,8 +30,10 @@ import org.openlmis.core.R;
 import org.openlmis.core.exceptions.LMISException;
 import org.openlmis.core.manager.SharedPreferenceMgr;
 import org.openlmis.core.manager.UserInfoMgr;
+import org.openlmis.core.model.FacilityEquipment;
 import org.openlmis.core.model.Product;
 import org.openlmis.core.model.StockCard;
+import org.openlmis.core.model.StockMovementItem;
 import org.openlmis.core.model.repository.ProductProgramRepository;
 import org.openlmis.core.model.repository.ProductRepository;
 import org.openlmis.core.model.repository.ProgramDataFormRepository;
@@ -43,10 +45,11 @@ import org.openlmis.core.model.repository.StockRepository;
 import org.openlmis.core.model.service.StockService;
 import org.openlmis.core.network.LMISRestApi;
 import org.openlmis.core.network.model.ProductAndSupportedPrograms;
+import org.openlmis.core.network.model.SyncDownFacilityEquipment;
 import org.openlmis.core.network.model.SyncDownKitChangeDraftProductsResponse;
 import org.openlmis.core.network.model.SyncDownLatestProductsResponse;
-import org.openlmis.core.network.model.SyncDownReportTypeResponse;
 import org.openlmis.core.network.model.SyncDownProgramDataResponse;
+import org.openlmis.core.network.model.SyncDownReportTypeResponse;
 import org.openlmis.core.network.model.SyncDownRequisitionsResponse;
 import org.openlmis.core.network.model.SyncDownServiceResponse;
 import org.openlmis.core.network.model.SyncDownStockCardResponse;
@@ -65,6 +68,7 @@ import rx.Observable;
 import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.functions.FuncN;
 import rx.schedulers.Schedulers;
 
@@ -138,6 +142,7 @@ public class SyncDownManager {
         try {
             subscriber.onNext(SyncProgress.SyncingReportType);
             fetchAndSaveReportType();
+            fetchAndSaveFacilityEquipment();
             subscriber.onNext(SyncProgress.ReportTypeSynced);
         } catch (LMISException e) {
             e.reportToFabric();
@@ -165,6 +170,15 @@ public class SyncDownManager {
         SyncDownReportTypeResponse response = lmisRestApi.fetchReportTypeForms(Long.parseLong(UserInfoMgr.getInstance().getUser().getFacilityId()));
         sharedPreferenceMgr.setReportTypesData(response.getReportTypes());
         reportTypeFormRepository.batchCreateOrUpdateReportTypes(response.getReportTypes());
+    }
+
+    private void fetchAndSaveFacilityEquipment() throws LMISException{
+        Integer facilityId = Integer.valueOf(UserInfoMgr.getInstance().getUser().getFacilityId());
+        SyncDownFacilityEquipment response = lmisRestApi.fetchFacilityEquipment(facilityId);
+        sharedPreferenceMgr.setFacilityEquipment(response.getFacilityEquipment());
+        for (FacilityEquipment equipment : response.getFacilityEquipment()) {
+            System.out.println(equipment);
+        }
     }
 
     private void syncDownService(Subscriber<? super SyncProgress> subscriber) throws LMISException {

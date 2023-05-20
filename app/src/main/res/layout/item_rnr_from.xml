@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+<!--
     <TextView
         android:id="@+id/tv_issued_unit"
         style="@style/ItemRnr.AmountText"
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         tools:text="8" />
+-->
 
     <TextView
         android:id="@+id/tv_initial_amount"

@@ -33,7 +33,7 @@
         <!-- Do not change -->
         <item>PHYSICAL_INVENTORY|INVENTORY|Inventario</item>
 
-        <item>LOSSES|DAMAGED|Estragado</item>
-        <item>LOSSES|BROKEN|Quebrado</item>
+        <item>LOSSES|LOSSES_DUE_TO_DAMAGE|Perdas devido a danos</item>
+        <item>LOSSES|LOSSES_DUE_TO_BREAKAGE|Perdas devido a quebras</item>
     </string-array>
 </resources>

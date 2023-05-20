@@ -20,6 +20,7 @@ package org.openlmis.core.view.widget;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Pair;
@@ -122,23 +123,24 @@ public class MMIARnrForm extends LinearLayout {
     private void addItemView(List<RnrFormItem> rnrFormItemList) {
         itemFormList = rnrFormItemList;
 
-//        Set<String> categorias = new HashSet<>();
-//        for (RnrFormItem item : itemFormList) {
-//            categorias.add(item.getCategory());
-//        }
-//        for (String categoria : categorias) {
-//            addDividerView(categoria);
+        Set<String> categorias = new HashSet<>();
+        for (RnrFormItem item : itemFormList) {
+            categorias.add(item.getCategory());
+        }
+        for (String categoria : categorias) {
+            //addDividerView(categoria);
+            addViewByMedicineType(filterRnrFormItem(itemFormList, categoria));
 //            for (RnrFormItem item : itemFormList) {
 //                if (item.getCategory().equals(categoria)) {
 //                    addViewByMedicineType(filterRnrFormItem(itemFormList, Constants.currentLmisProgram.getCode()));
 //                }
 //            }
-//        }
+        }
 
 
         // Adult View
         //addDividerView("Categoria 01");
-        addViewByMedicineType(filterRnrFormItem(itemFormList, Constants.currentLmisProgram.getCode()));
+//        addViewByMedicineType(filterRnrFormItem(itemFormList, Constants.currentLmisProgram.getCode()));
         //addDividerView(Product.MEDICINE_TYPE_ADULT);
 //        addDividerView(Product.MEDICINE_TYPE_ADULT);
 //
@@ -219,7 +221,9 @@ public class MMIARnrForm extends LinearLayout {
         ViewGroup rightView = inflateRightView();
         TextView tvPrimaryName = (TextView) leftView.findViewById(R.id.tv_primary_name);
         tvPrimaryName.setText(medicineType);
-
+        tvPrimaryName.setGravity(Gravity.CENTER);
+        leftView.setBackgroundResource(R.color.color_regime_baby);
+        rightView.setBackgroundResource(R.color.color_regime_baby);
         rightViewGroup.addView(rightView);
         setItemSize(leftView, rightView);
     }
@@ -299,7 +303,7 @@ public class MMIARnrForm extends LinearLayout {
     private ViewGroup addRightView(RnrFormItem item, boolean isHeaderView) {
         ViewGroup inflate = inflateRightView();
 
-        TextView tvIssuedUnit = (TextView) inflate.findViewById(R.id.tv_issued_unit);
+        //TextView tvIssuedUnit = (TextView) inflate.findViewById(R.id.tv_issued_unit);
         TextView tvInitialAmount = (TextView) inflate.findViewById(R.id.tv_initial_amount);
         TextView tvReceived = (TextView) inflate.findViewById(R.id.tv_received);
         EditText etIssued = (EditText) inflate.findViewById(R.id.et_issued);
@@ -307,10 +311,15 @@ public class MMIARnrForm extends LinearLayout {
         EditText etInventory = (EditText) inflate.findViewById(R.id.et_inventory);
         TextView tvValidate = (TextView) inflate.findViewById(R.id.tv_validate);
 
+        // set readonly
+        etIssued.setInputType(InputType.TYPE_NULL);
+        etAdjustment.setInputType(InputType.TYPE_NULL);
+        etInventory.setInputType(InputType.TYPE_NULL);
+
         if (isHeaderView) {
-            setHeaderView(inflate, tvIssuedUnit, tvInitialAmount, tvReceived, etIssued, etAdjustment, etInventory, tvValidate);
+            setHeaderView(inflate, null /*tvIssuedUnit*/, tvInitialAmount, tvReceived, etIssued, etAdjustment, etInventory, tvValidate);
         } else {
-            tvIssuedUnit.setText(item.getProduct().getStrength());
+            //tvIssuedUnit.setText(item.getProduct().getStrength());
             boolean isArchived = item.getProduct().isArchived();
             tvInitialAmount.setText(String.valueOf(isArchived ? 0 : item.getInitialAmount()));
             tvReceived.setText(String.valueOf(isArchived ? 0 : item.getReceived()));
@@ -337,7 +346,7 @@ public class MMIARnrForm extends LinearLayout {
                                EditText etAdjustment,
                                EditText etInventory,
                                TextView tvValidate) {
-        tvIssuedUnit.setText(R.string.label_issued_unit);
+        //tvIssuedUnit.setText(R.string.label_issued_unit);
         tvInitialAmount.setText(R.string.label_initial_amount);
         tvReceived.setText(R.string.label_received_mmia);
         etIssued.setText(R.string.label_issued_mmia);

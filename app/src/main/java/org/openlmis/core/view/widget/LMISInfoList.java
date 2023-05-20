@@ -18,9 +18,11 @@
 
 package org.openlmis.core.view.widget;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -28,19 +30,27 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
+import org.openlmis.core.LMISApp;
 import org.openlmis.core.R;
 import org.openlmis.core.exceptions.LMISException;
 import org.openlmis.core.model.BaseInfoItem;
+import org.openlmis.core.model.repository.MMIARepository;
+import org.openlmis.core.view.fragment.MMIARequisitionFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+
+import roboguice.RoboGuice;
 
 public class LMISInfoList extends LinearLayout {
     private Context context;
@@ -49,6 +59,7 @@ public class LMISInfoList extends LinearLayout {
     private LayoutInflater layoutInflater;
     private List<BaseInfoItem> dataList;
     private boolean hasDataChanged = false;
+    private Integer bgColor = R.color.color_mmia_info_name;
 
     public LMISInfoList(Context context) {
         super(context);
@@ -72,8 +83,8 @@ public class LMISInfoList extends LinearLayout {
 
     public void initView(List<BaseInfoItem> list) {
         this.dataList = list;
-        addEquipmentView();
-        addHeaderView();
+        // addEquipmentView();
+        // addHeaderView();
 
         for (int i = 0; i < dataList.size(); i++) {
             BaseInfoItem item = dataList.get(i);
@@ -82,7 +93,7 @@ public class LMISInfoList extends LinearLayout {
             }
         }
 
-        editTexts.get(editTexts.size() - 2).setImeOptions(EditorInfo.IME_ACTION_DONE);
+        // editTexts.get(editTexts.size() - 2).setImeOptions(EditorInfo.IME_ACTION_DONE);
     }
 
     private void addEquipmentView() {
@@ -102,27 +113,75 @@ public class LMISInfoList extends LinearLayout {
 
 
     private void addItemView(BaseInfoItem item, boolean isHeaderView, final int position) {
+        MMIARepository mmiaRepository = RoboGuice.getInjector(LMISApp.getContext()).getInstance(MMIARepository.class);
         View view = layoutInflater.inflate(R.layout.item_lmis_info, this, false);
         TextView tvName = (TextView) view.findViewById(R.id.tv_name);
         EditText etValue = (EditText) view.findViewById(R.id.et_value);
+        if (item.getName().equals(LMISApp.getContext().getString(R.string.label_equipment))) {
+            bgColor = AlternateColors.next();
+        }
+        if (item.getName().equals(mmiaRepository.ATTR_EQUIPMENT) || item.getName().equals(mmiaRepository.ATTR_SERIAL_NUMBER)) {
+            etValue.setKeyListener(null);
+            etValue.setFocusable(false);
+            etValue.setFocusableInTouchMode(false);
+        }
 
         InputFilter[] inputFilters = new InputFilter[1];
         inputFilters[0] = new InputFilter.LengthFilter(12);
         if (isHeaderView) {
             etValue.setFilters(inputFilters);
-            etValue.setText("DPI");
+            etValue.setText(R.string.label_equipment);
             etValue.setEnabled(false);
             etValue.setGravity(Gravity.CENTER);
-
             view.setBackgroundResource(R.color.color_mmia_info_name);
         } else {
             tvName.setText(item.getName());
+            tvName.setBackgroundResource(bgColor);
+            //tvName.setBackgroundResource(bgColor);
             editTexts.add(etValue);
             etValue.setText(item.getValue());
             if (isTotalPatient(item)) {
                 totalPatientsView = etValue;
             } else {
                 etValue.addTextChangedListener(new EditTextWatcher(item));
+            }
+            if (item.getType() == BaseInfoItem.TYPE.INT) {
+                etValue.setInputType(InputType.TYPE_CLASS_NUMBER);
+            } else if (item.getType() == BaseInfoItem.TYPE.STRING) {
+                etValue.setInputType(InputType.TYPE_CLASS_TEXT);
+            } else if (item.getType() == BaseInfoItem.TYPE.DATE) {
+                //etValue.setInputType(InputType.TYPE_DATETIME_VARIATION_DATE);
+                DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        // Aqui você pode manipular a data selecionada pelo usuário
+                        // e atualizar o valor do EditText com a data escolhida
+                        String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, monthOfYear + 1, year);
+                        etValue.setText(selectedDate);
+                    }
+                };
+                etValue.setKeyListener(null);
+                etValue.setFocusable(false);
+                etValue.setFocusableInTouchMode(false);
+                etValue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Obtenha a data atual para definir como valor padrão no DatePicker
+                        Calendar calendar = Calendar.getInstance();
+                        int year = calendar.get(Calendar.YEAR);
+                        int month = calendar.get(Calendar.MONTH);
+                        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+                        // Crie uma instância do DatePickerDialog
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(MMIARequisitionFragment.activityInstance, onDateSetListener, year, month, dayOfMonth);
+
+                        // Defina quaisquer limites de data, se necessário
+                        // Exemplo: datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
+                        // Exiba o DatePickerDialog
+                        datePickerDialog.show();
+                    }
+                });
             }
             etValue.addTextChangedListener(new EditTextWatcher(item));
             setTotalViewBackground(item, etValue);
@@ -231,6 +290,19 @@ public class LMISInfoList extends LinearLayout {
             }
         }
         return true;
+    }
+
+    private static class AlternateColors {
+        private static boolean toggle = true;
+        public static Integer next() {
+            if (toggle) {
+                toggle = false;
+                return R.color.color_regime_other;
+            } else {
+                toggle = true;
+                return R.color.color_regime_baby;
+            }
+        }
     }
 
 }

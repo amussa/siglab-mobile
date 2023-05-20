@@ -85,7 +85,7 @@
     <string name="total">Total</string>
     <string name="ape">APEs</string>
     <string name="label_mmia_info_header_name">TIPO</string>
-    <string name="label_lmis_speed_info_header">Equipamento</string>
+    <string name="label_lmis_speed_info_header">EQUIPAMENTOS</string>
     <string name="hint_mmia_comment">Observações</string>
     <string name="btn_complete">Completar</string>
     <string name="btn_new_movement">NOVO MOVIMENTO</string>
@@ -546,14 +546,20 @@
     <string name="label_hologic_panter_title">LMIS HOLOGIC PANTER - %1$s to %2$s</string>
     <string name="label_biosecurity_material_title">LMIS BIOSECURITY MATERIAL - %1$s to %2$s</string>
     <string name="select_equipment">Selecciona o equipmento</string>
-    <string name="equipment_serial">Número de série</string>
-    <string name="label_patients_tested">Nº de pacientes testados durante o mês</string>
-    <string name="label_tests_performed">Nº de testes realizados pelo equipamento durante o mês</string>
+    <string name="label_equipment_serial">Número de série do equipamento</string>
+    <string name="label_dpi_patients_tested">Nº de pacientes DPI testados</string>
+    <string name="label_dpi_tests_performed">Nº de testes DPI realizados pelo equipamento</string>
+    <string name="label_cv_dbs_patients_tested">Nº de pacientes CV(DBS) testados</string>
+    <string name="label_cv_dbs_tests_performed">Nº de testes CV(DBS) realizados pelo equipamento</string>
+    <string name="label_cv_plasma_patients_tested">Nº de pacientes CV(PLASMA) testados</string>
+    <string name="label_cv_plasma_tests_performed">Nº de testes CV(PLASMA) realizados pelo equipamento</string>
     <string name="label_days_equipment_worked">Nº de dias em que o equipamento funcionou</string>
     <string name="label_days_equipment_out_of_order">Nº de dias em que o equipamento esteve avariado</string>
     <string name="label_date_last_preventive_maintenance">Data da última manutenção preventiva</string>
     <string name="label_date_next_preventive_maintenance">Data da próxima manutenção preventiva</string>
     <string name="label_remaining_hours">Nº de horas remanescentes</string>
+    <string name="label_equipment">Equipamento</string>
+    <string name="label_serial_number">Número de Serie</string>
 
     <string-array name="movement_date_items_array">
         <item>Últimos 7 dias</item>

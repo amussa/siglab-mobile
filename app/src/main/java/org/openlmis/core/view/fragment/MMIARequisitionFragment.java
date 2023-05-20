@@ -18,6 +18,7 @@
 package org.openlmis.core.view.fragment;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -28,6 +29,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.DatePicker;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -42,12 +44,12 @@ import org.openlmis.core.utils.SimpleTextWatcher;
 import org.openlmis.core.utils.ToastUtil;
 import org.openlmis.core.utils.ViewUtil;
 import org.openlmis.core.view.widget.LMISInfoList;
-import org.openlmis.core.view.widget.MMIAInfoList;
 import org.openlmis.core.view.widget.MMIARnrForm;
 import org.openlmis.core.view.widget.RnrFormHorizontalScrollView;
 import org.openlmis.core.view.widget.SingleClickButtonListener;
 
 import java.util.Date;
+import java.util.Locale;
 
 import roboguice.RoboGuice;
 import roboguice.inject.InjectView;
@@ -87,6 +89,8 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
     protected View containerView;
     private Date periodEndDate;
 
+    public static Activity activityInstance;
+
     private static final String TAG_MISMATCH = "mismatch";
     public static final int REQUEST_FOR_CUSTOM_REGIME = 100;
 
@@ -95,7 +99,7 @@ public class MMIARequisitionFragment extends BaseReportFragment implements MMIAR
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        activityInstance = getActivity();
         formId = getActivity().getIntent().getLongExtra(Constants.PARAM_FORM_ID, 0);
         previousFormId = getActivity().getIntent().getLongExtra(Constants.PARAM_PREVIOUS_FORM, 0);
         periodEndDate = ((Date) getActivity().getIntent().getSerializableExtra(Constants.PARAM_SELECTED_INVENTORY_DATE));

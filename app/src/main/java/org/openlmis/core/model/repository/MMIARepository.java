@@ -26,7 +26,10 @@ import com.google.inject.Inject;
 import org.openlmis.core.R;
 import org.openlmis.core.exceptions.LMISException;
 import org.openlmis.core.manager.MovementReasonManager;
+import org.openlmis.core.manager.SharedPreferenceMgr;
+import org.openlmis.core.manager.UserInfoMgr;
 import org.openlmis.core.model.BaseInfoItem;
+import org.openlmis.core.model.FacilityEquipment;
 import org.openlmis.core.model.Product;
 import org.openlmis.core.model.Regimen;
 import org.openlmis.core.model.RegimenItem;
@@ -36,8 +39,6 @@ import org.openlmis.core.model.StockCard;
 import org.openlmis.core.model.StockMovementItem;
 import org.openlmis.core.utils.Constants;
 import org.openlmis.core.utils.DateUtil;
-import org.roboguice.shaded.goole.common.base.Function;
-import org.roboguice.shaded.goole.common.collect.FluentIterable;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -63,11 +64,11 @@ public class MMIARepository extends RnrFormRepository {
     public String ATTR_PPE;
 
 
-    @InjectResource(R.string.label_patients_tested)
-    public String ATTR_PATIENTS_TESTED;
+    @InjectResource(R.string.label_equipment)
+    public String ATTR_EQUIPMENT;
 
-    @InjectResource(R.string.label_tests_performed)
-    public String ATTR_TESTS_PERFORMED;
+    @InjectResource(R.string.label_serial_number)
+    public String ATTR_SERIAL_NUMBER;
 
     @InjectResource(R.string.label_days_equipment_worked)
     public String ATTR_DAYS_EQUIPMENT_WORKED;
@@ -83,6 +84,24 @@ public class MMIARepository extends RnrFormRepository {
 
     @InjectResource(R.string.label_remaining_hours)
     public String ATTR_REMAINING_HOURS;
+
+    @InjectResource(R.string.label_dpi_patients_tested)
+    public String ATTR_DPI_PATIENTS_TESTED;
+
+    @InjectResource(R.string.label_dpi_tests_performed)
+    public String ATTR_DPI_TESTS_PERFORMED;
+
+    @InjectResource(R.string.label_cv_dbs_patients_tested)
+    public String ATTR_CV_DBS_PATIENTS_TESTED;
+
+    @InjectResource(R.string.label_cv_dbs_tests_performed)
+    public String ATTR_CV_DBS_TESTS_PERFORMED;
+
+    @InjectResource(R.string.label_cv_plasma_patients_tested)
+    public String ATTR_CV_PLASMA_PATIENTS_TESTED;
+
+    @InjectResource(R.string.label_cv_plasma_tests_performed)
+    public String ATTR_CV_PLASMA_TESTS_PERFORMED;
 
 
     @Inject
@@ -114,21 +133,24 @@ public class MMIARepository extends RnrFormRepository {
 
     @Override
     protected List<BaseInfoItem> generateBaseInfoItems(final RnRForm form) {
-        ArrayList<String> attrs = new ArrayList<>();
-        attrs.add(ATTR_PATIENTS_TESTED);
-        attrs.add(ATTR_TESTS_PERFORMED);
-        attrs.add(ATTR_DAYS_EQUIPMENT_WORKED);
-        attrs.add(ATTR_DAYS_EQUIPMENT_OUT_OF_ORDER);
-        attrs.add(ATTR_DATE_LAST_PREVENTIVE_MAINTENANCE);
-        attrs.add(ATTR_DATE_NEXT_PREVENTIVE_MAINTENANCE);
-        attrs.add(ATTR_REMAINING_HOURS);
-
-        return FluentIterable.from(attrs).transform(new Function<String, BaseInfoItem>() {
-            @Override
-            public BaseInfoItem apply(String attr) {
-                return new BaseInfoItem(attr, BaseInfoItem.TYPE.INT, form);
-            }
-        }).toList();
+        List<FacilityEquipment> facilityEquipments = SharedPreferenceMgr.getInstance().getFacilityEquipments();
+        List<BaseInfoItem> baseInfoItems = new ArrayList<>();
+        for (FacilityEquipment facilityEquipment : facilityEquipments) {
+            baseInfoItems.add(new BaseInfoItem(ATTR_EQUIPMENT, facilityEquipment.getName(), BaseInfoItem.TYPE.STRING, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_SERIAL_NUMBER, facilityEquipment.getSerial(), BaseInfoItem.TYPE.STRING, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_DAYS_EQUIPMENT_WORKED, BaseInfoItem.TYPE.INT, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_DAYS_EQUIPMENT_OUT_OF_ORDER, BaseInfoItem.TYPE.INT, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_DATE_LAST_PREVENTIVE_MAINTENANCE, BaseInfoItem.TYPE.DATE, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_DATE_NEXT_PREVENTIVE_MAINTENANCE, BaseInfoItem.TYPE.DATE, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_REMAINING_HOURS, BaseInfoItem.TYPE.INT, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_DPI_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_DPI_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_CV_DBS_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_CV_DBS_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_CV_PLASMA_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
+            baseInfoItems.add(new BaseInfoItem(ATTR_CV_PLASMA_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
+        }
+        return baseInfoItems;
     }
 
     public long getTotalPatients(RnRForm form) {
@@ -200,17 +222,19 @@ public class MMIARepository extends RnrFormRepository {
             }
             inventory = item.getStockOnHand();
         }
+        rnrFormItem.setInventory(inventory);
         rnrFormItem.setReceived(totalReceived);
         rnrFormItem.setIssued(totalIssued);
         rnrFormItem.setAdjustment(adjustment);
-        rnrFormItem.setInventory(inventory);
     }
 
     private void initMMiARnrFormItemWithoutMovement(RnrFormItem rnrFormItem, long lastRnrInventory) throws LMISException {
-        rnrFormItem.setReceived(0);
-        rnrFormItem.setCalculatedOrderQuantity(0L);
-        rnrFormItem.setInitialAmount(lastRnrInventory);
         rnrFormItem.setInventory(lastRnrInventory);
+        rnrFormItem.setInitialAmount(lastRnrInventory);
+        rnrFormItem.setReceived(0);
+        rnrFormItem.setIssued(0L);
+        rnrFormItem.setAdjustment(0L);
+        rnrFormItem.setCalculatedOrderQuantity(0L);
     }
 
     protected ArrayList<RnrFormItem> fillAllMMIAProducts(RnRForm form, List<RnrFormItem> rnrFormItems) throws LMISException {
@@ -224,6 +248,11 @@ public class MMIARepository extends RnrFormRepository {
 
         for (Product product : products) {
             RnrFormItem rnrFormItem = new RnrFormItem();
+            rnrFormItem.setInventory(0L);
+            rnrFormItem.setInitialAmount(0L);
+            rnrFormItem.setReceived(0L);
+            rnrFormItem.setIssued(0L);
+            rnrFormItem.setAdjustment(0L);
             rnrFormItem.setForm(form);
             rnrFormItem.setProduct(product);
             RnrFormItem stockFormItem = getStockCardRnr(product, rnrFormItems);

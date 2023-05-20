@@ -1,0 +1,44 @@
+--
+-- TODO
+--
+
+Login screen, trocar:
+- imagem
+
+No Relatório Detalhado:
+- Separar coluna de Perdas e Ajustes
+- Download PDF
+
+Login e Homepage, trocar:
+- Sistema de Informação de Gestão Logística nas Unidades Sanitárias
+- SIGLAB - Sistema de Informação de Gestão Logística de Laboratório
+
+Homepage, trocar:
+- Bem vindo...
+- Ministério da Saúde
+  Direcção Nacional de Assistência Médica
+  Departamento de Meios Auxiliares de Diagnóstico
+
+
+Menu de relatórios
+alterar
+- Requisições & Mapas Mensais => LMIS
+- Relatório de Ocorrências => Relatório de Ajustes
+
+remover:
+- Relatório de produtos Sentinela
+- Relatório de produtos NOS
+- Relatório de Testes Rápidos
+- Relatório de AL
+
+
+
+--
+-- BACKLOG
+--
+
+Incluir
+- Dashboard de LMIS
+
+Bug
+- Relatório de dados históricos
