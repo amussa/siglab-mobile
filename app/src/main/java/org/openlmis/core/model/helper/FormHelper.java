@@ -35,7 +35,9 @@ public class FormHelper {
                 movementModifiedItem.totalIssued += item.getMovementQuantity();
             } else if (MovementReasonManager.MovementType.NEGATIVE_ADJUST == item.getMovementType()) {
                 movementModifiedItem.totalAdjustment -= item.getMovementQuantity();
-            } else if (MovementReasonManager.MovementType.POSITIVE_ADJUST == item.getMovementType()) {
+            } else if (MovementReasonManager.MovementType.LOSSES == item.getMovementType()) {
+                movementModifiedItem.totalAdjustment -= item.getMovementQuantity();
+            }  else if (MovementReasonManager.MovementType.POSITIVE_ADJUST == item.getMovementType()) {
                 movementModifiedItem.totalAdjustment += item.getMovementQuantity();
             }
         }

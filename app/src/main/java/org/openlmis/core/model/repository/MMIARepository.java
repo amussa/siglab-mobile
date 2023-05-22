@@ -199,16 +199,18 @@ public class MMIARepository extends RnrFormRepository {
 
     protected long getMMiAInitialAmount(StockCard stockCard,List<StockMovementItem> stockMovementItems) throws LMISException {
         List<RnRForm> rnRForms = listInclude(RnRForm.Emergency.No, programCode);
-        if (rnRForms.size() == 1) {
+        try {
+            return lastRnrInventory(stockCard);
+        } catch (Exception e) {
             return stockMovementItems.get(0).calculatePreviousSOH();
         }
-        return lastRnrInventory(stockCard);
     }
 
     private void assignMMIATotalValues(RnrFormItem rnrFormItem, List<StockMovementItem> stockMovementItems) {
         long totalReceived = 0;
         long totalIssued = 0;
         long adjustment = 0;
+        long losses = 0;
         long inventory = 0;
         for (StockMovementItem item : stockMovementItems) {
             if (MovementReasonManager.MovementType.RECEIVE == item.getMovementType()) {
@@ -219,6 +221,8 @@ public class MMIARepository extends RnrFormRepository {
                 adjustment += item.getMovementQuantity();
             } else if (MovementReasonManager.MovementType.NEGATIVE_ADJUST == item.getMovementType()) {
                 adjustment -= item.getMovementQuantity();
+            } else if (MovementReasonManager.MovementType.LOSSES == item.getMovementType()) {
+                losses -= item.getMovementQuantity();
             }
             inventory = item.getStockOnHand();
         }
@@ -226,6 +230,7 @@ public class MMIARepository extends RnrFormRepository {
         rnrFormItem.setReceived(totalReceived);
         rnrFormItem.setIssued(totalIssued);
         rnrFormItem.setAdjustment(adjustment);
+        rnrFormItem.setLosses(losses);
     }
 
     private void initMMiARnrFormItemWithoutMovement(RnrFormItem rnrFormItem, long lastRnrInventory) throws LMISException {

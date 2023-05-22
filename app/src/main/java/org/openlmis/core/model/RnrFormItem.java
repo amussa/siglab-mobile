@@ -65,6 +65,11 @@ public class RnrFormItem extends BaseModel{
     private Long adjustment;
 
     @Expose
+    @SerializedName("totalLosses")
+    @DatabaseField
+    private Long losses;
+
+    @Expose
     @SerializedName("stockInHand")
     @DatabaseField
     private Long inventory;

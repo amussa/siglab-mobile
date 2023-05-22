@@ -308,16 +308,18 @@ public class MMIARnrForm extends LinearLayout {
         TextView tvReceived = (TextView) inflate.findViewById(R.id.tv_received);
         EditText etIssued = (EditText) inflate.findViewById(R.id.et_issued);
         EditText etAdjustment = (EditText) inflate.findViewById(R.id.et_adjustment);
+        EditText etLosses = (EditText) inflate.findViewById(R.id.et_losses);
         EditText etInventory = (EditText) inflate.findViewById(R.id.et_inventory);
         TextView tvValidate = (TextView) inflate.findViewById(R.id.tv_validate);
 
         // set readonly
         etIssued.setInputType(InputType.TYPE_NULL);
         etAdjustment.setInputType(InputType.TYPE_NULL);
+        etLosses.setInputType(InputType.TYPE_NULL);
         etInventory.setInputType(InputType.TYPE_NULL);
 
         if (isHeaderView) {
-            setHeaderView(inflate, null /*tvIssuedUnit*/, tvInitialAmount, tvReceived, etIssued, etAdjustment, etInventory, tvValidate);
+            setHeaderView(inflate, null /*tvIssuedUnit*/, tvInitialAmount, tvReceived, etIssued, etAdjustment, etLosses, etInventory, tvValidate);
         } else {
             //tvIssuedUnit.setText(item.getProduct().getStrength());
             boolean isArchived = item.getProduct().isArchived();
@@ -325,6 +327,7 @@ public class MMIARnrForm extends LinearLayout {
             tvReceived.setText(String.valueOf(isArchived ? 0 : item.getReceived()));
             editTexts.add(configEditText(item, etIssued, getValue(isArchived, item.getIssued()==null?0L:item.getIssued() )));
             editTexts.add(configEditText(item, etAdjustment, getValue(isArchived, item.getAdjustment()==null?0L:item.getAdjustment() )));
+            editTexts.add(configEditText(item, etLosses, getValue(isArchived, item.getLosses()==null?0L:item.getLosses() )));
             editTexts.add(configEditText(item, etInventory, getValue(isArchived, item.getInventory()==null?0L:item.getInventory() )));
             try {
                 if (!(TextUtils.isEmpty(item.getValidate()) || isArchived)) {
@@ -344,6 +347,7 @@ public class MMIARnrForm extends LinearLayout {
                                TextView tvReceived,
                                EditText etIssued,
                                EditText etAdjustment,
+                               EditText etLosses,
                                EditText etInventory,
                                TextView tvValidate) {
         //tvIssuedUnit.setText(R.string.label_issued_unit);
@@ -351,6 +355,7 @@ public class MMIARnrForm extends LinearLayout {
         tvReceived.setText(R.string.label_received_mmia);
         etIssued.setText(R.string.label_issued_mmia);
         etAdjustment.setText(R.string.label_adjustment);
+        etLosses.setText(R.string.label_losses);
         etInventory.setText(R.string.label_inventory);
         tvValidate.setText(R.string.label_validate);
         enableEditText(false, etIssued, etAdjustment, etInventory);

@@ -233,7 +233,7 @@ public final class MovementReasonManager {
         }
 
         public boolean isNegative() {
-            return this == ISSUE || this == NEGATIVE_ADJUST;
+            return this == ISSUE || this == NEGATIVE_ADJUST || this == LOSSES;
         }
     }
 

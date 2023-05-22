@@ -111,7 +111,9 @@ public class StockMovementItem extends BaseModel {
     }
 
     public boolean isNegativeMovement() {
-        return movementType.equals(MovementReasonManager.MovementType.ISSUE) || movementType.equals(MovementReasonManager.MovementType.NEGATIVE_ADJUST);
+        return movementType.equals(MovementReasonManager.MovementType.ISSUE) ||
+               movementType.equals(MovementReasonManager.MovementType.NEGATIVE_ADJUST) ||
+               movementType.equals(MovementReasonManager.MovementType.LOSSES);
     }
 
     public Period getMovementPeriod() {

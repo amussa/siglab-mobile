@@ -38,8 +38,8 @@
         <!-- Do not change -->
         <item>PHYSICAL_INVENTORY|INVENTORY|Inventory</item>
 
-        <item>LOSSES|DAMAGED|Damaged</item>
-        <item>LOSSES|BROKEN|Broken</item>
+        <item>LOSSES|LOSSES_DUE_TO_DAMAGE|Losses due to damage</item>
+        <item>LOSSES|LOSSES_DUE_TO_BREAKAGE|Losses due to Breakage</item>
 
         <!-- Default Code , Do not change -->
         <item>ISSUE|DEFAULT_ISSUE|Issued</item>

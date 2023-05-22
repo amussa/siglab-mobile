@@ -93,7 +93,8 @@
     <string name="label_initial_amount">Saldo Inicial</string>
     <string name="label_received_mmia">Entradas</string>
     <string name="label_issued_mmia">Saídas</string>
-    <string name="label_adjustment">Perdas e ajustes</string>
+    <string name="label_adjustment">Ajustes</string>
+    <string name="label_losses">Perdas</string>
     <string name="button_inventory">Inventário</string>
     <string name="label_inventory">Inventário</string>
     <string name="label_validate">Validade</string>
