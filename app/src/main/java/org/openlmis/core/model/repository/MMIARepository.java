@@ -197,13 +197,13 @@ public class MMIARepository extends RnrFormRepository {
         return rnrFormItem;
     }
 
-    protected long getMMiAInitialAmount(StockCard stockCard,List<StockMovementItem> stockMovementItems) throws LMISException {
+    protected Long getMMiAInitialAmount(StockCard stockCard,List<StockMovementItem> stockMovementItems) throws LMISException {
         List<RnRForm> rnRForms = listInclude(RnRForm.Emergency.No, programCode);
-        try {
-            return lastRnrInventory(stockCard);
-        } catch (Exception e) {
-            return stockMovementItems.get(0).calculatePreviousSOH();
+        Long initialAmount = lastRnrInventory(stockCard);
+        if (initialAmount == null) {
+            initialAmount = stockMovementItems.get(0).calculatePreviousSOH();
         }
+        return initialAmount;
     }
 
     private void assignMMIATotalValues(RnrFormItem rnrFormItem, List<StockMovementItem> stockMovementItems) {

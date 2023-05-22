@@ -371,14 +371,14 @@ public class RnrFormRepository {
         }
     }
 
-    protected long lastRnrInventory(StockCard stockCard) throws LMISException {
+    protected Long lastRnrInventory(StockCard stockCard) throws LMISException {
         return lastRnrInventory(stockCard.getProduct());
     }
 
-    protected long lastRnrInventory(Product product) throws LMISException {
+    protected Long lastRnrInventory(Product product) throws LMISException {
         List<RnRForm> rnRForms = listInclude(RnRForm.Emergency.No, programCode);
         if (rnRForms.isEmpty() || rnRForms.size() == 1) {
-            return 0;
+            return 0L;
         }
         List<RnrFormItem> rnrFormItemListWrapper = rnRForms.get(rnRForms.size() - 2).getRnrFormItemListWrapper();
         for (RnrFormItem item : rnrFormItemListWrapper) {
@@ -386,7 +386,7 @@ public class RnrFormRepository {
                 return item.getInventory();
             }
         }
-        return 0;
+        return 0L;
     }
 
     private List<RnRForm> list(String programCode, final boolean isWithEmergency, ReportTypeForm typeForm) throws LMISException {
