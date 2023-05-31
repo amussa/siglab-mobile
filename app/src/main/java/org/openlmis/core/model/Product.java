@@ -129,7 +129,12 @@ public class Product extends BaseModel implements Comparable<Product>, Serializa
     }
 
     public String getUnit() {
-        return strength + " " + getType();
+        String str = toStringOrEmpty(strength) + " " + toStringOrEmpty(getType());
+        return str.trim();
+    }
+
+    public static String toStringOrEmpty(Object obj) {
+        return obj != null ? obj.toString() : "";
     }
 
     public enum IsKit {
