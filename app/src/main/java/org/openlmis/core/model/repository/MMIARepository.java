@@ -170,15 +170,28 @@ public class MMIARepository extends RnrFormRepository {
 
     @Override
     protected RnrFormItem createRnrFormItemByPeriod(StockCard stockCard, Date startDate, Date endDate) throws LMISException {
-        RnrFormItem rnrFormItem = this.createMMIARnrFormItemByPeriod(stockCard, startDate, endDate);
+        RnrFormItem rnrFormItem = new RnrFormItem();
+        List<StockMovementItem> stockMovementItems = stockMovementRepository.queryStockItemsByCreatedDate(stockCard.getId(), startDate, endDate);
 
-        rnrFormItem.setProduct(stockCard.getProduct());
-        Date earliestLotExpiryDate = stockCard.getEarliestLotExpiryDate();
-        if (earliestLotExpiryDate != null) {
-            rnrFormItem.setValidate(DateUtil.formatDate(earliestLotExpiryDate, DateUtil.SIMPLE_DATE_FORMAT));
+        if (stockMovementItems.isEmpty()) {
+            rnrFormHelper.initRnrFormItemWithoutMovement(rnrFormItem, lastRnrInventory(stockCard));
+        } else {
+            rnrFormItem.setInitialAmount(stockMovementItems.get(0).calculatePreviousSOH());
+            rnrFormHelper.assignTotalValues(rnrFormItem, stockMovementItems);
         }
 
+        rnrFormItem.setProduct(stockCard.getProduct());
         return rnrFormItem;
+
+//        RnrFormItem rnrFormItem = this.createMMIARnrFormItemByPeriod(stockCard, startDate, endDate);
+//
+//        rnrFormItem.setProduct(stockCard.getProduct());
+//        Date earliestLotExpiryDate = stockCard.getEarliestLotExpiryDate();
+//        if (earliestLotExpiryDate != null) {
+//            rnrFormItem.setValidate(DateUtil.formatDate(earliestLotExpiryDate, DateUtil.SIMPLE_DATE_FORMAT));
+//        }
+//
+//        return rnrFormItem;
     }
 
     protected RnrFormItem createMMIARnrFormItemByPeriod(StockCard stockCard, Date startDate, Date endDate) throws LMISException {

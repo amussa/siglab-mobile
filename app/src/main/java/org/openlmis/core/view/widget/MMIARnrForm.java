@@ -323,7 +323,7 @@ public class MMIARnrForm extends LinearLayout {
         } else {
             //tvIssuedUnit.setText(item.getProduct().getStrength());
             boolean isArchived = item.getProduct().isArchived();
-            tvInitialAmount.setText(String.valueOf(isArchived ? 0 : item.getInitialAmount()));
+            tvInitialAmount.setText(String.valueOf(isArchived ? 0 : nullToZero(item.getInitialAmount())));
             tvReceived.setText(String.valueOf(isArchived ? 0 : item.getReceived()));
             editTexts.add(configEditText(item, etIssued, getValue(isArchived, item.getIssued()==null?0L:item.getIssued() )));
             editTexts.add(configEditText(item, etAdjustment, getValue(isArchived, item.getAdjustment()==null?0L:item.getAdjustment() )));
@@ -334,11 +334,16 @@ public class MMIARnrForm extends LinearLayout {
                     tvValidate.setText(DateUtil.convertDate(item.getValidate(), "dd/MM/yyyy", "MMM yyyy"));
                 }
             } catch (ParseException e) {
+                e.printStackTrace();
                 new LMISException(e).reportToFabric();
             }
         }
         rightViewGroup.addView(inflate);
         return inflate;
+    }
+
+    public static Object nullToZero(Object obj) {
+        return obj != null ? obj : 0;
     }
 
     private void setHeaderView(ViewGroup inflate,

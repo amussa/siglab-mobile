@@ -1,8 +1,8 @@
 <resources>
     <!-- the line above is the ip used by genymotion to connect to its host machine's localhost-->
-    <string name="server_base_url">http://192.168.8.107:9091/</string>
+<!--    <string name="server_base_url">http://192.168.8.107:9091/</string>-->
     <!-- <string name="server_base_url">http://172.20.10.3:9091/</string>-->
-    <!-- <string name="server_base_url">http://172.20.10.10:9091/</string>-->
+     <string name="server_base_url">http://172.20.10.10:9091/</string>
     <string name="sync_account_type">org.clintonhealthaccess.lmismoz.local</string>
     <integer name="sync_interval">60</integer>
     <string name="sync_content_authority">org.clintonhealthaccess.lmismoz.sync.local</string>

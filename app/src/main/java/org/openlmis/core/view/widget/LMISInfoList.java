@@ -264,6 +264,7 @@ public class LMISInfoList extends LinearLayout {
             try {
                 totalRegimenNumber += Long.parseLong(item.getValue());
             } catch (NumberFormatException e) {
+                e.printStackTrace();
                 new LMISException(e).reportToFabric();
             }
         }

@@ -50,7 +50,7 @@
     <!--Home Page-->
     <string name="label_stock_cards">Visão geral da ficha de stock</string>
     <string name="label_kits_stock_cards">KITS</string>
-    <string name="label_mmia">Elaborar MMIA</string>
+    <string name="label_mmia">Elaborar LMIS</string>
     <string name="label_sync">Sincronizar dados</string>
     <string name="action_add_new_drug">Adicionar novo produto</string>
     <plurals name="minute_unit">
@@ -78,7 +78,7 @@
     <string name="hint_soh_amount">Quantidade</string>
     <string name="tv_batch">Lote &amp; data de validade</string>
     <string name="msg_error_basic_products">Todos os produtos básicos devem ser configurados para continuar</string>
-    <!--MMIA-->
+    <!--LMIS-->
     <string name="label_lmis_title">LMIS - %1$s a %2$s</string>
     <string name="label_rnrfrom_left_header">Produto</string>
     <string name="label_regime_header_name">REGIME TERAPÊUTICO</string>
@@ -105,9 +105,9 @@
     <string name="msg_regime_del_confirm">Tem a certeza que pretende remover este regime?</string>
     <string name="btn_positive">Sim</string>
     <string name="btn_negative">Não</string>
-    <string name="msg_mmia_submit_tip">O seu MMIA foi gravado com sucesso,e vai ser submetido \r\n automaticamente quando tiver conecção a internet.</string>
+    <string name="msg_mmia_submit_tip">O seu LMIS foi gravado com sucesso,e vai ser submetido \r\n automaticamente quando tiver conecção a internet.</string>
     <string name="hint_mmia_total_not_equal">O Total dos regimes terapêuticos não confere com o Total de pacientes em TARV na US.</string>
-    <string name="msg_mmia_not_unique">Não é possivel submeter duas vezes o MMIA no mesmo período.</string>
+    <string name="msg_mmia_not_unique">Não é possivel submeter duas vezes o LMIS no mesmo período.</string>
     <string name="msg_reason_for_total_not_match">Adicionar razão para a diferença entre totais de regimes e total de pacientes</string>
     <string name="msg_regime_total_and_patient_total_not_match">Os totais não correspondem. Por favor, verifique os números digitados. Se os valores continuam diferentes, adicione uma justificação nas \"Observações\".</string>
     <string name="btn_ok">OK</string>
@@ -150,12 +150,12 @@
     <string name="btn_approve">Visto</string>
     <string name="msg_via_submit_signature">Insira as iniciais do seu nome e aprove as quantidades da requisição</string>
     <string name="msg_rapid_test_submit_signature">Digite suas iniciais e em seguida, aprove as quantidades de testes rápidos.</string>
-    <string name="msg_mmia_submit_signature">Insira as iniciais do seu nome e aprove a informação do MMIA</string>
+    <string name="msg_mmia_submit_signature">Insira as iniciais do seu nome e aprove a informação do LMIS</string>
     <string name="msg_approve_signature_rapid_test">Digite suas iniciais e em seguida, aprove o teste rápido</string>
     <string name="msg_approve_signature_via">Insira as iniciais do seu nome e aprove a Requisição Balancete</string>
-    <string name="msg_approve_signature_mmia">Insira as iniciais do seu nome e aprove o MMIA</string>
+    <string name="msg_approve_signature_mmia">Insira as iniciais do seu nome e aprove o LMIS</string>
     <string name="msg_requisition_signature_message_notify_via">Por favor passe o dispositivo à pessoa responsável pela aprovação e submissão da Requisição Balancete</string>
-    <string name="msg_requisition_signature_message_notify_mmia">Por favor passe o dispositivo à pessoa responsável pela aprovação e submissão do MMIA</string>
+    <string name="msg_requisition_signature_message_notify_mmia">Por favor passe o dispositivo à pessoa responsável pela aprovação e submissão do LMIS</string>
     <string name="msg_requisition_signature_message_notify_rapid_test">Por favor passe o dispositivo ao seu responsável para devida aprovação e submissão do mapa de testes rápidos.</string>
     <string name="btn_continue">Continuar</string>
     <string name="label_adjustment_dialog_header"><![CDATA[A quantidade a requisitar foi ajustada com base em: <br/>]]></string>
@@ -230,7 +230,7 @@
     <string name="hint_product_deactivated">Este produto está desactivado e não está disponível para reordenar</string>
     <string name="hint_others_movement_reason">Outro Motivo</string>
 
-    <!--MMIABaseInfo-->
+    <!--LMISBaseInfo-->
     <string name="label_new_patients">Novos</string>
     <string name="label_sustaining">Manutenção</string>
     <string name="label_alteration">Alteração</string>
@@ -254,9 +254,9 @@
     <!--Stock Card List Page-->
     <string name="search_hint">Procurar…</string>
     <string name="action_navigate_archive">Produtos Arquivados</string>
-    <string name="hint_save_mmia_failed">Não foi possível gravar o MMIA, por favor, contacte o administrador.</string>
+    <string name="hint_save_mmia_failed">Não foi possível gravar o LMIS, por favor, contacte o administrador.</string>
     <string name="hint_save_requisition_failed">Não foi possível gravar Requisição Balancete, por favor, contacte o administrador.</string>
-    <string name="hint_mmia_complete_failed">Não foi possível completar o MMIA, por favor, contacte o administrador.</string>
+    <string name="hint_mmia_complete_failed">Não foi possível completar o LMIS, por favor, contacte o administrador.</string>
     <string name="hint_requisition_complete_failed">Não foi possível completar Requisição Balancete, por favor, contacte o administrador.</string>
     <string-array name="sort_items_array">
         <item>Ordenar por alfabético: de A a Z</item>
@@ -298,25 +298,25 @@
     <string name="period_mismatch_error">Sincronização falhou. O período que você está enviando não coincide com o período de programação.</string>
     <!--Rnr form historical list-->
     <string name="label_via_name">Requisição Balancete</string>
-    <string name="label_mmia_name">MMIA</string>
+    <string name="label_mmia_name">LMIS</string>
     <string name="label_al_name">AL</string>
     <string name="label_ptv_name">PTV</string>
     <string name="btn_view_completed_Rapid_Test_inventory">Criar testes rápidos</string>
     <string name="action_delete_rnr_form">Remover do tablet</string>
-    <string name="label_uncompleted_mmia_physical_inventory_message"><![CDATA[<b> Nenhum MMIA foi criada.</b>]]> Complete o seu inventário antes de criar um MMIA</string>
+    <string name="label_uncompleted_mmia_physical_inventory_message"><![CDATA[<b> Nenhum LMIS foi criada.</b>]]> Complete o seu inventário antes de criar um LMIS</string>
     <string name="label_uncompleted_rapid_physical_inventory_message"><![CDATA[<b> Nenhum testes rápidos foi criada.</b>]]> Complete o seu inventário antes de criar um testes rápidos</string>
     <string name="label_uncompleted_physical_inventory_message"><![CDATA[<b> Nenhuma %1$s foi criada.</b>]]> Complete o seu inventário antes de criar uma %2$s </string>
     <string name="btn_view_uncompleted_physical_inventory">Completar Inventário</string>
     <string name="label_select_close_of_period"><![CDATA[Por favor seleccione um inventário a partir da lista abaixo. Apenas inventários feitos em ou entre o <b>18</b> e <b>25</b> de <b>%1$s</b> podem ser usado para fechar o período. A data de hoje é <b>%2$s</b>]]></string>
     <string name="label_training_select_close_of_period"><![CDATA[Por favor, selecione um inventário da lista abaixo. A data de hoje é <b>%2$s</b>]]></string>
-    <string name="label_completed_mmia_physical_inventory_message"><![CDATA[<b> Nenhum MMIA foi criada.</b>]]></string>
+    <string name="label_completed_mmia_physical_inventory_message"><![CDATA[<b> Nenhum LMIS foi criada.</b>]]></string>
     <string name="label_completed_physical_inventory_message"><![CDATA[<b>Nenhuma %1$s Foi criado.</b>]]></string>
     <string name="btn_view_completed_physical_inventory">Criar %1$s</string>
     <string name="label_incomplete_requisition"><![CDATA[<b>%1$s</b>]]> está incompleto.</string>
     <string name="btn_view_incomplete_requisition">Continuar trabalhando em %1$s</string>
-    <string name="label_unsynced_mmia_requisition">Este <![CDATA[<b>MMIA</b>]]> não sincronizou devido à falta de ligação à Internet.<![CDATA[<br/>]]> O formulário será enviado assim que uma conexão com a Internet estiver disponível.</string>
+    <string name="label_unsynced_mmia_requisition">Este <![CDATA[<b>LMIS</b>]]> não sincronizou devido à falta de ligação à Internet.<![CDATA[<br/>]]> O formulário será enviado assim que uma conexão com a Internet estiver disponível.</string>
     <string name="label_unsynced_requisition">Esta <![CDATA[<b>%1$s</b>]]> não sincronizou devido à falta de ligação à Internet.<![CDATA[<br/>]]> O formulário será enviado assim que uma conexão com a Internet estiver disponível.</string>
-    <string name="label_mmia_submitted_message">MMIA enviado com sucesso no dia %1$s</string>
+    <string name="label_mmia_submitted_message">LMIS enviado com sucesso no dia %1$s</string>
     <string name="label_submitted_message">%1$s enviada com sucesso no dia  %2$s</string>
     <plurals name="label_drug_count_message">
         <item quantity="one"><![CDATA[<b>%1$s</b>]]> Producto requisitado</item>
@@ -325,8 +325,8 @@
     <string name="btn_view_requisition">Ver %s</string>
     <string name="label_period_date">%1$s  a  %2$s</string>
     <string name="label_emergency_date">Requisição de Emergencia – %s</string>
-    <string name="label_can_not_create_mmia_rnr"><![CDATA[<b>Você será capaz de criar um MMIA a partir do dia 18 de %1$s</b>]]></string>
-    <string name="label_training_can_not_create_mmia_rnr"><![CDATA[<b>Você poderá criar um MMIA no próximo período</b>]]></string>
+    <string name="label_can_not_create_mmia_rnr"><![CDATA[<b>Você será capaz de criar um LMIS a partir do dia 18 de %1$s</b>]]></string>
+    <string name="label_training_can_not_create_mmia_rnr"><![CDATA[<b>Você poderá criar um LMIS no próximo período</b>]]></string>
     <string name="label_can_not_create_report_rnr"><![CDATA[<b>Você será capaz de criar uma %1$s no dia 18 de %2$s</b>]]></string>
     <string name="label_training_can_not_create_report_rnr"><![CDATA[<b>Você poderá criar uma %1$s no próximo período</b>]]></string>
     <string name="label_previous_period_missing"><![CDATA[<b>O formulário não pode ser criado</b> até que períodos anteriores sejam fechados.<br> Por favor, feche todos os períodos anteriores]]></string>
@@ -336,8 +336,8 @@
     <string name="label_create_emergency_rnr">Criar requisição de emergência</string>
     <string name="label_incomplete_requisition_old">Esta <![CDATA[<b>%1$s</b>]]> está incompleta. Para completá-la, selecione \"Criar uma %1$s\" na página inicial</string>
     <string name="btn_requisition_list_old">Ver Histórico de Requisição Balancete </string>
-    <string name="btn_mmia_list_old">Ver histórico de MMIAs submetidos</string>
-    <string name="mmia_list">MMIA</string>
+    <string name="btn_mmia_list_old">Ver histórico de LMISs submetidos</string>
+    <string name="mmia_list">LMIS</string>
     <string name="requisition_list">Requisições</string>
     <string name="label_total">Total:%1$s</string>
     <string name="requisition_delete_failed">Falha ao excluir</string>
@@ -399,9 +399,9 @@
     <string name="ptv_requisition_alert"></string>
 
     <!--string name="missed_requisition_time_range">%1$s para %2$s</string>
-    <string name="via_and_mmia_requisition_alert">Suas Requisições Balancete e seus MMIAs não foram concluídos</string>
+    <string name="via_and_mmia_requisition_alert">Suas Requisições Balancete e seus LMISs não foram concluídos</string>
     <string name="via_requisition_alert">Sua Requisição Balancete de não foi concluída</string>
-    <string name="mmia_requisition_alert">Seu MMIA para nãode de não foi concluída</string>
+    <string name="mmia_requisition_alert">Seu LMIS para nãode de não foi concluída</string>
     <string name="via_and_ptv_requisition_alert">Suas Requisições Balancete e seus PTV não foram concluídos</string>
     <string name="ptv_requisition_alert">Seu PTV para nãode de não foi concluída</string-->
 

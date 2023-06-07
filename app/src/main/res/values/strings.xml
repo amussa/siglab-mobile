@@ -417,14 +417,14 @@
     <string name="document_number">Document number</string>
 
     <!--App Name In Different Environment-->
-    <string name="app_name_in_local">SIGLUS LOCAL</string>
-    <string name="app_name_in_ci">SIGLUS CI</string>
-    <string name="app_name_in_uat">SIGLUS UAT</string>
-    <string name="app_name_in_showcase">SIGLUS SHOWCASE</string>
-    <string name="app_name_in_dev">SIGLUS DEV</string>
-    <string name="app_name_in_prd">SIGLUS</string>
-    <string name="app_name_in_qa">SIGLUS QA</string>
-    <string name="app_name_in_training">SIGLUS TREINO II</string>
+    <string name="app_name_in_local">SIGLAB</string>
+    <string name="app_name_in_ci">SIGLAB CI</string>
+    <string name="app_name_in_uat">SIGLAB UAT</string>
+    <string name="app_name_in_showcase">SIGLAB SHOWCASE</string>
+    <string name="app_name_in_dev">SIGLAB DEV</string>
+    <string name="app_name_in_prd">SIGLAB</string>
+    <string name="app_name_in_qa">SIGLAB QA</string>
+    <string name="app_name_in_training">SIGLAB TREINO II</string>
 
     <!--Incomplete Requisition Banner-->
 
