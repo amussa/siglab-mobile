@@ -417,7 +417,7 @@
     <string name="document_number">Document number</string>
 
     <!--App Name In Different Environment-->
-    <string name="app_name_in_local">SIGLAB</string>
+    <string name="app_name_in_local">SIGLAB LOCAL</string>
     <string name="app_name_in_ci">SIGLAB CI</string>
     <string name="app_name_in_uat">SIGLAB UAT</string>
     <string name="app_name_in_showcase">SIGLAB SHOWCASE</string>

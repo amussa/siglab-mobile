@@ -14,6 +14,9 @@
         <item>ISSUE|ROCHE_CAPCTM|Roche CAPCTM</item>
         <item>ISSUE|HOLOGIC_PANTER|Hologic Panter</item>
         <item>ISSUE|POSC_MPIMA|POC mPIMA</item>
+        <item>ISSUE|ABBOTT|Abbott</item>
+        <item>ISSUE|ROCHE|Roche</item>
+        <item>ISSUE|BIOMERIEUX|Biomerieux</item>
 
 
         <item>NEGATIVE_ADJUST|EXPIRED_RETURN_TO_SUPPLIER|Devolução de Expirados Quarentena (ou Depósito fornecedor)</item>
@@ -35,5 +38,12 @@
 
         <item>LOSSES|LOSSES_DUE_TO_DAMAGE|Perdas devido a danos</item>
         <item>LOSSES|LOSSES_DUE_TO_BREAKAGE|Perdas devido a quebras</item>
+
+        <!-- Default Code , Do not change -->
+        <item>ISSUE|DEFAULT_ISSUE|Issued</item>
+        <item>RECEIVE|DEFAULT_RECEIVE|Received</item>
+        <item>NEGATIVE_ADJUST|DEFAULT_NEGATIVE_ADJUSTMENT|Negative adjustment</item>
+        <item>POSITIVE_ADJUST|DEFAULT_POSITIVE_ADJUSTMENT|Positive adjustment</item>
+        <item>LOSSES|DEFAULT_LOSSES|Losses</item>
     </string-array>
 </resources>

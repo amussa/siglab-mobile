@@ -129,6 +129,7 @@ public class SyncDownManager {
                     isSyncing = false;
                     subscriber.onCompleted();
                 } catch (LMISException e) {
+                    e.printStackTrace();
                     isSyncing = false;
                     subscriber.onError(e);
                 }
@@ -229,11 +230,13 @@ public class SyncDownManager {
                     sendSyncStartBroadcast();
                     sharedPreferenceMgr.setIsSyncingLastYearStockCards(true);
                     syncStockCardsLastYearSilently.performSync().subscribe(getSyncLastYearStockCardSubscriber());
-                } else if (!sharedPreferenceMgr.shouldSyncLastYearStockData() && !sharedPreferenceMgr.isSyncingLastYearStockCards()) {
+                }
+                else if (!sharedPreferenceMgr.shouldSyncLastYearStockData() && !sharedPreferenceMgr.isSyncingLastYearStockCards()) {
                     Log.d(TAG,"syncDownServerData onCompleted");
                     syncChangeKit();
                     sendSyncFinishedBroadcast();
-                } else if (!sharedPreferenceMgr.shouldSyncLastYearStockData() && sharedPreferenceMgr.isSyncingLastYearStockCards()) {
+                }
+                else if (!sharedPreferenceMgr.shouldSyncLastYearStockData() && sharedPreferenceMgr.isSyncingLastYearStockCards()) {
                     sharedPreferenceMgr.setIsSyncingLastYearStockCards(false);
                 }
             }
@@ -357,6 +360,7 @@ public class SyncDownManager {
                 sharedPreferenceMgr.setShouldSyncLastYearStockCardData(true);
                 subscriber.onNext(SyncProgress.StockCardsLastMonthSynced);
             } catch (LMISException e) {
+                e.printStackTrace();
                 sharedPreferenceMgr.setLastMonthStockCardDataSynced(false);
                 e.reportToFabric();
                 throw new LMISException(errorMessage(R.string.msg_sync_stock_movement_failed));

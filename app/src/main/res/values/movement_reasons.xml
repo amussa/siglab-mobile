@@ -4,13 +4,10 @@
         <item>RECEIVE|QUIMOFAR|Quimofar</item>
         <item>RECEIVE|HOSPITEC|Hospitec</item>
         <item>RECEIVE|THL|THL</item>
-        <item>RECEIVE|DISTRICT_DDM|District(DDM)</item>
-        <item>RECEIVE|PROVINCE_DPM|Province(DPM)</item>
         <item>RECEIVE|OTHERS|Others</item>
 
 
         <item>ISSUE|UNPACK_KIT|Unpack kit</item>
-        <item>ISSUE|ABBOTT_M2000|Abbott M2000</item>
         <item>ISSUE|ABBOTT_M2000|Abbott M2000</item>
         <item>ISSUE|ABBOTT_ALINITY_M|Abbott Alinity M</item>
         <item>ISSUE|ROCHE_COBAS_6800|Roche Cobas 6800</item>
@@ -20,6 +17,7 @@
         <item>ISSUE|ABBOTT|Abbott</item>
         <item>ISSUE|ROCHE|Roche</item>
         <item>ISSUE|BIOMERIEUX|Biomerieux</item>
+
 
         <item>NEGATIVE_ADJUST|EXPIRED_RETURN_TO_SUPPLIER|Drugs in quarantine have expired, returned to Supplier</item>
         <item>NEGATIVE_ADJUST|DAMAGED|Damaged on arrival</item>
@@ -49,6 +47,3 @@
         <item>LOSSES|DEFAULT_LOSSES|Losses</item>
     </string-array>
 </resources>
-
-
-
