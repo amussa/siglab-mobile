@@ -37,7 +37,7 @@
         <item>PHYSICAL_INVENTORY|INVENTORY|Inventario</item>
 
         <item>LOSSES|LOSSES_DUE_TO_DAMAGE|Perdas devido a danos</item>
-        <item>LOSSES|LOSSES_DUE_TO_BREAKAGE|Perdas devido a quebras</item>
+        <item>LOSSES|LOSSES_DUE_TO_EXPIRATION_DATE|Perdas devido a prazo de validade expirado</item>
 
         <!-- Default Code , Do not change -->
         <item>ISSUE|DEFAULT_ISSUE|Issued</item>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="server_base_url">http://192.168.43.200:9091/</string>
+    <string name="server_base_url">http://siglab.app.co.mz:9091/</string>
     <string name="sync_account_type">org.clintonhealthaccess.lmismoz.dev</string>
     <integer name="sync_interval">3600</integer>
     <string name="sync_content_authority">org.clintonhealthaccess.lmismoz.sync.dev</string>
