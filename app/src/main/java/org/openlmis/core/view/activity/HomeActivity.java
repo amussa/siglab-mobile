@@ -213,10 +213,10 @@ public class HomeActivity extends BaseActivity {
                new Pair<>(Constants.LMIS_MPIMA_REPORT, btnLmisMpima)
        );
        for (Pair<String, Button> buttonConfig: buttonConfigs) {
-           ReportTypeForm reportType = getReportType(buttonConfig.first, reportTypes);
+           ReportTypeForm find = getReportType(buttonConfig.first, reportTypes);
            Button button = buttonConfig.second;
+           button.setVisibility(find != null ? View.VISIBLE : View.GONE);
        }
-
     }
 
     private ReportTypeForm getReportType(String code,  List<ReportTypeForm> reportTypes) {
