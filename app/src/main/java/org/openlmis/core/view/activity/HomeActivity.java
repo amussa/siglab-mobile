@@ -81,26 +81,8 @@ public class HomeActivity extends BaseActivity {
 
     SyncTimeView syncTimeView;
 
-    @InjectView(R.id.btn_mmia_list)
-    Button btnMMIAList;
-
-    @InjectView(R.id.btn_via_list)
-    Button btnVIAList;
-
     @InjectView(R.id.btn_kit_stock_card)
     Button btnKitStockCard;
-
-    @InjectView(R.id.btn_rapid_test)
-    Button btnRapidTestReport;
-
-    @InjectView(R.id.btn_patient_data)
-    Button btnPatientData;
-
-    @InjectView(R.id.btn_ptv_card)
-    Button btnPTVReport;
-
-    @InjectView(R.id.btn_al)
-    Button btnALReport;
 
     @InjectView(R.id.btn_lmis_abbott_m2000)
     Button btnLmisAbbottM2000;
@@ -120,8 +102,8 @@ public class HomeActivity extends BaseActivity {
     @InjectView(R.id.btn_lmis_biosecurity)
     Button btnLmisBiosecurity;
 
-    @InjectView(R.id.rl_al)
-    RelativeLayout viewAl;
+    @InjectView(R.id.btn_lmis_mpima)
+    Button btnLmisMpima;
 
     @InjectResource(R.integer.back_twice_interval)
     int BACK_TWICE_INTERVAL;
@@ -164,13 +146,6 @@ public class HomeActivity extends BaseActivity {
         registerSyncFinishedReceiver();
         registerErrorFinishedReceiver();
 
-        if (!LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_rapid_test)) {
-            btnRapidTestReport.setVisibility(View.GONE);
-        }
-
-        if (!LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_patient_data)) {
-            btnPatientData.setVisibility(View.GONE);
-        }
         updateButtonConfigView();
     }
 
@@ -229,34 +204,17 @@ public class HomeActivity extends BaseActivity {
     private void updateButtonConfigView() {
        List reportTypes = sharedPreferenceMgr.getReportTypesData();
        List<Pair<String, Button>> buttonConfigs= Arrays.asList(
-               new Pair<>(Constants.VIA_REPORT, btnVIAList),
-               new Pair<>(Constants.MMIA_REPORT, btnMMIAList),
-               new Pair<>(Constants.AL_REPORT, btnALReport),
-               new Pair<>(Constants.PTV_REPORT, btnPTVReport),
-               new Pair<>(Constants.RAPID_REPORT,btnRapidTestReport),
                new Pair<>(Constants.LMIS_ABBOTT_M2000_REPORT, btnLmisAbbottM2000),
                new Pair<>(Constants.LMIS_ABBOTT_ALINITY_M_REPORT, btnLmisAbbottAlinityM),
                new Pair<>(Constants.LMIS_ROCHE_COBAS_6800_REPORT, btnLmisRocheCobas6800),
                new Pair<>(Constants.LMIS_ROCHE_CAPCTM_96_REPORT, btnLmisRocheCapctm96),
                new Pair<>(Constants.LMIS_HOLOGIC_PANTER_REPORT, btnLmisHologicPanter),
-               new Pair<>(Constants.LMIS_BIOSECURITY_MATERIAL_REPORT, btnLmisBiosecurity)
+               new Pair<>(Constants.LMIS_BIOSECURITY_MATERIAL_REPORT, btnLmisBiosecurity),
+               new Pair<>(Constants.LMIS_MPIMA_REPORT, btnLmisMpima)
        );
        for (Pair<String, Button> buttonConfig: buttonConfigs) {
            ReportTypeForm reportType = getReportType(buttonConfig.first, reportTypes);
            Button button = buttonConfig.second;
-           if (button != btnALReport) {
-               button.setVisibility(reportType == null ? View.GONE : View.VISIBLE);
-           } else {
-               viewAl.setVisibility(reportType == null ? View.GONE : View.VISIBLE);
-           }
-       }
-
-       if (btnPTVReport.getVisibility() == View.VISIBLE && btnMMIAList.getVisibility() == View.VISIBLE) {
-           if (!getReportType(Constants.PTV_REPORT, reportTypes).active) {
-               btnPTVReport.setVisibility(View.GONE);
-           } else if (!getReportType(Constants.MMIA_REPORT, reportTypes).active) {
-               btnMMIAList.setVisibility(View.GONE);
-           }
        }
 
     }
@@ -352,6 +310,12 @@ public class HomeActivity extends BaseActivity {
         Constants.currentLmisProgram = Constants.Program.LMIS_BIOSECURITY_MATERIAL_PROGRAM;
         startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_BIOSECURITY_MATERIAL_PROGRAM));
         TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisBiosecurityMaterial, Constants.LMIS_BIOSECURITY_MATERIAL_PROGRAM_CODE);
+    }
+
+    public void onClickLmisMpimaHistory(View view) {
+        Constants.currentLmisProgram = Constants.Program.LMIS_MPIMA_PROGRAM;
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_MPIMA_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisMpima, Constants.LMIS_MPIMA_PROGRAM_CODE);
     }
 
     @Override
@@ -458,12 +422,12 @@ public class HomeActivity extends BaseActivity {
         return new InternetCheck.Callback() {
             @Override
             public void launchResponse(Boolean internet) {
-                if (!internet && !LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_training)) {
-                    ToastUtil.show(R.string.message_wipe_no_connection);
-                } else {
+//                if (!internet && !LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_training)) {
+//                    ToastUtil.show(R.string.message_wipe_no_connection);
+//                } else {
                     WarningDialogFragment wipeDataDialog = warningDialogFragmentBuilder.build(buildWipeDialogDelegate(), R.string.message_warning_wipe_data, R.string.btn_positive, R.string.btn_negative);
                     wipeDataDialog.show(getFragmentManager(), "WipeDataWarning");
-                }
+                //}
             }
         };
     }

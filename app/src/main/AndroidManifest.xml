@@ -128,6 +128,11 @@
             android:label="@string/label_biosecurity_material_title"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:name=".view.activity.LMISMpimaRequisitionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/label_mpima_title"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name=".view.activity.ALRequisitionActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/label_AL_title"

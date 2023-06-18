@@ -540,12 +540,16 @@
     <string name="lmis_roche_capctm_96">LMIS ROCHE CAPCTM 96</string>
     <string name="lmis_hologic_panter">LMIS HOLOGIC PANTER</string>
     <string name="lmis_biosecurity_material">LMIS MATERIAL DE BIOSEGURANÇA</string>
+    <string name="lmis_mpima">LMIS m-PIMA</string>
+
     <string name="label_lmis_abbott_m2000_title">LMIS ABBOTT M2000 - %1$s to %2$s</string>
     <string name="label_lmis_abbott_alinity_m_title">LMIS ABBOTT ALINITY M - %1$s to %2$s</string>
     <string name="label_lmis_roche_cobas_6800_title">LMIS ROCHE COBAS 6800 - %1$s to %2$s</string>
     <string name="label_roche_capctm_96_title">LMIS ROCHE CAPCTM 96 - %1$s to %2$s</string>
     <string name="label_hologic_panter_title">LMIS HOLOGIC PANTER - %1$s to %2$s</string>
     <string name="label_biosecurity_material_title">LMIS BIOSECURITY MATERIAL - %1$s to %2$s</string>
+    <string name="label_mpima_title">LMIS m-PIMA - %1$s to %2$s</string>
+
     <string name="select_equipment">Selecciona o equipmento</string>
     <string name="label_equipment_serial">Número de série do equipamento</string>
     <string name="label_dpi_patients_tested">Nº de pacientes DPI testados</string>

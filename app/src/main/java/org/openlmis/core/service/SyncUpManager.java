@@ -322,7 +322,7 @@ public class SyncUpManager {
             if (rnRForm.isEmergency()) {
                 lmisRestApi.submitEmergencyRequisition(rnRForm);
             } else {
-                lmisRestApi.submitRequisition(rnRForm);
+                 lmisRestApi.submitRequisition(rnRForm);
             }
             syncErrorsRepository.deleteBySyncTypeAndObjectId(SyncType.RnRForm, rnRForm.getId());
             Log.d(TAG, "===> SyncRnr : synced ->");

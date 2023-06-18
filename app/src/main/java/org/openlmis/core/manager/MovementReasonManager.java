@@ -268,6 +268,7 @@ public final class MovementReasonManager {
                 || code.equals(ABBOTT)
                 || code.equals(ROCHE)
                 || code.equals(BIOMERIEUX)
+                || code.equals(DDM)
             );
 
         }

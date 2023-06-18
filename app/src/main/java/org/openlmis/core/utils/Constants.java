@@ -41,7 +41,8 @@ public final class Constants {
         LMIS_ROCHE_COBAS_6800_PROGRAM(LMIS_ROCHE_COBAS_6800_PROGRAM_CODE, R.string.lmis_roche_cobas_6800, LMIS_ROCHE_COBAS_6800_REPORT),
         LMIS_ROCHE_CAPCTM_96_PROGRAM(LMIS_ROCHE_CAPCTM_96_PROGRAM_CODE, R.string.lmis_roche_capctm_96, LMIS_ROCHE_CAPCTM_96_REPORT),
         LMIS_HOLOGIC_PANTER_PROGRAM(LMIS_HOLOGIC_PANTER_PROGRAM_CODE, R.string.lmis_hologic_panter, LMIS_HOLOGIC_PANTER_REPORT),
-        LMIS_BIOSECURITY_MATERIAL_PROGRAM(LMIS_BIOSECURITY_MATERIAL_PROGRAM_CODE, R.string.lmis_biosecurity_material, LMIS_BIOSECURITY_MATERIAL_REPORT)
+        LMIS_BIOSECURITY_MATERIAL_PROGRAM(LMIS_BIOSECURITY_MATERIAL_PROGRAM_CODE, R.string.lmis_biosecurity_material, LMIS_BIOSECURITY_MATERIAL_REPORT),
+        LMIS_MPIMA_PROGRAM(LMIS_MPIMA_PROGRAM_CODE, R.string.lmis_mpima, LMIS_MPIMA_REPORT)
         ;
 
         private String code;
@@ -80,6 +81,7 @@ public final class Constants {
     public static final String LMIS_ROCHE_CAPCTM_96_PROGRAM_CODE = "LMIS_ROCHE_CAPCTM_96";
     public static final String LMIS_HOLOGIC_PANTER_PROGRAM_CODE = "LMIS_HOLOGIC_PANTER";
     public static final String LMIS_BIOSECURITY_MATERIAL_PROGRAM_CODE = "LMIS_BIOSECURITY_MATERIAL";
+    public static final String LMIS_MPIMA_PROGRAM_CODE = "LMIS_MPIMA";
 
     public static final List<Constants.Program> PROGRAMES = Arrays.asList(
             Constants.Program.VIA_PROGRAM,
@@ -92,7 +94,8 @@ public final class Constants {
             Constants.Program.LMIS_ROCHE_COBAS_6800_PROGRAM,
             Constants.Program.LMIS_ROCHE_CAPCTM_96_PROGRAM,
             Constants.Program.LMIS_HOLOGIC_PANTER_PROGRAM,
-            Constants.Program.LMIS_BIOSECURITY_MATERIAL_PROGRAM
+            Constants.Program.LMIS_BIOSECURITY_MATERIAL_PROGRAM,
+            Constants.Program.LMIS_MPIMA_PROGRAM
     );
 
      //Don't change these reportTypes codes!!!
@@ -107,6 +110,7 @@ public final class Constants {
     public static final String LMIS_ROCHE_CAPCTM_96_REPORT = "LMIS_ROCHE_CAPCTM_96";
     public static final String LMIS_HOLOGIC_PANTER_REPORT = "LMIS_HOLOGIC_PANTER";
     public static final String LMIS_BIOSECURITY_MATERIAL_REPORT = "LMIS_BIOSECURITY_MATERIAL";
+    public static final String LMIS_MPIMA_REPORT = "LMIS_MPIMA";
 
     public static final String PTV_REGIME_CHILD = "PTV Crianças";
     public static final String PTV_REGIME_ADULT = "PTV Mulheres";

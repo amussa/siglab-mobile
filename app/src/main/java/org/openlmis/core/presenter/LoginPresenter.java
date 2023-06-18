@@ -119,16 +119,17 @@ public class LoginPresenter extends Presenter {
         if (LMISApp.getInstance().isConnectionAvailable() && !LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_training)) {
             authorizeAndLoginUserRemote(user);
         } else {
-            authorizeAndLoginUserLocal(user);
+            authorizeAndLoginUserRemote(user);
+            //authorizeAndLoginUserLocal(user);
         }
     }
 
     private void authorizeAndLoginUserLocal(User user) {
-        if (LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_training)) {
-            if (userRepository.getLocalUser() == null) {
-                TrainingEnvironmentHelper.getInstance().setUpData();
-            }
-        }
+//        if (LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_training)) {
+//            if (userRepository.getLocalUser() == null) {
+//                TrainingEnvironmentHelper.getInstance().setUpData();
+//            }
+//        }
         setDefaultReportType();
         User localUser = userRepository.mapUserFromLocal(user);
 

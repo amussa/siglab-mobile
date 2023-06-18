@@ -26,7 +26,8 @@ public enum TrackerActions {
     SelectLmisRocheCobas6800("Select LMIS Roche Cobas 6800"),
     SelectLmisRocheCapctm96("Select LMIS Roche CAPCTM 96"),
     SelectLmisHologicPanter("Select LMIS Hologic Panter"),
-    SelectLmisBiosecurityMaterial("Select LMIS Biosecurity Material")
+    SelectLmisBiosecurityMaterial("Select LMIS Biosecurity Material"),
+    SelectLmisMpima("Select LMIS m-PIMA")
     ;
 
     private final String trackerAction;

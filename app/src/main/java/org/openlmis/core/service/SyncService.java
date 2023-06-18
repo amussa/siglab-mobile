@@ -97,9 +97,9 @@ public class SyncService extends Service {
     }
 
     public void requestSyncImmediately() {
-        if (LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_training)) {
-            trainingSyncAdapter.requestSync();
-        } else {
+//        if (LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_training)) {
+//            trainingSyncAdapter.requestSync();
+//        } else {
             Log.d(tag, "immediate sync up requested");
             Account account = findFirstLmisAccount();
             if (account != null) {
@@ -110,7 +110,7 @@ public class SyncService extends Service {
 
                 requestSync(account, syncContentAuthority, bundle);
             }
-        }
+//        }
     }
 
     public void shutDown() {

@@ -5,6 +5,8 @@
         <item>RECEIVE|HOSPITEC|Hospitec</item>
         <item>RECEIVE|THL|THL</item>
         <item>RECEIVE|OTHERS|Others</item>
+        <item>RECEIVE|DISTRICT_DDM|District(DDM)</item>
+<!--        <item>RECEIVE|PROVINCE_DPM|Province(DPM)</item>-->
 
 
         <item>ISSUE|UNPACK_KIT|Unpack kit</item>

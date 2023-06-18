@@ -235,6 +235,9 @@ public class RnRFormListActivity extends BaseReportListActivity {
             case LMIS_BIOSECURITY_MATERIAL_PROGRAM:
                 intent = LMISBiosecurityMaterialRequisitionActivity.getIntentToMe(this, rnrFormId);
                 break;
+            case LMIS_MPIMA_PROGRAM:
+                intent = LMISMpimaRequisitionActivity.getIntentToMe(this, rnrFormId);
+                break;
         }
         startActivityForResult(intent, Constants.REQUEST_FROM_RNR_LIST_PAGE);
     }
@@ -271,6 +274,9 @@ public class RnRFormListActivity extends BaseReportListActivity {
                 break;
             case LMIS_BIOSECURITY_MATERIAL_PROGRAM:
                 intent = createLMISBiosecurityMaterialRequisitionIntent(periodEndDate);
+                break;
+            case LMIS_MPIMA_PROGRAM:
+                intent = createLMISMpimaRequisitionIntent(periodEndDate);
                 break;
         }
         startActivityForResult(intent, Constants.REQUEST_FROM_RNR_LIST_PAGE);
@@ -311,6 +317,10 @@ public class RnRFormListActivity extends BaseReportListActivity {
         return LMISBiosecurityMaterialRequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
     }
 
+    private Intent createLMISMpimaRequisitionIntent(Date periodEndDate) {
+        RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
+        return LMISMpimaRequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
+    }
 
     private void deleteRnRForm(RnRForm form) {
         try {

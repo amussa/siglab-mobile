@@ -61,22 +61,17 @@
                             android:text="@string/button_inventory" />
                     </RelativeLayout>
 
-                    <RelativeLayout
-                        android:id="@+id/rl_al"
+                    <Button
+                        android:id="@+id/btn_kit_stock_card"
+                        style="@style/Homepage.Button"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
-                        >
-                        <Button
-                            android:id="@+id/btn_al"
-                            style="@style/Homepage.Button"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="20dp"
-                            android:background="@color/color_light_blue"
-                            android:onClick="onClickAL"
-                            android:text="@string/button_AL" />
-                    </RelativeLayout>
+                        android:background="@color/color_teal"
+                        android:onClick="onClickKitStockCard"
+                        android:text="@string/label_kits_stock_cards" />
+
 
                 </LinearLayout>
 
@@ -88,221 +83,99 @@
                     android:layout_weight="3"
                     android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/btn_via_list"
-                        style="@style/Homepage.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:background="@color/color_purple"
-                        android:onClick="onClickVIAHistory"
-                        android:text="@string/requisition_list" />
-
-                    <Button
-                        android:id="@+id/btn_mmia_list"
-                        style="@style/Homepage.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:background="@color/color_amber"
-                        android:onClick="onClickMMIAHistory"
-                        android:text="@string/mmia_list" />
-
-                    <Button
-                        android:id="@+id/btn_ptv_card"
-                        style="@style/Homepage.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="1"
-                        android:background="@color/color_pink"
-                        android:onClick="onClickPtvStockCard"
-                        android:text="@string/label_ptv" />
-
-                    <Button
-                        android:id="@+id/btn_kit_stock_card"
-                        style="@style/Homepage.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="2"
-                        android:background="@color/color_teal"
-                        android:onClick="onClickKitStockCard"
-                        android:text="@string/label_kits_stock_cards" />
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:visibility="gone">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                        <RelativeLayout
+                        <Button
+                            android:id="@+id/btn_lmis_abbott_m2000"
+                            style="@style/Homepage.Button"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-
-                            <Button
-                                android:id="@+id/btn_rapid_test"
-                                style="@style/Homepage.Button"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="@dimen/margin_small"
-                                android:background="@color/color_material_blue_gray"
-                                android:onClick="onClickRapidTestHistory"
-                                android:text="@string/title_rapid_test" />
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:visibility="gone">
+                            android:layout_marginTop="10dp"
+                            android:background="@color/color_accent"
+                            android:onClick="onClickLmisAbbotM2000History"
+                            android:text="@string/lmis_abbott_M2000"
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
-                            <Button
-                                android:id="@+id/btn_patient_data"
-                                style="@style/Homepage.Button"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:layout_weight="1"
-                                android:background="@color/color_pink"
-                                android:onClick="onClickPatientDataReport"
-                                android:text="@string/title_patient_data_report" />
-                        </RelativeLayout>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
-                        <RelativeLayout
+                        <Button
+                            android:id="@+id/btn_lmis_abbott_alinity_m"
+                            style="@style/Homepage.Button"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/color_amber_dark"
+                            android:onClick="onClickLmisAbbottAlinityMHistory"
+                            android:text="@string/lmis_abbott_alinity_m"
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
-                            <Button
-                                android:id="@+id/btn_lmis_abbott_m2000"
-                                style="@style/Homepage.Button"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="@dimen/margin_small"
-                                android:background="@color/color_accent"
-                                android:onClick="onClickLmisAbbotM2000History"
-                                android:text="@string/lmis_abbott_M2000"
-                                android:textSize="@dimen/font_size_regular" />
-                        </RelativeLayout>
-
-                        <RelativeLayout
+                        <Button
+                            android:id="@+id/btn_lmis_roche_cobas_6800"
+                            style="@style/Homepage.Button"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-                            <Button
-                                android:id="@+id/btn_lmis_abbott_alinity_m"
-                                style="@style/Homepage.Button"
-                                android:textSize="@dimen/font_size_regular"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:layout_weight="1"
-                                android:background="@color/color_amber_dark"
-                                android:onClick="onClickLmisAbbottAlinityMHistory"
-                                android:text="@string/lmis_abbott_alinity_m" />
-                        </RelativeLayout>
-                    </LinearLayout>
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/color_blue_dark"
+                            android:onClick="onClickLmisRocheCobas6800History"
+                            android:text="@string/lmis_roche_cobas_6800"
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
-                        <RelativeLayout
+                        <Button
+                            android:id="@+id/btn_lmis_roche_capctm_96"
+                            style="@style/Homepage.Button"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-                            <Button
-                                android:id="@+id/btn_lmis_roche_cobas_6800"
-                                style="@style/Homepage.Button"
-                                android:textSize="@dimen/font_size_regular"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="@dimen/margin_small"
-                                android:background="@color/color_blue_dark"
-                                android:onClick="onClickLmisRocheCobas6800History"
-                                android:text="@string/lmis_roche_cobas_6800" />
-                        </RelativeLayout>
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/color_teal_dark"
+                            android:onClick="onClickLmisRocheCapctm96History"
+                            android:text="@string/lmis_roche_capctm_96"
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
-                        <RelativeLayout
+                        <Button
+                            android:id="@+id/btn_lmis_hologic_panter"
+                            style="@style/Homepage.Button"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/color_purple_dark"
+                            android:onClick="onClickLmisHologicPanterHistory"
+                            android:text="@string/lmis_hologic_panter"
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
-                            <Button
-                                android:id="@+id/btn_lmis_roche_capctm_96"
-                                style="@style/Homepage.Button"
-                                android:textSize="@dimen/font_size_regular"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:layout_weight="1"
-                                android:background="@color/color_teal_dark"
-                                android:onClick="onClickLmisRocheCapctm96History"
-                                android:text="@string/lmis_roche_capctm_96" />
-                        </RelativeLayout>
-                    </LinearLayout>
-
-
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
-                        <RelativeLayout
+                        <Button
+                            android:id="@+id/btn_lmis_biosecurity"
+                            style="@style/Homepage.Button"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/color_red_dark"
+                            android:onClick="onClickLmisBiosecurityHistory"
+                            android:text="@string/lmis_biosecurity_material"
+                            android:textSize="@dimen/font_size_regular2" />
 
-                            <Button
-                                android:id="@+id/btn_lmis_hologic_panter"
-                                style="@style/Homepage.Button"
-                                android:textSize="@dimen/font_size_regular"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="@dimen/margin_small"
-                                android:background="@color/color_purple_dark"
-                                android:onClick="onClickLmisHologicPanterHistory"
-                                android:text="@string/lmis_hologic_panter" />
-                        </RelativeLayout>
-
-                        <RelativeLayout
+                        <Button
+                            android:id="@+id/btn_lmis_mpima"
+                            style="@style/Homepage.Button"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-                            <Button
-                                android:id="@+id/btn_lmis_biosecurity"
-                                style="@style/Homepage.Button"
-                                android:textSize="@dimen/font_size_regular"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="10dp"
-                                android:layout_weight="1"
-                                android:background="@color/color_red_dark"
-                                android:onClick="onClickLmisBiosecurityHistory"
-                                android:text="@string/lmis_biosecurity_material" />
-                        </RelativeLayout>
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/color_amber_dark"
+                            android:onClick="onClickLmisMpimaHistory"
+                            android:text="@string/lmis_mpima"
+                            android:textSize="@dimen/font_size_regular2" />
                     </LinearLayout>
 
 

@@ -24,6 +24,7 @@
     <dimen name="font_size_small">10sp</dimen>
     <dimen name="font_size_title_small">9sp</dimen>
     <dimen name="font_size_regular">14sp</dimen>
+    <dimen name="font_size_regular2">18sp</dimen>
     <dimen name="font_size_normal">20sp</dimen>
     <dimen name="font_size_medium">20sp</dimen>
     <dimen name="font_size_large">24sp</dimen>
