@@ -215,7 +215,8 @@ public class HomeActivity extends BaseActivity {
        for (Pair<String, Button> buttonConfig: buttonConfigs) {
            ReportTypeForm find = getReportType(buttonConfig.first, reportTypes);
            Button button = buttonConfig.second;
-           button.setVisibility(find != null ? View.VISIBLE : View.GONE);
+           // activa/desactiva botão de LMIS na homepage com base no Programa associado
+           // button.setVisibility(find != null ? View.VISIBLE : View.GONE);
        }
     }
 

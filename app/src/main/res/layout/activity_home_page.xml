@@ -47,8 +47,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
-                        >
+                        android:layout_weight="1">
 
                         <Button
                             android:id="@+id/btn_inventory"
@@ -98,7 +97,8 @@
                             android:background="@color/color_accent"
                             android:onClick="onClickLmisAbbotM2000History"
                             android:text="@string/lmis_abbott_M2000"
-                            android:textSize="@dimen/font_size_regular2" />
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
                         <Button
                             android:id="@+id/btn_lmis_abbott_alinity_m"
@@ -110,7 +110,8 @@
                             android:background="@color/color_amber_dark"
                             android:onClick="onClickLmisAbbottAlinityMHistory"
                             android:text="@string/lmis_abbott_alinity_m"
-                            android:textSize="@dimen/font_size_regular2" />
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
                         <Button
                             android:id="@+id/btn_lmis_roche_cobas_6800"
@@ -122,7 +123,8 @@
                             android:background="@color/color_blue_dark"
                             android:onClick="onClickLmisRocheCobas6800History"
                             android:text="@string/lmis_roche_cobas_6800"
-                            android:textSize="@dimen/font_size_regular2" />
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
                         <Button
                             android:id="@+id/btn_lmis_roche_capctm_96"
@@ -134,7 +136,8 @@
                             android:background="@color/color_teal_dark"
                             android:onClick="onClickLmisRocheCapctm96History"
                             android:text="@string/lmis_roche_capctm_96"
-                            android:textSize="@dimen/font_size_regular2" />
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
                         <Button
                             android:id="@+id/btn_lmis_hologic_panter"
@@ -146,7 +149,8 @@
                             android:background="@color/color_purple_dark"
                             android:onClick="onClickLmisHologicPanterHistory"
                             android:text="@string/lmis_hologic_panter"
-                            android:textSize="@dimen/font_size_regular2" />
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
                         <Button
                             android:id="@+id/btn_lmis_biosecurity"
@@ -158,7 +162,8 @@
                             android:background="@color/color_red_dark"
                             android:onClick="onClickLmisBiosecurityHistory"
                             android:text="@string/lmis_biosecurity_material"
-                            android:textSize="@dimen/font_size_regular2" />
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
 
                         <Button
                             android:id="@+id/btn_lmis_mpima"

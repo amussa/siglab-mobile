@@ -31,6 +31,7 @@ import org.openlmis.core.manager.UserInfoMgr;
 import org.openlmis.core.model.BaseInfoItem;
 import org.openlmis.core.model.FacilityEquipment;
 import org.openlmis.core.model.Product;
+import org.openlmis.core.model.Program;
 import org.openlmis.core.model.Regimen;
 import org.openlmis.core.model.RegimenItem;
 import org.openlmis.core.model.RnRForm;
@@ -44,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import lombok.SneakyThrows;
 import roboguice.inject.InjectResource;
 
 public class MMIARepository extends RnrFormRepository {
@@ -131,24 +133,27 @@ public class MMIARepository extends RnrFormRepository {
         return regimenItems;
     }
 
+    @SneakyThrows
     @Override
     protected List<BaseInfoItem> generateBaseInfoItems(final RnRForm form) {
         List<FacilityEquipment> facilityEquipments = SharedPreferenceMgr.getInstance().getFacilityEquipments();
         List<BaseInfoItem> baseInfoItems = new ArrayList<>();
         for (FacilityEquipment facilityEquipment : facilityEquipments) {
-            baseInfoItems.add(new BaseInfoItem(ATTR_EQUIPMENT, facilityEquipment.getName(), BaseInfoItem.TYPE.STRING, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_SERIAL_NUMBER, facilityEquipment.getSerial(), BaseInfoItem.TYPE.STRING, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_DAYS_EQUIPMENT_WORKED, BaseInfoItem.TYPE.INT, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_DAYS_EQUIPMENT_OUT_OF_ORDER, BaseInfoItem.TYPE.INT, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_DATE_LAST_PREVENTIVE_MAINTENANCE, BaseInfoItem.TYPE.DATE, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_DATE_NEXT_PREVENTIVE_MAINTENANCE, BaseInfoItem.TYPE.DATE, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_REMAINING_HOURS, BaseInfoItem.TYPE.INT, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_DPI_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_DPI_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_CV_DBS_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_CV_DBS_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_CV_PLASMA_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
-            baseInfoItems.add(new BaseInfoItem(ATTR_CV_PLASMA_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
+            if (facilityEquipment.getCode().equalsIgnoreCase(form.getProgram().getProgramCode())) {
+                baseInfoItems.add(new BaseInfoItem(ATTR_EQUIPMENT, facilityEquipment.getName(), BaseInfoItem.TYPE.STRING, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_SERIAL_NUMBER, facilityEquipment.getSerial(), BaseInfoItem.TYPE.STRING, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_DAYS_EQUIPMENT_WORKED, BaseInfoItem.TYPE.INT, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_DAYS_EQUIPMENT_OUT_OF_ORDER, BaseInfoItem.TYPE.INT, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_DATE_LAST_PREVENTIVE_MAINTENANCE, BaseInfoItem.TYPE.DATE, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_DATE_NEXT_PREVENTIVE_MAINTENANCE, BaseInfoItem.TYPE.DATE, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_REMAINING_HOURS, BaseInfoItem.TYPE.INT, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_DPI_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_DPI_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_CV_DBS_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_CV_DBS_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_CV_PLASMA_PATIENTS_TESTED, BaseInfoItem.TYPE.INT, form));
+                baseInfoItems.add(new BaseInfoItem(ATTR_CV_PLASMA_TESTS_PERFORMED, BaseInfoItem.TYPE.INT, form));
+            }
         }
         return baseInfoItems;
     }

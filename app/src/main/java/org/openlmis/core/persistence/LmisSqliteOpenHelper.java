@@ -180,6 +180,7 @@ public final class LmisSqliteOpenHelper extends OrmLiteSqliteOpenHelper {
         super(context, "lmis_db", null, MIGRATIONS.size());
         ++instanceCount;
         Log.d(TAG, "Instance Created : total count : " + instanceCount);
+        Log.d(TAG, "database: " + context.getDatabasePath("lmis_db").getAbsolutePath());
     }
 
     public static synchronized LmisSqliteOpenHelper getInstance(Context context) {
