@@ -71,7 +71,9 @@ public class RequisitionPeriodService {
 
     private Period generatePeriodBasedOnDefaultDates(Date physicalInventoryDate, String programCode) throws LMISException {
         if (LMISApp.getInstance().getFeatureToggleFor(R.bool.feature_training)) {
-            return Period.generateForTraining(new Date(LMISApp.getInstance().getCurrentTimeMillis()));
+            long milissegundosPorDia = 24 * 60 * 60 * 1000;
+            long milissegundos60Dias = 30 * milissegundosPorDia;
+            return Period.generateForTraining(new Date(LMISApp.getInstance().getCurrentTimeMillis() - milissegundos60Dias));
         }
         DateTime periodBeginDate = calculatePeriodBeginDate(programCode);
         DateTime periodEndDate;

@@ -172,6 +172,9 @@ public class LoginPresenter extends Presenter {
                 if (error.getCause() instanceof NetWorkException) {
                     authorizeAndLoginUserLocal(user);
                 } else {
+                    if (error.getMessage().contains("409")) {
+                        ToastUtil.showLongTimeInCenter("Uma Unidade só pode fazer login em um dispositivo.");
+                    }
                     onLoginFailed();
                 }
             }

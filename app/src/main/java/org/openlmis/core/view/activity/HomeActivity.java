@@ -213,10 +213,14 @@ public class HomeActivity extends BaseActivity {
                new Pair<>(Constants.LMIS_MPIMA_REPORT, btnLmisMpima)
        );
        for (Pair<String, Button> buttonConfig: buttonConfigs) {
-           ReportTypeForm find = getReportType(buttonConfig.first, reportTypes);
+           ReportTypeForm report = getReportType(buttonConfig.first, reportTypes);
            Button button = buttonConfig.second;
-           // activa/desactiva botão de LMIS na homepage com base no Programa associado
-           // button.setVisibility(find != null ? View.VISIBLE : View.GONE);
+            if (report != null && report.isActive()) {
+                button.setVisibility(View.VISIBLE);
+            } else {
+                button.setVisibility(View.GONE);
+            }
+
        }
     }
 

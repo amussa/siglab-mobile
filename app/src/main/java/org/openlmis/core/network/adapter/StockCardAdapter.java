@@ -64,10 +64,12 @@ public class StockCardAdapter implements JsonDeserializer<StockCard> {
     private void setupStockCard(StockCard stockCard) throws LMISException {
         Product product = productRepository.getByCode(stockCard.getProduct().getCode());
         if (product == null) {
-            String msg = String.format("Produto %s não foi carregado para o tablet. A Facility e o Produto devem ter pelo menos um programa em comum. Facility: %s", stockCard.getProduct().getCode(), stockCard.getProduct().getProgram().getProgramName());
-            LMISException lmisException = new LMISException(msg);
-            lmisException.printStackTrace();
-            throw lmisException;
+            String msg = String.format("Produto: %s, Programa: %s. Verificar configuração do Programa na Facility e no Produto", stockCard.getProduct().getCode(), stockCard.getProduct().getProgram());
+            RuntimeException runtimeException = new RuntimeException(msg);
+//            LMISException lmisException = new LMISException(msg);
+//            lmisException.printStackTrace();
+//            throw lmisException;
+            throw runtimeException;
         }
         stockCard.setProduct(product);
         updateStockCardIdIfStockCardAlreadyExist(stockCard);

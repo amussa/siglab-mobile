@@ -363,7 +363,7 @@ public class SyncDownManager {
                 e.printStackTrace();
                 sharedPreferenceMgr.setLastMonthStockCardDataSynced(false);
                 e.reportToFabric();
-                throw new LMISException(errorMessage(R.string.msg_sync_stock_movement_failed));
+                throw new LMISException(errorMessage(R.string.msg_sync_stock_movement_failed) + " " + e.getMessage());
             }
         }
     }

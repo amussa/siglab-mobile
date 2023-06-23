@@ -127,8 +127,10 @@ public class LoginActivity extends BaseActivity implements LoginPresenter.LoginV
     }
 
     private void initUI() throws PackageManager.NameNotFoundException {
+        String packageName = LMISApp.getInstance().getPackageName();
+        String buildVariant = packageName.substring(packageName.lastIndexOf(".") + 1);
         String versionNumber = LMISApp.getInstance().getPackageManager().getPackageInfo(LMISApp.getContext().getApplicationContext().getPackageName(), 0).versionName;
-        tvVersion.setText(Html.fromHtml(getResources().getString(R.string.version_number, versionNumber)));
+        tvVersion.setText(Html.fromHtml(getResources().getString(R.string.version_number, versionNumber + "-" + buildVariant)));
 
         ivVisibilityPwd.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
