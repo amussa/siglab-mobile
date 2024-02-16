@@ -93,6 +93,9 @@ public class HomeActivity extends BaseActivity {
     @InjectView(R.id.btn_lmis_roche_cobas_6800)
     Button btnLmisRocheCobas6800;
 
+    @InjectView(R.id.btn_lmis_roche_cobas_5800)
+    Button btnLmisRocheCobas5800;
+
     @InjectView(R.id.btn_lmis_roche_capctm_96)
     Button btnLmisRocheCapctm96;
 
@@ -207,6 +210,7 @@ public class HomeActivity extends BaseActivity {
                new Pair<>(Constants.LMIS_ABBOTT_M2000_REPORT, btnLmisAbbottM2000),
                new Pair<>(Constants.LMIS_ABBOTT_ALINITY_M_REPORT, btnLmisAbbottAlinityM),
                new Pair<>(Constants.LMIS_ROCHE_COBAS_6800_REPORT, btnLmisRocheCobas6800),
+               new Pair<>(Constants.LMIS_ROCHE_COBAS_5800_REPORT, btnLmisRocheCobas5800),
                new Pair<>(Constants.LMIS_ROCHE_CAPCTM_96_REPORT, btnLmisRocheCapctm96),
                new Pair<>(Constants.LMIS_HOLOGIC_PANTER_REPORT, btnLmisHologicPanter),
                new Pair<>(Constants.LMIS_BIOSECURITY_MATERIAL_REPORT, btnLmisBiosecurity),
@@ -297,6 +301,12 @@ public class HomeActivity extends BaseActivity {
         Constants.currentLmisProgram = Constants.Program.LMIS_ROCHE_COBAS_6800_PROGRAM;
         startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_ROCHE_COBAS_6800_PROGRAM));
         TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisRocheCobas6800, Constants.LMIS_ROCHE_COBAS_6800_PROGRAM_CODE);
+    }
+
+    public void onClickLmisRocheCobas5800History(View view) {
+        Constants.currentLmisProgram = Constants.Program.LMIS_ROCHE_COBAS_5800_PROGRAM;
+        startActivity(RnRFormListActivity.getIntentToMe(this,  Constants.Program.LMIS_ROCHE_COBAS_5800_PROGRAM));
+        TrackRnREventUtil.trackRnRListEvent(TrackerActions.SelectLmisRocheCobas5800, Constants.LMIS_ROCHE_COBAS_5800_PROGRAM_CODE);
     }
 
     public void onClickLmisRocheCapctm96History(View view) {

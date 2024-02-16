@@ -586,6 +586,7 @@
     <string name="lmis_abbott_M2000">LMIS ABBOTT M2000</string>
     <string name="lmis_abbott_alinity_m">LMIS ABBOTT ALINITY M</string>
     <string name="lmis_roche_cobas_6800">LMIS ROCHE COBAS 6800</string>
+    <string name="lmis_roche_cobas_5800">LMIS ROCHE COBAS 5800</string>
     <string name="lmis_roche_capctm_96">LMIS ROCHE CAPCTM 96</string>
     <string name="lmis_hologic_panter">LMIS HOLOGIC PANTER</string>
     <string name="lmis_biosecurity_material"> LMIS BIOSECURITY MATERIAL</string>
@@ -594,6 +595,7 @@
     <string name="label_lmis_abbott_m2000_title">LMIS ABBOTT M2000 - %1$s to %2$s</string>
     <string name="label_lmis_abbott_alinity_m_title">LMIS ABBOTT ALINITY M - %1$s to %2$s</string>
     <string name="label_lmis_roche_cobas_6800_title">LMIS ROCHE COBAS 6800 - %1$s to %2$s</string>
+    <string name="label_lmis_roche_cobas_5800_title">LMIS ROCHE COBAS 5800 - %1$s to %2$s</string>
     <string name="label_roche_capctm_96_title">LMIS ROCHE CAPCTM 96 - %1$s to %2$s</string>
     <string name="label_hologic_panter_title">LMIS HOLOGIC PANTER - %1$s to %2$s</string>
     <string name="label_biosecurity_material_title">LMIS BIOSECURITY MATERIAL - %1$s to %2$s</string>

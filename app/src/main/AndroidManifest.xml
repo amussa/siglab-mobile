@@ -113,6 +113,11 @@
             android:label="@string/label_lmis_roche_cobas_6800_title"
             android:windowSoftInputMode="stateHidden" />
         <activity
+            android:name=".view.activity.LMISRocheCobas5800RequisitionActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/label_lmis_roche_cobas_5800_title"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name=".view.activity.LMISRocheCapctm96RequisitionActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/label_roche_capctm_96_title"

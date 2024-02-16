@@ -127,6 +127,19 @@
                             android:visibility="gone"/>
 
                         <Button
+                            android:id="@+id/btn_lmis_roche_cobas_5800"
+                            style="@style/Homepage.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/color_blue_dark"
+                            android:onClick="onClickLmisRocheCobas5800History"
+                            android:text="@string/lmis_roche_cobas_5800"
+                            android:textSize="@dimen/font_size_regular2"
+                            android:visibility="gone"/>
+
+                        <Button
                             android:id="@+id/btn_lmis_roche_capctm_96"
                             style="@style/Homepage.Button"
                             android:layout_width="match_parent"

@@ -226,6 +226,9 @@ public class RnRFormListActivity extends BaseReportListActivity {
             case LMIS_ROCHE_COBAS_6800_PROGRAM:
                 intent = LMISRocheCobas6800RequisitionActivity.getIntentToMe(this, rnrFormId);
                 break;
+            case LMIS_ROCHE_COBAS_5800_PROGRAM:
+                intent = LMISRocheCobas5800RequisitionActivity.getIntentToMe(this, rnrFormId);
+                break;
             case LMIS_ROCHE_CAPCTM_96_PROGRAM:
                 intent = LMISRocheCapctm96RequisitionActivity.getIntentToMe(this, rnrFormId);
                 break;
@@ -266,6 +269,9 @@ public class RnRFormListActivity extends BaseReportListActivity {
             case LMIS_ROCHE_COBAS_6800_PROGRAM:
                 intent = createLMISRocheCobas6800RequisitionIntent(periodEndDate);
                 break;
+            case LMIS_ROCHE_COBAS_5800_PROGRAM:
+                intent = createLMISRocheCobas5800RequisitionIntent(periodEndDate);
+                break;
             case LMIS_ROCHE_CAPCTM_96_PROGRAM:
                 intent = createLMISRocheCapctm96RequisitionIntent(periodEndDate);
                 break;
@@ -300,6 +306,11 @@ public class RnRFormListActivity extends BaseReportListActivity {
     private Intent createLMISRocheCobas6800RequisitionIntent(Date periodEndDate) {
         RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
         return LMISRocheCobas6800RequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
+    }
+
+    private Intent createLMISRocheCobas5800RequisitionIntent(Date periodEndDate) {
+        RnRFormViewModel viewModel = data.size() > 1 ? data.get(data.size() - 2) : null;
+        return LMISRocheCobas5800RequisitionActivity.getIntentToMe(this, periodEndDate, viewModel);
     }
 
     private Intent createLMISRocheCapctm96RequisitionIntent(Date periodEndDate) {

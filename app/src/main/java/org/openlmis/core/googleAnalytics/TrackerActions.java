@@ -24,6 +24,7 @@ public enum TrackerActions {
     SelectLmisAbbottM2000("Select LMIS Abbott M2000"),
     SelectLmisAbbottAlinityM("Select LMIS Abbott Alinity M"),
     SelectLmisRocheCobas6800("Select LMIS Roche Cobas 6800"),
+    SelectLmisRocheCobas5800("Select LMIS Roche Cobas 5800"),
     SelectLmisRocheCapctm96("Select LMIS Roche CAPCTM 96"),
     SelectLmisHologicPanter("Select LMIS Hologic Panter"),
     SelectLmisBiosecurityMaterial("Select LMIS Biosecurity Material"),
