@@ -6,7 +6,7 @@
         <item>RECEIVE|THL|THL</item>
         <item>RECEIVE|OTHERS|Outros</item>
         <item>RECEIVE|DISTRICT_DDM|District(DDM)</item>
-<!--        <item>RECEIVE|PROVINCE_DPM|Province(DPM)</item>-->
+<!--    <item>RECEIVE|PROVINCE_DPM|Province(DPM)</item> -->
 
 
         <item>ISSUE|UNPACK_KIT|Unpack kit</item>
@@ -20,7 +20,7 @@
         <item>ISSUE|ABBOTT|Abbott</item>
         <item>ISSUE|ROCHE|Roche</item>
         <item>ISSUE|BIOMERIEUX|Biomerieux</item>
-
+        <item>ISSUE|OTHERS|Outros</item>
 
         <item>NEGATIVE_ADJUST|EXPIRED_RETURN_TO_SUPPLIER|Devolução de Expirados Quarentena (ou Depósito fornecedor)</item>
         <item>NEGATIVE_ADJUST|DAMAGED|Danificados no Depósito</item>

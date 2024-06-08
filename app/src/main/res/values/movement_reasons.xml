@@ -6,7 +6,7 @@
         <item>RECEIVE|THL|THL</item>
         <item>RECEIVE|OTHERS|Others</item>
         <item>RECEIVE|DISTRICT_DDM|District(DDM)</item>
-<!--        <item>RECEIVE|PROVINCE_DPM|Province(DPM)</item>-->
+<!--    <item>RECEIVE|PROVINCE_DPM|Province(DPM)</item> -->
 
 
         <item>ISSUE|UNPACK_KIT|Unpack kit</item>
@@ -20,6 +20,7 @@
         <item>ISSUE|ABBOTT|Abbott</item>
         <item>ISSUE|ROCHE|Roche</item>
         <item>ISSUE|BIOMERIEUX|Biomerieux</item>
+        <item>ISSUE|OTHERS|Others</item>
 
 
         <item>NEGATIVE_ADJUST|EXPIRED_RETURN_TO_SUPPLIER|Drugs in quarantine have expired, returned to Supplier</item>
