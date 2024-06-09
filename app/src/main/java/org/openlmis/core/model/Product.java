@@ -160,4 +160,23 @@ public class Product extends BaseModel implements Comparable<Product>, Serializa
         dummyProduct.setType("");
         return dummyProduct;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "program=" + program +
+                ", primaryName='" + primaryName + '\'' +
+                ", strength='" + strength + '\'' +
+                ", code='" + code + '\'' +
+                ", type='" + type + '\'' +
+                ", isArchived=" + isArchived +
+                ", isActive=" + isActive +
+                ", isKit=" + isKit +
+                ", isBasic=" + isBasic +
+                ", isHiv=" + isHiv +
+                ", lotList=" + lotList +
+                ", ptvProgramStocksInformation=" + ptvProgramStocksInformation +
+                ", kitProductList=" + kitProductList +
+                '}';
+    }
 }
