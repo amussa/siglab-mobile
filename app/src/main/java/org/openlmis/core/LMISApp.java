@@ -74,7 +74,18 @@ public class LMISApp extends Application {
     }
 
     protected void setupGoogleAnalytics() {
-        AnalyticsTrackers.initialize(this);
+        try {
+            // Only initialize Google Analytics on Android 11 and below
+            // Android 12+ has issues with PendingIntent flags in older GA versions
+            if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.R) {
+                AnalyticsTrackers.initialize(this);
+            } else {
+                android.util.Log.w("LMISApp", "Google Analytics disabled for Android 12+ due to PendingIntent compatibility issues");
+            }
+        } catch (Exception e) {
+            // Catch any exceptions to prevent app crash
+            android.util.Log.e("LMISApp", "Failed to initialize Google Analytics", e);
+        }
     }
 
     public static LMISApp getInstance() {
@@ -119,18 +130,30 @@ public class LMISApp extends Application {
     }
 
     public void trackScreen(ScreenName screenName) {
-        Tracker mTracker = AnalyticsTrackers.getInstance().getDefault();
-        mTracker.setScreenName(screenName.getScreenName());
-        mTracker.send(new HitBuilders.ScreenViewBuilder()
-                .setCustomDimension(facilityCustomDimensionKey, getFacilityNameForGA())
-                .build());
+        try {
+            if (AnalyticsTrackers.hasBeenInitialized()) {
+                Tracker mTracker = AnalyticsTrackers.getInstance().getDefault();
+                mTracker.setScreenName(screenName.getScreenName());
+                mTracker.send(new HitBuilders.ScreenViewBuilder()
+                        .setCustomDimension(facilityCustomDimensionKey, getFacilityNameForGA())
+                        .build());
+            }
+        } catch (Exception e) {
+            android.util.Log.w("LMISApp", "Unable to track screen: " + screenName, e);
+        }
     }
 
     public void trackEvent(TrackerCategories category, TrackerActions action) {
-        Tracker mTracker = AnalyticsTrackers.getInstance().getDefault();
-        mTracker.send(new HitBuilders.EventBuilder(category.getString(), action.getString())
-                .setCustomDimension(facilityCustomDimensionKey, getFacilityNameForGA())
-                .build());
+        try {
+            if (AnalyticsTrackers.hasBeenInitialized()) {
+                Tracker mTracker = AnalyticsTrackers.getInstance().getDefault();
+                mTracker.send(new HitBuilders.EventBuilder(category.getString(), action.getString())
+                        .setCustomDimension(facilityCustomDimensionKey, getFacilityNameForGA())
+                        .build());
+            }
+        } catch (Exception e) {
+            android.util.Log.w("LMISApp", "Unable to track event: " + category + "/" + action, e);
+        }
     }
 
     private String getFacilityNameForGA() {

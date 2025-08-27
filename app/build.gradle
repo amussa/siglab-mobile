@@ -14,17 +14,23 @@ repositories {
 // }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 34
+    
+    buildFeatures {
+        buildConfig true
+    }
 
     defaultConfig {
         multiDexEnabled true
         applicationId "org.openlmis.core"
-        minSdkVersion 17
-        targetSdkVersion 21
+        minSdkVersion 28
+        targetSdkVersion 34
         flavorDimensions "1"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [:]
+                arguments = [
+                    "guiceAnnotationDatabasePackageName": applicationId
+                ]
             }
         }
         if (project.hasProperty("prodsim")) {
@@ -67,6 +73,7 @@ android {
         }
         local {
             applicationId 'org.openlmis.core.local'
+            javaCompileOptions.annotationProcessorOptions.arguments = ["guiceAnnotationDatabasePackageName": 'org.openlmis.core.local']
         }
         dev {
             applicationId 'org.openlmis.core.dev'
@@ -170,6 +177,7 @@ task checkci(dependsOn: ['checkstyle', 'testLocalDebugUnitTest'])
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     annotationProcessor "org.projectlombok:lombok:1.18.24"
+    annotationProcessor 'org.roboguice:roboblender:3.0.1'
     implementation 'com.facebook.stetho:stetho:1.5.0'
     implementation 'com.facebook.stetho:stetho-okhttp:1.5.0'
     implementation 'com.android.support:multidex:1.0.3'
@@ -178,7 +186,7 @@ dependencies {
             'com.android.support:design:22.2.1',
             'com.android.support:recyclerview-v7:23.2.1',
             'com.android.support:cardview-v7:22.2.1',
-            'com.google.android.gms:play-services-analytics:7.8.0',
+            'com.google.android.gms:play-services-analytics:11.8.0',
             'com.github.viethoa:fastscroller:1.2.0',
             'io.reactivex:rxjava:1.0.14',
             'io.reactivex:rxandroid:1.0.1',

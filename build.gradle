@@ -10,7 +10,7 @@ buildscript {
         jcenter() // Deprecated but kept for legacy dependencies
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:7.3.1'
         // classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.6' // HockeyApp deprecated
         // classpath 'io.fabric.tools:gradle:1.+' // Fabric deprecated
         // NOTE: Do not place your application dependencies here; they belong

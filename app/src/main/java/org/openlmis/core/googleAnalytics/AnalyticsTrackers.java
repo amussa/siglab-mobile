@@ -21,6 +21,10 @@ public final class AnalyticsTrackers {
         sInstance = new AnalyticsTrackers(context);
     }
 
+    public static synchronized boolean hasBeenInitialized() {
+        return sInstance != null;
+    }
+    
     public static synchronized AnalyticsTrackers getInstance() {
         if (sInstance == null) {
             throw new IllegalStateException("Call initialize() before getInstance()");
