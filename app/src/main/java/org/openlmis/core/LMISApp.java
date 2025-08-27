@@ -24,8 +24,8 @@ import android.content.res.Configuration;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
-import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.core.CrashlyticsCore;
+// import com.crashlytics.android.Crashlytics;
+// import com.crashlytics.android.core.CrashlyticsCore;
 import com.facebook.stetho.Stetho;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -47,7 +47,7 @@ import org.openlmis.core.utils.FileUtil;
 
 import java.io.File;
 
-import io.fabric.sdk.android.Fabric;
+// import io.fabric.sdk.android.Fabric;
 import roboguice.RoboGuice;
 
 public class LMISApp extends Application {
@@ -82,9 +82,10 @@ public class LMISApp extends Application {
     }
 
     protected void setupFabric() {
-        Fabric.with(this, new Crashlytics.Builder()
-                .core(new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
-                .build());
+        // Fabric/Crashlytics disabled - deprecated
+        // Fabric.with(this, new Crashlytics.Builder()
+        //         .core(new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
+        //         .build());
     }
 
     public boolean isConnectionAvailable() {
@@ -110,7 +111,7 @@ public class LMISApp extends Application {
     }
 
     public void logErrorOnFabric(LMISException exception) {
-        Crashlytics.logException(exception);
+        // Crashlytics.logException(exception); // Fabric/Crashlytics disabled
     }
 
     public LMISRestApi getRestApi() {

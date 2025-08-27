@@ -33,7 +33,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor(suppressConstructorProperties = true)
+@AllArgsConstructor
 @NoArgsConstructor
 @DatabaseTable(tableName = "programs")
 public class Program extends BaseModel {

@@ -1,0 +1,28 @@
+📊 Versões Atuais do Ambiente de Build
+☕ Java
+Versão: OpenJDK 17.0.15
+Distribuição: Eclipse Adoptium (Temurin)
+Build: 17.0.15+6
+Arquitetura: 64-Bit Server VM
+Modo: Mixed mode, sharing
+
+🐘 Gradle
+Versão: 7.6.1
+Build time: 24 de Fevereiro de 2023
+Kotlin: 1.7.10 (para scripts Kotlin)
+Groovy: 3.0.13 (para scripts Groovy)
+Ant: 1.10.11
+JVM: Executando com Java 17.0.15
+
+💻 Sistema Operacional
+OS: macOS 15.5 (Sequoia)
+Arquitetura: ARM64 (Apple Silicon - aarch64)
+📱 Android Gradle Plugin
+Versão: 7.4.2 (configurado em build.gradle)
+
+📝 Resumo
+O projeto está usando versões modernas e compatíveis:
+Java 17 é uma versão LTS (Long Term Support) lançada em 2021
+Gradle 7.6.1 é compatível com Java 17 e Android Gradle Plugin 7.4.2
+Esta combinação permite compilar apps Android com SDK 27 (Android 8.1 Oreo) configurado no projeto
+Estas versões são adequadas para o desenvolvimento atual, embora o projeto pudesse beneficiar de uma atualização futura para versões mais recentes do Android SDK e das bibliotecas.
