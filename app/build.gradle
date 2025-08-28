@@ -70,7 +70,7 @@ android {
     productFlavors {
         lab {
             applicationId 'org.openlmis.core.lab'
-
+            javaCompileOptions.annotationProcessorOptions.arguments = ["guiceAnnotationDatabasePackageName": 'org.openlmis.core.lab']
         }
         local {
             applicationId 'org.openlmis.core.local'
@@ -78,17 +78,21 @@ android {
         }
         dev {
             applicationId 'org.openlmis.core.dev'
+            javaCompileOptions.annotationProcessorOptions.arguments = ["guiceAnnotationDatabasePackageName": 'org.openlmis.core.dev']
         }
 
         qa {
             applicationId 'org.openlmis.core.qa'
             buildConfigField "boolean", "MONITOR_DEVICE_ID", "false"
+            javaCompileOptions.annotationProcessorOptions.arguments = ["guiceAnnotationDatabasePackageName": 'org.openlmis.core.qa']
         }
         uat {
             applicationId 'org.openlmis.core.uat'
+            javaCompileOptions.annotationProcessorOptions.arguments = ["guiceAnnotationDatabasePackageName": 'org.openlmis.core.uat']
         }
         training {
             applicationId 'org.openlmis.core.training'
+            javaCompileOptions.annotationProcessorOptions.arguments = ["guiceAnnotationDatabasePackageName": 'org.openlmis.core.training']
         }
         prd {
             applicationId 'org.openlmis.core'
@@ -102,9 +106,11 @@ android {
         }
         ci {
             applicationId 'org.openlmis.core.ci'
+            javaCompileOptions.annotationProcessorOptions.arguments = ["guiceAnnotationDatabasePackageName": 'org.openlmis.core.ci']
         }
         showcase {
             applicationId 'org.openlmis.core.showcase'
+            javaCompileOptions.annotationProcessorOptions.arguments = ["guiceAnnotationDatabasePackageName": 'org.openlmis.core.showcase']
         }
     }
 
