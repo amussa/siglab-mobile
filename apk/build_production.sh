@@ -138,9 +138,14 @@ do_build() {
             manual_sign "$apk_path"
         fi
         
-        # Copiar APK para diretoria releases com prefixo de data/hora
+        # Obter informações de versão do gradle.properties
+        local version_name=$(grep "semanticVersion" ../gradle.properties | cut -d'=' -f2)
+        local version_code=$(grep "androidVersionCode" ../gradle.properties | cut -d'=' -f2)
+        local build_variant="prd"
+        
+        # Copiar APK para diretoria releases com prefixo de data/hora e versão completa
         local timestamp=$(date +%Y%m%d_%H%M)
-        local final_apk="releases/${timestamp}_SIGLAB-Mobile-v86-production-${KEYSTORE_NAME}-signed.apk"
+        local final_apk="releases/${timestamp}_SIGLAB-Mobile-${version_name}-${version_code}-${build_variant}-${KEYSTORE_NAME}-signed.apk"
         
         # Criar diretoria releases se não existir
         mkdir -p releases

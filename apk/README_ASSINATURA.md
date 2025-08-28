@@ -164,9 +164,15 @@ cd apk
 
 📦 APKs Gerados
 
-Todos os APKs de produção são salvos em `apk/releases/` com prefixo de data/hora:
-- Formato: `YYYYMMDD_HHMM_SIGLAB-Mobile-v86-production-[keystore]-signed.apk`
-- Exemplo: `20240828_2315_SIGLAB-Mobile-v86-production-lmis_moz-signed.apk`
+Todos os APKs de produção são salvos em `apk/releases/` com informações completas de versão:
+- Formato: `YYYYMMDD_HHMM_SIGLAB-Mobile-[versionName]-[versionCode]-[buildVariant]-[keystore]-signed.apk`
+- Exemplo: `20250829_0038_SIGLAB-Mobile-1.12.86.240216-86-prd-lmis_moz-signed.apk`
+- Componentes:
+  - `20250829_0038`: Data e hora do build
+  - `1.12.86.240216`: Version name (semanticVersion)
+  - `86`: Version code (androidVersionCode)
+  - `prd`: Build variant
+  - `lmis_moz`: Keystore usado
 
 ---
 

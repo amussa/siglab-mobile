@@ -63,8 +63,16 @@ public class LMISApp extends Application {
         super.onCreate();
         Stetho.initializeWithDefaults(this);
         JodaTimeAndroid.init(this);
-        RoboGuice.getInjector(this).injectMembersWithoutViews(this);
-        RoboGuice.getInjector(this).getInstance(SharedPreferenceMgr.class);
+        
+        try {
+            RoboGuice.getInjector(this).injectMembersWithoutViews(this);
+            RoboGuice.getInjector(this).getInstance(SharedPreferenceMgr.class);
+        } catch (Exception e) {
+            // Log error but don't crash the app
+            android.util.Log.e("LMISApp", "RoboGuice initialization failed", e);
+            // Continue without dependency injection for now
+        }
+        
         if(!BuildConfig.DEBUG) {
             setupFabric();
         }

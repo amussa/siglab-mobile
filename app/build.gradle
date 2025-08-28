@@ -14,6 +14,7 @@ repositories {
 // }
 
 android {
+    namespace 'org.openlmis.core'
     compileSdkVersion 34
     
     buildFeatures {
@@ -51,10 +52,10 @@ android {
             keyPassword "android"
         }
         release {
-            storeFile file("../appstore/appstore.jks")
-            storePassword "password"
+            storeFile file("../scripts/lmis_moz.jks")
+            storePassword "!EBus&tre46A"
             keyAlias "clintonhealthaccess"
-            keyPassword "password"
+            keyPassword "!EBus&tre46A"
         }
     }
 
@@ -91,6 +92,13 @@ android {
         }
         prd {
             applicationId 'org.openlmis.core'
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [
+                        "guiceAnnotationDatabasePackageName": 'org.openlmis.core'
+                    ]
+                }
+            }
         }
         ci {
             applicationId 'org.openlmis.core.ci'

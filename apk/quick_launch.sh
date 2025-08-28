@@ -100,7 +100,7 @@ fi
 
 # Executar aplicativo
 print_info "Executando SIGLAB Mobile..."
-adb shell am start -n org.openlmis.core.local/org.openlmis.core.view.activity.LoginActivity
+adb shell am start -n org.openlmis.core/.view.activity.LoginActivity
 
 print_success "SIGLAB Mobile executado com sucesso! 🎉"
 
