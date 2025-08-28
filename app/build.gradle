@@ -51,10 +51,10 @@ android {
             keyPassword "android"
         }
         release {
-            storeFile file("../scripts/lmis_moz.jks")
-            storePassword System.getenv("KSTOREPWD")
+            storeFile file("../appstore/appstore.jks")
+            storePassword "password"
             keyAlias "clintonhealthaccess"
-            keyPassword System.getenv("KEYPWD")
+            keyPassword "password"
         }
     }
 

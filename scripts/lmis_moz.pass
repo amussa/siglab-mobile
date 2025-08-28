@@ -1,0 +1,6 @@
+keytool -exportcert \
+  -alias clintonhealthaccess \
+  -keystore lmis_moz.jks \
+  -storepass '!EBus&tre46A' \
+  -keypass '!EBus&tre46A'
+

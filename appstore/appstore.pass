@@ -1,0 +1,6 @@
+keytool -exportcert \
+  -alias clintonhealthaccess \
+  -keystore appstore.jks \
+  -storepass password \
+  -keypass password
+
