@@ -25,6 +25,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.provider.Settings.Secure;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -282,8 +283,12 @@ public class AutoUpdateApk {
                 Intent notificationIntent = new Intent(Intent.ACTION_VIEW);
                 notificationIntent.setDataAndType(
                         Uri.parse("file://" + context.getFilesDir().getAbsolutePath() + "/"+ updateFile), ANDROID_PACKAGE);
+                int flags = 0;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    flags |= PendingIntent.FLAG_IMMUTABLE;
+                }
                 PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
-                        notificationIntent, 0);
+                        notificationIntent, flags);
                 notificationB.setContentTitle("Download Completed")
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentText("Click to install")

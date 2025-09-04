@@ -17,7 +17,11 @@ public abstract class BaseReportListActivity extends BaseActivity {
     private void registerRnrSyncReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.INTENT_FILTER_FINISH_SYNC_DATA);
-        registerReceiver(syncReceiver, filter);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(syncReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(syncReceiver, filter);
+        }
     }
 
     BroadcastReceiver syncReceiver = new BroadcastReceiver() {

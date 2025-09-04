@@ -24,6 +24,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -155,19 +156,31 @@ public class HomeActivity extends BaseActivity {
     private void registerSyncStartReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.INTENT_FILTER_START_SYNC_DATA);
-        registerReceiver(syncStartReceiver, filter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(syncStartReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(syncStartReceiver, filter);
+        }
     }
 
     private void registerSyncFinishedReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.INTENT_FILTER_FINISH_SYNC_DATA);
-        registerReceiver(syncFinishedReceiver, filter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(syncFinishedReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(syncFinishedReceiver, filter);
+        }
     }
 
     private void registerErrorFinishedReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(Constants.INTENT_FILTER_ERROR_SYNC_DATA);
-        registerReceiver(syncErrorReceiver, filter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(syncErrorReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            registerReceiver(syncErrorReceiver, filter);
+        }
     }
 
     @Override
@@ -466,7 +479,11 @@ public class HomeActivity extends BaseActivity {
         intent.putExtra(Constants.PARAM_USERNAME, currentUser.getUsername());
         intent.putExtra(Constants.PARAM_PASSWORD, currentUser.getPassword());
 
-        PendingIntent mPendingIntent = PendingIntent.getActivity(this, requestCode, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        int flags = PendingIntent.FLAG_CANCEL_CURRENT;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            flags |= PendingIntent.FLAG_IMMUTABLE;
+        }
+        PendingIntent mPendingIntent = PendingIntent.getActivity(this, requestCode, intent, flags);
         AlarmManager mgr = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + startAppInterval, mPendingIntent);
     }
